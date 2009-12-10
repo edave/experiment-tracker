@@ -1,3 +1,5 @@
+require 'googlecalendar'
+include Googlecalendar
 class SubjectsController < ApplicationController
   before_filter :authenticate, {:except => [:new, :update, :create]}
 
@@ -59,6 +61,21 @@ class SubjectsController < ApplicationController
         @slot.subject = @subject
         @slot.save
         SubjectNotifier.deliver_confirmation(@subject)
+        #endtime = @slot.time + 75.minutes
+        #g = GData.new
+#g.login('dpitmantest@gmail.com', 'halhalhal')
+#event = { :title     => 'Experiment - ' + @subject.name,
+#          :content   => 'Experiment',
+#          :author    => 'Experiment Bot',
+#          :email     => 'dpitmantest@gmail.com',
+#          :where     => 'Bldg 41',
+#          :startTime => @slot.time.strftime("%Y-%m-%dT%H:%M.000Z"),
+#          :endTime   => endtime.strftime("%Y-%m-%dT%H:%M.000Z")}
+ #         gCal = GCalendar.new('UROP Availability', 'http://www.google.com/calendar/feeds/a56sno2hfu6li22sq9qhoccgjc%40group.calendar.google.com/private-b2d020bec6cc41d5865a89fd2c8cbe1a/basic')
+ #         #gCal.url = 'http://www.google.com/calendar/feeds/a56sno2hfu6li22sq9qhoccgjc%40group.calendar.google.com/private-b2d020bec6cc41d5865a89fd2c8cbe1a/basic'
+#g.new_event(event, 'UROP Availability')
+
+        
         #flash[:notice] = 'Subject was successfully created.'
         format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id) }
         format.xml  { render :xml => @subject, :status => :created, :location => @subject }
