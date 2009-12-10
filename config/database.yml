@@ -33,7 +33,7 @@ test:
   reconnect: false
   database: Experiment_test
   pool: 5
-  username: root
+  username: experimenter
   password: spoon
   host: localhost
 
@@ -41,8 +41,8 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: Experiment_production
+  database: experiment_production
   pool: 5
-  username: root
-  password: 
+  username: experimenter
+  password: 2001hal1999
   host: localhost

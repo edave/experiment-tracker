@@ -1,6 +1,6 @@
 default_run_options[:pty] = true
-set :application, "experiment"
-set :repository,  "git@github:edavepitman/experimenter.git"
+set :application, "experiment-signup"
+set :repository,  "git@github.com:edave/experiment-tracker.git"
 
 set :scm, :git
 set :scm_passphrase, "hal2001"
@@ -9,6 +9,7 @@ ssh_options[:forward_agent] = true
 
 set :branch, "master"
 set :deploy_via, :remote_cache
+set :deploy_to, "/var/www/experiment-signup"
 set :git_shallow_clone, 1
 set :git_enable_submodules, 1
 
@@ -24,9 +25,17 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
 # these http://github.com/rails/irs_process_scripts
 
  namespace :deploy do
-   task :start {}
-   task :stop {}
-   task :restart, :roles => :app, :except => { :no_release => true } do
-     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-   end
+  task :start, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+
+  task :stop, :roles => :app do
+    # Do nothing.
+  end
+
+  desc "Restart Application"
+  task :restart, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+
  end
