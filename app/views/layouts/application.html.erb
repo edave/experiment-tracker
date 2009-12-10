@@ -9,6 +9,11 @@
 		<%= calendar_date_select_includes "red"  %>
 	</head>
 	<body>
+		<% if signed_in? %>
+		<div class="signin">
+		<%= link_to 'sign out', session_path, :method => :delete %> 
+		</div>
+		<% end %>
 		  <%= yield %>
 	</body>
 </html>
