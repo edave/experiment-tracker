@@ -1,0 +1,9 @@
+<%= calendar_date_select :slot, :time %>
+<% unless @slot.subject.nil? %>
+<h2>Subject</h2>
+<%= @slot.subject.name %><br/>
+<%= @slot.subject.email %><br />
+<%= @slot.subject.phone_number %>
+<% end %>
+<%= link_to 'Edit', edit_slot_path(@slot) %> |
+<%= link_to 'Back', slots_path %>

@@ -1,0 +1,26 @@
+<h1>Signup for an experiment slot</h1>
+
+<h2>Contact Information</h2>
+<p>Contact information is used solely to contact you about the experiment and is not shared with anyone.</p>
+<% form_for(@subject, :html => {:autocomplete=>"off"}) do |f| %>
+  <%= f.error_messages %>
+	<h3>Name<span style="color:red">*</span></h3>
+	<%= f.text_field :name %><br/>
+	
+	<h3>Email<span style="color:red">*</span></h3>
+	<%= f.text_field :email %><br />
+	
+	<h3>Phone Number (optional)</h3>
+	<%= f.text_field :phone_number %><br /><br />
+	
+	<h3>Time Slot<span style="color:red">*</span></h3>
+	Select a time (the experiment will run approximately 1hr 15min)<br />
+	
+	<% for slot in @slots %>
+	<input type="radio" name="slot_id" value="<%= slot.hashed_id%>" <% if params[:slot_id].to_i == slot.hashed_id %>checked<%end%> ><%= slot.human_time %><br />
+	<% end %>
+	
+  <p>
+    <%= f.submit 'Sign up!' %>
+  </p>
+<% end %>
