@@ -1,4 +1,6 @@
 class SubjectsController < ApplicationController
+  before_filter :authenticate, {:except => [:new, :update, :create]}
+
   # GET /subjects
   # GET /subjects.xml
   def index

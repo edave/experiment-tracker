@@ -2058,3 +2058,672 @@ Rendering slots/index
   [4;35;1mSubject Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
   [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 3) [0m
 Completed in 33ms (View: 18, DB: 4) | 200 OK [http://localhost/slots]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateExperiments (20091209184553)
+  [4;36;1mSQL (1.2ms)[0m   [0;1mDROP TABLE `experiments`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20091209184553'[0m
+Migrating to CreateSlots (20091209182458)
+  [4;36;1mSQL (1.1ms)[0m   [0;1mDROP TABLE `slots`[0m
+  [4;35;1mSQL (25.1ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20091209182458'[0m
+Migrating to CreateSubjects (20091209174345)
+  [4;36;1mSQL (1.4ms)[0m   [0;1mDROP TABLE `subjects`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20091209174345'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+  [4;36;1mSQL (57.3ms)[0m   [0;1mCREATE TABLE `subjects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(256), `name` varchar(60), `phone_number` varchar(30), `hashed_id` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091209174345')[0m
+Migrating to CreateSlots (20091209182458)
+  [4;36;1mSQL (182.8ms)[0m   [0;1mCREATE TABLE `slots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `subject_id` int, `experiment_id` int, `time` datetime, `hashed_id` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091209182458')[0m
+Migrating to CreateExperiments (20091209184553)
+  [4;36;1mSQL (129.4ms)[0m   [0;1mCREATE TABLE `experiments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(256), `desc` blob, `hashed_id` int(11) DEFAULT 0, `time_length` int, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091209184553')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `experiments`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `experiments`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `slots`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `slots`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mdescribe `subjects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `subjects`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (20.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+Migrating to CreateSlots (20091209182458)
+Migrating to CreateExperiments (20091209184553)
+Migrating to ClearanceCreateUsers (20091210035728)
+  [4;36;1mSQL (91.3ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `encrypted_password` varchar(128), `salt` varchar(128), `confirmation_token` varchar(128), `remember_token` varchar(128), `email_confirmed` tinyint(1) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (251.3ms)[0m   [0mCREATE INDEX `index_users_on_id_and_confirmation_token` ON `users` (`id`, `confirmation_token`)[0m
+  [4;36;1mSQL (155.4ms)[0m   [0;1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [4;35;1mSQL (167.4ms)[0m   [0mCREATE INDEX `index_users_on_remember_token` ON `users` (`remember_token`)[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091210035728')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `experiments`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `experiments`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `slots`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `slots`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `subjects`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `subjects`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-09 23:01:43) [GET]
+
+NoMethodError (undefined method `login_required' for #<SlotsController:0x2515c78>):
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (35.4ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-09 23:02:00) [GET]
+  [4;36;1mSlot Load (0.3ms)[0m   [0;1mSELECT * FROM `slots` [0m
+Rendering template within layouts/application
+Rendering slots/index
+Completed in 125ms (View: 89, DB: 1) | 200 OK [http://localhost/slots]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::UsersController#index (for 127.0.0.1 at 2009-12-09 23:06:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"clearance/users"}
+
+ActionController::UnknownAction (No action responded to index. Actions: create and new):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::UsersController#new (for 127.0.0.1 at 2009-12-09 23:06:25) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/users"}
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (4.8ms)
+Completed in 32ms (View: 24, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#index (for 127.0.0.1 at 2009-12-09 23:16:47) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/subjects]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:16:47) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 18ms (View: 17, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::UsersController#new (for 127.0.0.1 at 2009-12-09 23:16:52) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/users"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (3.0ms)
+Completed in 19ms (View: 12, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#new (for 127.0.0.1 at 2009-12-09 23:19:24) [GET]
+  [4;35;1mSubject Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSlot Load (0.3ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`subject_id` IS NULL) [0m
+Rendering template within layouts/application
+Rendering subjects/new
+Completed in 32ms (View: 17, DB: 2) | 200 OK [http://localhost/subjects/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#index (for 127.0.0.1 at 2009-12-09 23:19:29) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/subjects]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:19:29) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 10ms (View: 8, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::PasswordsController#new (for 127.0.0.1 at 2009-12-09 23:19:33) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/passwords"}
+Rendering template within layouts/application
+Rendering passwords/new
+Completed in 17ms (View: 15, DB: 0) | 200 OK [http://localhost/passwords/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::UsersController#new (for 127.0.0.1 at 2009-12-09 23:19:39) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/users"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (3.0ms)
+Completed in 18ms (View: 11, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (11.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to ClearanceCreateUsers (20091210035728)
+  [4;36;1mSQL (1.4ms)[0m   [0;1mDROP TABLE `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20091210035728'[0m
+Migrating to CreateExperiments (20091209184553)
+  [4;36;1mSQL (13.3ms)[0m   [0;1mDROP TABLE `experiments`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20091209184553'[0m
+Migrating to CreateSlots (20091209182458)
+  [4;36;1mSQL (1.1ms)[0m   [0;1mDROP TABLE `slots`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20091209182458'[0m
+Migrating to CreateSubjects (20091209174345)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mDROP TABLE `subjects`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20091209174345'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+  [4;36;1mSQL (106.0ms)[0m   [0;1mCREATE TABLE `subjects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(256), `name` varchar(60), `phone_number` varchar(30), `hashed_id` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091209174345')[0m
+Migrating to CreateSlots (20091209182458)
+  [4;36;1mSQL (251.4ms)[0m   [0;1mCREATE TABLE `slots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `subject_id` int, `experiment_id` int, `time` datetime, `hashed_id` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091209182458')[0m
+Migrating to CreateExperiments (20091209184553)
+  [4;36;1mSQL (130.7ms)[0m   [0;1mCREATE TABLE `experiments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(256), `desc` blob, `hashed_id` int(11) DEFAULT 0, `time_length` int, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091209184553')[0m
+Migrating to ClearanceCreateUsers (20091210035728)
+  [4;36;1mSQL (173.0ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `encrypted_password` varchar(128), `salt` varchar(128), `confirmation_token` varchar(128), `remember_token` varchar(128), `email_confirmed` tinyint(1) DEFAULT 0 NOT NULL, `admin` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (168.4ms)[0m   [0mCREATE INDEX `index_users_on_id_and_confirmation_token` ON `users` (`id`, `confirmation_token`)[0m
+  [4;36;1mSQL (175.0ms)[0m   [0;1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [4;35;1mSQL (179.5ms)[0m   [0mCREATE INDEX `index_users_on_remember_token` ON `users` (`remember_token`)[0m
+  [4;36;1mSQL (175.8ms)[0m   [0;1mCREATE INDEX `index_users_on_admin` ON `users` (`admin`)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091210035728')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `experiments`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `experiments`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `slots`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `slots`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `subjects`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `subjects`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#index (for 127.0.0.1 at 2009-12-09 23:30:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"subjects"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/subjects]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:30:18) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 35ms (View: 33, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:30:21) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NameError (uninitialized constant Clearance::App):
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (93.2ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:34:19) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+TypeError (wrong argument type Class (expected Module)):
+  app/controllers/users_controller.rb:2:in `include'
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (31.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:34:33) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:admin_only] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/users/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:34:33) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 11ms (View: 9, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:34:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of /Library/Ruby/Gems/1.8/gems/clearance-0.8.4/app/views/users/new.html.erb:
+1: <h2>Sign up</h2>
+2: 
+3: <% form_for @user do |form| %>
+4:   <%= render :partial => '/users/form', :object => form %>
+5:   <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
+6: <% end %>
+
+    clearance (0.8.4) app/views/users/new.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (113.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:34:55) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of /Library/Ruby/Gems/1.8/gems/clearance-0.8.4/app/views/users/new.html.erb:
+1: <h2>Sign up</h2>
+2: 
+3: <% form_for @user do |form| %>
+4:   <%= render :partial => '/users/form', :object => form %>
+5:   <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
+6: <% end %>
+
+    clearance (0.8.4) app/views/users/new.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (43.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:34:56) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of /Library/Ruby/Gems/1.8/gems/clearance-0.8.4/app/views/users/new.html.erb:
+1: <h2>Sign up</h2>
+2: 
+3: <% form_for @user do |form| %>
+4:   <%= render :partial => '/users/form', :object => form %>
+5:   <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
+6: <% end %>
+
+    clearance (0.8.4) app/views/users/new.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (118.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:34:57) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of /Library/Ruby/Gems/1.8/gems/clearance-0.8.4/app/views/users/new.html.erb:
+1: <h2>Sign up</h2>
+2: 
+3: <% form_for @user do |form| %>
+4:   <%= render :partial => '/users/form', :object => form %>
+5:   <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
+6: <% end %>
+
+    clearance (0.8.4) app/views/users/new.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (48.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:35:14) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NameError (uninitialized constant Clearance::App):
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (31.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:35:15) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NameError (uninitialized constant Clearance::App):
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (112.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:35:21) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NameError (uninitialized constant Clearance::Application):
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (32.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:35:54) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NameError (uninitialized constant Clearance::Application):
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (32.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:35:55) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NameError (uninitialized constant Clearance::Application):
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (102.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:35:56) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+NameError (uninitialized constant Clearance::Application):
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (32.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2009-12-09 23:36:30) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+TypeError (wrong argument type Class (expected Module)):
+  app/controllers/users_controller.rb:2:in `include'
+  app/controllers/users_controller.rb:2
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (32.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:36:41) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (5.1ms)
+Completed in 24ms (View: 17, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-12-09 23:36:57) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"edave@mit.edu"}, "commit"=>"Sign up", "action"=>"index", "authenticity_token"=>"2X5mFcwZlI6Iujx8xhrGVX+Yn9bBCnUCNzuRTKdSb1c=", "controller"=>"users"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:admin_only] rendered_or_redirected.
+Completed in 1ms (DB: 1) | 302 Found [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:36:57) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 11ms (View: 9, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#create (for 127.0.0.1 at 2009-12-09 23:37:05) [POST]
+  Parameters: {"commit"=>"Sign in", "action"=>"create", "authenticity_token"=>"2X5mFcwZlI6Iujx8xhrGVX+Yn9bBCnUCNzuRTKdSb1c=", "session"=>{"password"=>"[FILTERED]", "email"=>"edave@mit.edu"}, "controller"=>"clearance/sessions"}
+  [4;35;1mUser Columns (4.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`email` = 'edave@mit.edu') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new (unauthorized)
+Completed in 52ms (View: 10, DB: 5) | 401 Unauthorized [http://localhost/session]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:40:21) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (3.1ms)
+Completed in 19ms (View: 12, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:40:34) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (5.1ms)
+Completed in 51ms (View: 43, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-12-09 23:40:43) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"dpitman@gmail.com"}, "commit"=>"Sign up", "action"=>"index", "authenticity_token"=>"2X5mFcwZlI6Iujx8xhrGVX+Yn9bBCnUCNzuRTKdSb1c=", "controller"=>"users"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:admin_only] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/users]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:40:43) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 24ms (View: 22, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:41:25) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (3.1ms)
+Completed in 19ms (View: 12, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-12-09 23:41:32) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"dpitman@gmail.com"}, "commit"=>"Sign up", "action"=>"index", "authenticity_token"=>"2X5mFcwZlI6Iujx8xhrGVX+Yn9bBCnUCNzuRTKdSb1c=", "controller"=>"users"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:admin_only] rendered_or_redirected.
+Completed in 1ms (DB: 2) | 302 Found [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:41:32) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 13ms (View: 11, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#create (for 127.0.0.1 at 2009-12-09 23:42:45) [POST]
+  Parameters: {"commit"=>"Sign in", "action"=>"create", "authenticity_token"=>"2X5mFcwZlI6Iujx8xhrGVX+Yn9bBCnUCNzuRTKdSb1c=", "session"=>{"password"=>"[FILTERED]", "email"=>"dpitman@gmail.com"}, "controller"=>"clearance/sessions"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`email` = 'dpitman@gmail.com') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new (unauthorized)
+Completed in 33ms (View: 9, DB: 2) | 401 Unauthorized [http://localhost/session]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-09 23:47:23) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (3.1ms)
+Completed in 18ms (View: 11, DB: 2) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-12-09 23:47:31) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"dpitman@gmail.com"}, "commit"=>"Sign up", "action"=>"index", "authenticity_token"=>"2X5mFcwZlI6Iujx8xhrGVX+Yn9bBCnUCNzuRTKdSb1c=", "controller"=>"users"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:admin_only] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Clearance::SessionsController#new (for 127.0.0.1 at 2009-12-09 23:47:31) [GET]
+  Parameters: {"action"=>"new", "controller"=>"clearance/sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 13ms (View: 11, DB: 0) | 200 OK [http://localhost/session/new]

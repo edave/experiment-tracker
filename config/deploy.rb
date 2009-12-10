@@ -3,7 +3,7 @@ set :application, "experiment-signup"
 set :repository,  "git@github.com:edave/experiment-tracker.git"
 
 set :scm, :git
-set :scm_passphrase, "hal2001"
+set :scm_passphrase, ""
 set :user, "halab"
 ssh_options[:forward_agent] = true
 

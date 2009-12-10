@@ -1,4 +1,6 @@
 class SlotsController < ApplicationController
+  before_filter :authenticate
+
   # GET /slots
   # GET /slots.xml
   def index
@@ -41,7 +43,6 @@ class SlotsController < ApplicationController
   # POST /slots.xml
   def create
     @slot = Slot.new(params[:slot])
-    @slot.length = 75
     respond_to do |format|
       if @slot.save
         flash[:notice] = 'Slot was successfully created.'

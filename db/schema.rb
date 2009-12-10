@@ -9,12 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091209184553) do
+ActiveRecord::Schema.define(:version => 20091210035728) do
 
   create_table "experiments", :force => true do |t|
-    t.string   "name",       :limit => 256
+    t.string   "name",        :limit => 256
     t.binary   "desc"
-    t.integer  "hashed_id",                 :default => 0
+    t.integer  "hashed_id",                  :default => 0
+    t.integer  "time_length"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -23,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20091209184553) do
     t.integer  "subject_id"
     t.integer  "experiment_id"
     t.datetime "time"
-    t.integer  "length"
     t.integer  "hashed_id",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,5 +37,22 @@ ActiveRecord::Schema.define(:version => 20091209184553) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "encrypted_password", :limit => 128
+    t.string   "salt",               :limit => 128
+    t.string   "confirmation_token", :limit => 128
+    t.string   "remember_token",     :limit => 128
+    t.boolean  "email_confirmed",                   :default => false, :null => false
+    t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["admin"], :name => "index_users_on_admin"
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["id", "confirmation_token"], :name => "index_users_on_id_and_confirmation_token"
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

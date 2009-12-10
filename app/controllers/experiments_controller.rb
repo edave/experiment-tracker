@@ -1,4 +1,6 @@
 class ExperimentsController < ApplicationController
+  before_filter :authenticate
+
   # GET /experiments
   # GET /experiments.xml
   def index
