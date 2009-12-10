@@ -58,7 +58,8 @@ class SubjectsController < ApplicationController
       if @subject.valid? and !@slot.nil? and @slot.subject.nil? and @subject.save
         @slot.subject = @subject
         @slot.save
-        flash[:notice] = 'Subject was successfully created.'
+        SubjectNotifier.deliver_confirmation(@subject)
+        #flash[:notice] = 'Subject was successfully created.'
         format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id) }
         format.xml  { render :xml => @subject, :status => :created, :location => @subject }
       else

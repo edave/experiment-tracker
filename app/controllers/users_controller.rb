@@ -1,6 +1,7 @@
+require 'clearance'
+
 class UsersController < Clearance::UsersController
-  
-  before_filter :admin_only, :only => [ :index, :show]
+  before_filter :admin_only, :only => [ :index, :show]#, :create, :new, :update, :edit ]
   before_filter :get_user, :only => [ :edit, :update ]
   
   def index
@@ -27,12 +28,12 @@ class UsersController < Clearance::UsersController
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User Record was successfully updated.'
         format.html { redirect_to(edit_user_url(@user)) }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
-    end  
+    end
   end
   
   protected
@@ -44,5 +45,4 @@ class UsersController < Clearance::UsersController
       @user = current_user
     end
   end
-  
 end

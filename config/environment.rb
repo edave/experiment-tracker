@@ -28,7 +28,8 @@ Rails::Initializer.run do |config|
   :lib     => 'clearance',
   :source  => 'http://gemcutter.org',
   :version => '0.8.4'
-
+  config.gem 'hpricot', :version => '=0.6.161'
+  config.gem 'csspool', :version => '=0.2.6'
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -48,16 +49,16 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  config.action_mailer.delivery_method = :sendmail
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = {
-  #  :address  => "mail.vestaldesign.com",
-  #  :port  => 465, 
-  #  :domain  => "vestaldesign.com",
-  #  :user_name  => "dave@vestaldesign.com",
-  #  :password  => "",
-  #  :authentication  => :login
-  #    } 
+  #config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address  => "mail.hci4.me",
+    :port  => 587, 
+    :domain  => "hci4.me",
+    :user_name  => "noreply@hci4.me",
+    :password  => "5VQ891zTUI6C",
+    :authentication  => :login
+      } 
   config.action_mailer.raise_delivery_errors = true
 
 end

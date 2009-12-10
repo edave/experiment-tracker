@@ -1,5 +1,7 @@
-<h1>Confirmation</h1>
+<h1>Signup Confirmation</h1>
 <h2><%= @subject.name %>, you are confirmed for <%= @slot.human_time %></h2>
+
+<p>An email has been sent to <%= @subject.email %> with a copy of this information.</p>
 
 <h2>Time</h2>
 You are signed up for an experiment at <b><%= @slot.human_time %></b>
