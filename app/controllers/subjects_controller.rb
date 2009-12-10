@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  before_filter :authenticate, {:except => [:new, :update, :create]}
+  before_filter :authenticate, {:except => [:new, :update, :create, :confirmation]}
 
   # GET /subjects
   # GET /subjects.xml
