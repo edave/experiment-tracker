@@ -1,5 +1,5 @@
 class ExperimentsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, {:except => [:filled]}
 
   # GET /experiments
   # GET /experiments.xml
@@ -21,6 +21,10 @@ class ExperimentsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @experiment }
     end
+  end
+  
+  def filled
+    @experiment = Experiment.find_by_hashed_id(params[:id])
   end
 
   # GET /experiments/new

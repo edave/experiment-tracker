@@ -26,6 +26,11 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   # GET /subjects/new.xml
   def new
+    @experiment = Experiment.find(:first)
+    if Slot.find_by_occupied.length > 15
+      redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
+      return
+    end
     @subject = Subject.new
     @slots = Slot.find(:all, :conditions => {:subject_id => nil})
     @slot_id = params[:slot_id]
@@ -50,6 +55,11 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.xml
   def create
+     @experiment = Experiment.find(:first)
+    if Slot.find_by_occupied.length > 15
+      redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
+      return
+    end
     @subject = Subject.new(params[:subject])
     @slots = Slot.find(:all, :conditions => {:subject_id => nil})
     @slot_id = params[:slot_id]
