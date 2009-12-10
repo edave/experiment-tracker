@@ -4,8 +4,8 @@ class SlotsController < ApplicationController
   # GET /slots
   # GET /slots.xml
   def index
-    @slots = Slot.all
-
+    @slots = Slot.find(:all, :order => "time")
+    @filled_slots = Slot.find_by_occupied.length
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @slots }

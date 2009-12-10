@@ -1,7 +1,7 @@
 require 'clearance'
 
 class UsersController < Clearance::UsersController
-  before_filter :admin_only, :only => [ :index, :show]#, :create, :new, :update, :edit ]
+  before_filter :admin_only, :only => [ :index, :show, :create, :new, :update, :edit ]
   before_filter :get_user, :only => [ :edit, :update ]
   
   def index
