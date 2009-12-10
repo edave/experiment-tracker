@@ -17,7 +17,8 @@
 	Select a time (the experiment will run approximately 1hr 15min)<br />
 	
 	<% for slot in @slots %>
-	<input type="radio" name="slot_id" value="<%= slot.hashed_id%>" <% if params[:slot_id].to_i == slot.hashed_id %>checked<%end%> ><%= slot.human_time %><br />
+	<input class="slot" type="radio" name="slot_id" id="slot-<%= slot.hashed_id %>" value="<%= slot.hashed_id%>" <% if params[:slot_id].to_i == slot.hashed_id %>checked<%end%> >
+		<label for="slot-<%= slot.hashed_id %>" ><%= slot.human_time %></label><br />
 	<% end %>
 	
   <p>

@@ -7,4 +7,3 @@ require 'lib/hashed_id'
 
 require 'lib/custom_validations'
 
-require 'googlecalendar'

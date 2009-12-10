@@ -1,3 +1,7 @@
 a:hover {
 color:#222;
 }
+
+input.slot{
+	margin-top: 10px;
+}
