@@ -6,6 +6,7 @@ class Slot < ActiveRecord::Base
   
   named_scope :find_by_day, lambda { |d| { :conditions  => { :time  => d.beginning_of_day..d.end_of_day }, :order=>"time" } }
   named_scope :find_by_occupied, { :conditions  => ["subject_id is not NULL"] }
+  named_scope :find_by_experiment, lambda { |e| { :conditions => {:experiment_id => e}}}
   
   def human_time
     return "---" if time.nil? 

@@ -42,7 +42,7 @@ class SlotsController < ApplicationController
   def edit
     
     @slot = Slot.find_by_hashed_id(params[:id])
-    page_title(["Edit Slot", slot.human_time])
+    page_title(["Edit Slot", @slot.human_time])
     
   end
 

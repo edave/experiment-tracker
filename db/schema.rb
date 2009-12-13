@@ -9,15 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091210035728) do
+ActiveRecord::Schema.define(:version => 20091213223916) do
 
   create_table "experiments", :force => true do |t|
-    t.string   "name",        :limit => 256
+    t.string   "name",                :limit => 256
     t.binary   "desc"
-    t.integer  "hashed_id",                  :default => 0
+    t.integer  "hashed_id",                          :default => 0
     t.integer  "time_length"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",                            :default => 0
+    t.integer  "slot_close_time",                    :default => 0
+    t.integer  "visible_days_before",                :default => 0
   end
 
   create_table "slots", :force => true do |t|

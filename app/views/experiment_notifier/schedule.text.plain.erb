@@ -1,0 +1,5 @@
+<%= @slots.length %> experiments scheduled for <% @schedule_date %>:
+
+<% for slot in @slots %>
+<%= slot.human_time %>: <%= slot.subject.name %>
+<% end %>

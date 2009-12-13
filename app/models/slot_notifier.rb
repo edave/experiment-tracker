@@ -6,7 +6,6 @@ class SlotNotifier < ActionMailer::Base
     css 'default'
     @subject    += ' Reminder'
   end
-
  
   protected
     def setup_email(slot)

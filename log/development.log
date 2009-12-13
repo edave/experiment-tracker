@@ -8065,3 +8065,848 @@ Rendering slots/index
   [4;36;1mSubject Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
   [4;35;1mSubject Load (0.2ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
 Completed in 66ms (View: 43, DB: 6) | 200 OK [http://localhost/slots]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSlot Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (71.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` [0m
+  [4;35;1mExperiment Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSlot Load (0.0ms)[0m   [0;1mMysql::Error: Unknown column 'slots.experiment' in 'where clause': SELECT * FROM `slots` WHERE (`slots`.`experiment` = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`experiment_id` = 1) [0m
+  [4;35;1mSlot Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE ((`slots`.`experiment_id` = 1) AND (subject_id is not NULL)) [0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` WHERE ((subject_id is not NULL) AND (`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59')) ORDER BY time[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-13 18:02:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Completed in 651ms (View: 614, DB: 7) | 200 OK [http://localhost/slots]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-13 18:02:12) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;35;1mUser Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` ORDER BY time[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;35;1mSlot Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.7ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Completed in 75ms (View: 44, DB: 9) | 200 OK [http://localhost/slots]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#edit (for 127.0.0.1 at 2009-12-13 18:02:16) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1471152679", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+
+NameError (undefined local variable or method `slot' for #<SlotsController:0x23472e8>):
+  app/controllers/slots_controller.rb:45:in `edit'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (39.9ms)
+Rendered rescues/_request_and_response (1.9ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#edit (for 127.0.0.1 at 2009-12-13 18:02:36) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1471152679", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.3ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/edit
+Completed in 40ms (View: 16, DB: 5) | 200 OK [http://localhost/slots/1471152679/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#update (for 127.0.0.1 at 2009-12-13 18:02:43) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "authenticity_token"=>"OxDGrFVTVdPUtKMY5slGznaf0sm/x3pKy9+yw7a0CLc=", "id"=>"1471152679", "controller"=>"slots", "slot"=>{"time"=>"December 14, 2009 2:19 PM"}}
+  [4;36;1mUser Columns (3.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSlot Update (0.3ms)[0m   [0mUPDATE `slots` SET `time` = '2009-12-14 19:19:00', `updated_at` = '2009-12-13 23:02:43' WHERE `id` = 7[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/slots/1471152679
+Completed in 32ms (DB: 8) | 302 Found [http://localhost/slots/1471152679]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#show (for 127.0.0.1 at 2009-12-13 18:02:43) [GET]
+  Parameters: {"action"=>"show", "id"=>"1471152679", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.3ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/show
+  [4;35;1mSubject Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Completed in 44ms (View: 17, DB: 6) | 200 OK [http://localhost/slots/1471152679]
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE ((subject_id is not NULL) AND (`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59')) ORDER BY time[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (82.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;35;1mSlot Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#edit (for 127.0.0.1 at 2009-12-13 18:03:56) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1471152679", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.3ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/edit
+Completed in 98ms (View: 10, DB: 5) | 200 OK [http://localhost/slots/1471152679/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#update (for 127.0.0.1 at 2009-12-13 18:04:01) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "authenticity_token"=>"OxDGrFVTVdPUtKMY5slGznaf0sm/x3pKy9+yw7a0CLc=", "id"=>"1471152679", "controller"=>"slots", "slot"=>{"time"=>"December 15, 2009 2:19 PM"}}
+  [4;35;1mUser Columns (4.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSlot Update (0.3ms)[0m   [0;1mUPDATE `slots` SET `time` = '2009-12-15 19:19:00', `updated_at` = '2009-12-13 23:04:01' WHERE `id` = 7[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/slots/1471152679
+Completed in 32ms (DB: 8) | 302 Found [http://localhost/slots/1471152679]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#show (for 127.0.0.1 at 2009-12-13 18:04:01) [GET]
+  Parameters: {"action"=>"show", "id"=>"1471152679", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.5ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/show
+  [4;36;1mSubject Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (1.9ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Completed in 46ms (View: 13, DB: 9) | 200 OK [http://localhost/slots/1471152679]
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mSlot Load (0.3ms)[0m   [0mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#edit (for 127.0.0.1 at 2009-12-13 18:04:06) [GET]
+  Parameters: {"action"=>"edit", "id"=>"1471152679", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/edit
+Completed in 34ms (View: 10, DB: 4) | 200 OK [http://localhost/slots/1471152679/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#update (for 127.0.0.1 at 2009-12-13 18:04:10) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "authenticity_token"=>"OxDGrFVTVdPUtKMY5slGznaf0sm/x3pKy9+yw7a0CLc=", "id"=>"1471152679", "controller"=>"slots", "slot"=>{"time"=>"December 14, 2009 2:19 PM"}}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.3ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSlot Update (0.3ms)[0m   [0mUPDATE `slots` SET `time` = '2009-12-14 19:19:00', `updated_at` = '2009-12-13 23:04:10' WHERE `id` = 7[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/slots/1471152679
+Completed in 104ms (DB: 6) | 302 Found [http://localhost/slots/1471152679]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#show (for 127.0.0.1 at 2009-12-13 18:04:10) [GET]
+  Parameters: {"action"=>"show", "id"=>"1471152679", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/show
+  [4;35;1mSubject Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.4ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Completed in 38ms (View: 12, DB: 6) | 200 OK [http://localhost/slots/1471152679]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-13 18:04:14) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` ORDER BY time[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;35;1mSlot Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Completed in 63ms (View: 39, DB: 6) | 200 OK [http://localhost/slots]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#edit (for 127.0.0.1 at 2009-12-13 18:04:16) [GET]
+  Parameters: {"action"=>"edit", "id"=>"823731425", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '823731425') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/edit
+Completed in 34ms (View: 10, DB: 5) | 200 OK [http://localhost/slots/823731425/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-13 18:04:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Completed in 67ms (View: 40, DB: 6) | 200 OK [http://localhost/slots]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#edit (for 127.0.0.1 at 2009-12-13 18:04:25) [GET]
+  Parameters: {"action"=>"edit", "id"=>"323710627", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '323710627') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/edit
+Completed in 35ms (View: 11, DB: 4) | 200 OK [http://localhost/slots/323710627/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#update (for 127.0.0.1 at 2009-12-13 18:04:30) [PUT]
+  Parameters: {"commit"=>"Update", "action"=>"update", "_method"=>"put", "authenticity_token"=>"OxDGrFVTVdPUtKMY5slGznaf0sm/x3pKy9+yw7a0CLc=", "id"=>"323710627", "controller"=>"slots", "slot"=>{"time"=>"December 14, 2009 7:50 PM"}}
+  [4;35;1mUser Columns (4.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (1.0ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '323710627') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSlot Update (0.2ms)[0m   [0;1mUPDATE `slots` SET `time` = '2009-12-15 00:50:00', `updated_at` = '2009-12-13 23:04:30' WHERE `id` = 3[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/slots/323710627
+Completed in 32ms (DB: 8) | 302 Found [http://localhost/slots/323710627]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#show (for 127.0.0.1 at 2009-12-13 18:04:30) [GET]
+  Parameters: {"action"=>"show", "id"=>"323710627", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '323710627') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering slots/show
+Completed in 34ms (View: 9, DB: 4) | 200 OK [http://localhost/slots/323710627]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (69.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+Migrating to CreateSlots (20091209182458)
+Migrating to CreateExperiments (20091209184553)
+Migrating to ClearanceCreateUsers (20091210035728)
+Migrating to ExperimentOwner (20091213223916)
+  [4;36;1mSQL (263.2ms)[0m   [0;1mALTER TABLE `experiments` ADD `user_id` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (170.4ms)[0m   [0mALTER TABLE `experiments` ADD `slot_close_time` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (175.5ms)[0m   [0;1mALTER TABLE `experiments` ADD `visible_days_before` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091213223916')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `experiments`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `experiments`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (2.7ms)[0m   [0mdescribe `slots`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW KEYS FROM `slots`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mdescribe `subjects`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `subjects`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` [0m
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mExperiment Update (0.4ms)[0m   [0mUPDATE `experiments` SET `user_id` = 5, `updated_at` = '2009-12-13 23:09:35' WHERE `id` = 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`id` = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;35;1mSlot Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to dpitman@mit.edu
+
+Date: Sun, 13 Dec 2009 18:11:49 -0500
+From: noreply@halab-experiments.mit.edu
+To: dpitman@mit.edu
+Subject: HALab Study ::  Schedule for 14/14
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b2574b5773c1_443b1ab801f
+
+
+--mimepart_4b2574b5773c1_443b1ab801f
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+1 experiments scheduled for :
+
+
+Dec 14 (Mon) @ 02:19 PM: Dave
+
+
+--mimepart_4b2574b5773c1_443b1ab801f
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>1 experiments scheduled for </h2>
+
+
+<b>Dec 14 (Mon) @ 02:19 PM:</b> Dave
+
+</div>
+</body></html>=
+
+--mimepart_4b2574b5773c1_443b1ab801f--
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSlot Load (0.5ms)[0m   [0;1mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;35;1mSlot Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.4ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to dpitman@mit.edu
+
+Date: Sun, 13 Dec 2009 18:12:18 -0500
+From: noreply@halab-experiments.mit.edu
+To: dpitman@mit.edu
+Subject: HALab Study ::  Schedule for 14/14
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b2574d29ecfd_443e1ab8016b
+
+
+--mimepart_4b2574d29ecfd_443e1ab8016b
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+1 experiments scheduled for :
+
+
+Dec 14 (Mon) @ 02:19 PM: Dave
+
+
+--mimepart_4b2574d29ecfd_443e1ab8016b
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>1 experiments scheduled for </h2>
+
+
+<b>Dec 14 (Mon) @ 02:19 PM:</b> Dave
+
+</div>
+</body></html>=
+
+--mimepart_4b2574d29ecfd_443e1ab8016b--
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mExperiment Load (0.6ms)[0m   [0mSELECT * FROM `experiments` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mExperiment Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;36;1mSlot Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to dpitman@mit.edu
+
+Date: Sun, 13 Dec 2009 18:15:24 -0500
+From: noreply@halab-experiments.mit.edu
+To: dpitman@mit.edu
+Subject: HALab Study ::  Schedule for 12/14
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b25758cf0e3a_444b1ab80122
+
+
+--mimepart_4b25758cf0e3a_444b1ab80122
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+1 experiments scheduled for :
+
+
+Dec 14 (Mon) @ 02:19 PM: Dave
+
+
+--mimepart_4b25758cf0e3a_444b1ab80122
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>1 experiments scheduled for </h2>
+
+
+<b>Dec 14 (Mon) @ 02:19 PM:</b> Dave
+
+</div>
+</body></html>=
+
+--mimepart_4b25758cf0e3a_444b1ab80122--
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSlot Load (0.5ms)[0m   [0;1mSELECT * FROM `slots` WHERE ((subject_id is not NULL) AND (`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59')) ORDER BY time[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSlot Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSubject Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;35;1mExperiment Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to edave@mit.edu
+Sent mail to dpitman@mit.edu
+
+Date: Sun, 13 Dec 2009 18:18:57 -0500
+From: noreply@halab-experiments.mit.edu
+To: edave@mit.edu
+Subject: HALab Study ::  Reminder
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b25766220fe8_445110c2ece157
+
+
+--mimepart_4b25766220fe8_445110c2ece157
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+Hello Dave
+
+This is a reminder that you are signed up for an experiment with HALab to=
+morrow.
+
+Time: Dec 14 (Mon) @ 02:19 PM
+
+Experiment Contact:
+Please contact David Pitman at dpitman@mit.edu or 617-901-8772 if you hav=
+e any questions.
+
+Location
+Meet the experiment contact in the entrance of Building 41 - http://where=
+is.mit.edu/?selection=3D41&zoom=3D16
+
+--mimepart_4b25766220fe8_445110c2ece157
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>Hello Dave</h2>
+
+This is a reminder that you are signed up for an experiment with HALab to=
+morrow.
+
+<h2>Time: Dec 14 (Mon) @ 02:19 PM</h2>
+
+<p>The experiment will last approximately 1hr 15min and you will be compe=
+nsated $15 for your participation.</p>
+
+<h2>Location: <a href=3D"http://whereis.mit.edu/?selection=3D41&zoom=3D16=
+">Building 41</a></h2>
+<p>Meet in the entrance of <a href=3D"http://whereis.mit.edu/?selection=3D=
+41&zoom=3D16">Building 41</a></p>
+
+<b>Experiment Contact</b>
+<p>Please contact David Pitman at <a href=3D"mailto:dpitman@mit.edu">dpit=
+man@mit.edu</a> or 617-901-8772 if you have any questions.</p>
+
+
+
+</div>
+</body></html>=
+
+--mimepart_4b25766220fe8_445110c2ece157--
+
+Date: Sun, 13 Dec 2009 18:18:57 -0500
+From: noreply@halab-experiments.mit.edu
+To: dpitman@mit.edu
+Subject: HALab Study ::  Schedule for 12/14
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b257662219bc_44511ab802df
+
+
+--mimepart_4b257662219bc_44511ab802df
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+1 experiments scheduled for :
+
+
+Dec 14 (Mon) @ 02:19 PM: Dave
+
+
+--mimepart_4b257662219bc_44511ab802df
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>1 experiments scheduled for </h2>
+
+
+<b>Dec 14 (Mon) @ 02:19 PM:</b> Dave
+
+</div>
+</body></html>=
+
+--mimepart_4b257662219bc_44511ab802df--
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;35;1mSlot Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to dpitman@mit.edu
+
+Date: Sun, 13 Dec 2009 18:19:53 -0500
+From: noreply@halab-experiments.mit.edu
+To: dpitman@mit.edu
+Subject: HALab Study ::  Schedule for 12/14
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b2576994f2b8_445b1ab801ba
+
+
+--mimepart_4b2576994f2b8_445b1ab801ba
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+1 experiments scheduled for :
+
+
+Dec 14 (Mon) @ 02:19 PM: Dave
+
+
+--mimepart_4b2576994f2b8_445b1ab801ba
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>1 experiments scheduled for </h2>
+
+
+<b>Dec 14 (Mon) @ 02:19 PM:</b> Dave
+
+</div>
+</body></html>=
+
+--mimepart_4b2576994f2b8_445b1ab801ba--
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` [0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;35;1mSlot Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.4ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to dpitman@mit.edu
+
+Date: Sun, 13 Dec 2009 18:20:10 -0500
+From: noreply@halab-experiments.mit.edu
+To: dpitman@mit.edu
+Subject: HALab Study ::  Schedule for 12/14
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b2576aa80235_445e1ab80146
+
+
+--mimepart_4b2576aa80235_445e1ab80146
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+1 experiments scheduled for :
+
+
+Dec 14 (Mon) @ 02:19 PM: Dave
+
+
+--mimepart_4b2576aa80235_445e1ab80146
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>1 experiments scheduled for </h2>
+
+
+<b>Dec 14 (Mon) @ 02:19 PM:</b> Dave
+
+</div>
+</body></html>=
+
+--mimepart_4b2576aa80235_445e1ab80146--
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` [0m
+  [4;35;1mSlot Load (0.3ms)[0m   [0mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 5) [0m
+  [4;35;1mSlot Load (0.3ms)[0m   [0mSELECT * FROM `slots` WHERE (((`slots`.`time` BETWEEN '2009-12-14 00:00:00' AND '2009-12-14 23:59:59') AND (subject_id is not NULL)) AND (`slots`.`experiment_id` = 1)) ORDER BY time[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to dpitman@mit.edu
+
+Date: Sun, 13 Dec 2009 18:20:10 -0500
+From: noreply@halab-experiments.mit.edu
+To: dpitman@mit.edu
+Subject: HALab Study ::  Schedule for 12/14
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b2576aae8737_445e11dcd0036b
+
+
+--mimepart_4b2576aae8737_445e11dcd0036b
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+1 experiments scheduled for :
+
+
+Dec 14 (Mon) @ 02:19 PM: Dave
+
+
+--mimepart_4b2576aae8737_445e11dcd0036b
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>1 experiments scheduled for </h2>
+
+
+<b>Dec 14 (Mon) @ 02:19 PM:</b> Dave
+
+</div>
+</body></html>=
+
+--mimepart_4b2576aae8737_445e11dcd0036b--
