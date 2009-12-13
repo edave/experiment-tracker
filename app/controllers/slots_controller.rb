@@ -4,6 +4,7 @@ class SlotsController < ApplicationController
   # GET /slots
   # GET /slots.xml
   def index
+    page_title("Time Slots")
     @slots = Slot.find(:all, :order => "time")
     @filled_slots = Slot.find_by_occupied.length
     respond_to do |format|
@@ -15,8 +16,10 @@ class SlotsController < ApplicationController
   # GET /slots/1
   # GET /slots/1.xml
   def show
+    
     @slot = Slot.find_by_hashed_id(params[:id])
-
+    page_title(["Slot", @slot.human_time])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @slot }
@@ -26,6 +29,7 @@ class SlotsController < ApplicationController
   # GET /slots/new
   # GET /slots/new.xml
   def new
+    page_title("New Time Slot")
     @slot = Slot.new
 
     respond_to do |format|
@@ -36,7 +40,10 @@ class SlotsController < ApplicationController
 
   # GET /slots/1/edit
   def edit
+    
     @slot = Slot.find_by_hashed_id(params[:id])
+    page_title(["Edit Slot", slot.human_time])
+    
   end
 
   # POST /slots
@@ -76,7 +83,7 @@ class SlotsController < ApplicationController
   # DELETE /slots/1.xml
   def destroy
     @slot = Slot.find_by_hashed_id(params[:id])
-    @slot.destroy
+    #@slot.destroy
 
     respond_to do |format|
       format.html { redirect_to(slots_url) }

@@ -1,3 +1,6 @@
+<h2><%= @subject.name %></h2>
+<a href="mailto:<%= @subject.email %>" ><%= @subject.email %></a><br />
 
+<a href="callto:+1<%= @subject.phone_number %>"><%= number_to_phone(@subject.phone_number) %></a>
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>

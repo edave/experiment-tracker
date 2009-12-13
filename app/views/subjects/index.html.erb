@@ -6,6 +6,7 @@
 
 <% @subjects.each do |subject| %>
   <tr>
+  	<td><%= subject.name %></td>
     <td><%= link_to 'Show', subject %></td>
     <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
     <td><%= link_to 'Destroy', subject, :confirm => 'Are you sure?', :method => :delete %></td>

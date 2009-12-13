@@ -21,5 +21,19 @@ class ApplicationController < ActionController::Base
   def admin_only
     deny_access("Please Login as an administrator to Access that Feature.") unless signed_in_as_admin?
   end
+  
+  def controller_page_title(value)
+    @my_page_title = [value]
+  end
+  
+  def page_title(value)
+    @my_page_title ||= []
+    if value.kind_of? String
+      @my_page_title << value
+    elsif value.kind_of? Array
+      @my_page_title += value
+    end
+  end
+ 
 
 end

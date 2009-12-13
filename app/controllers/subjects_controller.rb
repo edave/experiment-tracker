@@ -5,7 +5,8 @@ class SubjectsController < ApplicationController
   # GET /subjects.xml
   def index
     @subjects = Subject.all
-
+    page_title("Subjects")
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @subjects }
@@ -16,7 +17,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.xml
   def show
     @subject = Subject.find_by_hashed_id(params[:id])
-
+    page_title(["Subject", @subject.name])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @subject }
@@ -27,6 +28,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new.xml
   def new
     @experiment = Experiment.find(:first)
+    page_title([@experiment.name, "Sign up"])
     if Slot.find_by_occupied.length > 15
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
@@ -43,12 +45,15 @@ class SubjectsController < ApplicationController
   # GET /subjects/1/edit
   def edit
     @subject = Subject.find_by_hashed_id(params[:id])
+    page_title(["Edit Subject", @subject.name])
   end
   
   def confirmation
      @subject = Subject.find_by_hashed_id(params[:id])
      unless @subject.nil?
       @slot = @subject.slot
+      @experiment = @slot.experiment
+      page_title([@experiment.name, "Confirmation"])
      end
   end
 
@@ -119,7 +124,7 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1.xml
   def destroy
     @subject = Subject.find_by_hashed_id(params[:id])
-    @subject.destroy
+    #@subject.destroy
 
     respond_to do |format|
       format.html { redirect_to(subjects_url) }

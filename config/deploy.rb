@@ -26,16 +26,18 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
 
  namespace :deploy do
   task :start, :roles => :app do
-    run "#{sudo} /etc/init.d/nginx start" #"touch #{current_release}/tmp/restart.txt"
+    #run "#{sudo} /etc/init.d/nginx start" 
+    run "touch #{current_release}/tmp/restart.txt"
   end
 
   task :stop, :roles => :app do
-    run "#{sudo} /etc/init.d/nginx stop"
+    #run "#{sudo} /etc/init.d/nginx stop"
   end
 
   desc "Restart Application"
   task :restart, :roles => :app do
-    run "#{sudo} /etc/init.d/nginx restart" #run "touch #{current_release}/tmp/restart.txt"
+    run "#{sudo} /etc/init.d/nginx restart" 
+    run "touch #{current_release}/tmp/restart.txt"
   end
 
  end

@@ -1,0 +1,13 @@
+body{
+	background-color:#fff;
+	padding-bottom:0;
+}
+html* #header #tabs{
+	margin-top:18px;
+}
+
+
+#footer{
+	padding-top:6px;
+	padding-bottom:10px;
+}
