@@ -4,7 +4,7 @@ class Slot < ActiveRecord::Base
   belongs_to :experiment
   belongs_to :subject
   
-  named_scope :find_by_day, lambda { |d| { :conditions  => { :time  => d.beginning_of_day..d.end_of_day }, :order=>"time" } }
+  named_scope :find_by_day, lambda { |d| {:conditions  => { :time  => d.beginning_of_day_in_zone..(d+1.day).beginning_of_day_in_zone }, :order=>"time" } }
   named_scope :find_by_occupied, { :conditions  => ["subject_id is not NULL"] }
   named_scope :find_by_experiment, lambda { |e| { :conditions => {:experiment_id => e}}}
   
