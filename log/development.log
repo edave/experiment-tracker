@@ -233,3 +233,471 @@ man@mit.edu</a> or 617-901-8772 if you have any questions.</p>
 
 --mimepart_4b265ca7da8a5_e00128cbce7fb--
 Mon Dec 14 10:41:30 -0500 2009 :: Special Participant notifier task finished: 3 notified
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (50.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+Migrating to CreateSlots (20091209182458)
+Migrating to CreateExperiments (20091209184553)
+Migrating to ClearanceCreateUsers (20091210035728)
+Migrating to ExperimentOwner (20091213223916)
+Migrating to SlotCancelled (20091215004211)
+  [4;36;1mSQL (118.2ms)[0m   [0;1mALTER TABLE `slots` ADD `cancelled` tinyint(1) DEFAULT 0[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091215004211')[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `experiments`[0m
+  [4;35;1mSQL (275.6ms)[0m   [0mSHOW KEYS FROM `experiments`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mdescribe `slots`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW KEYS FROM `slots`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mdescribe `subjects`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW KEYS FROM `subjects`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#new (for 127.0.0.1 at 2009-12-14 19:52:17) [GET]
+  Parameters: {"action"=>"new", "controller"=>"subjects"}
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` LIMIT 1[0m
+  [4;35;1mExperiment Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mSlot Load (0.3ms)[0m   [0;1mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+  [4;35;1mSubject Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSlot Load (0.3ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`subject_id` IS NULL) [0m
+Rendering template within layouts/application
+Rendering subjects/new
+  [4;35;1mSlot Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+Completed in 520ms (View: 407, DB: 8) | 200 OK [http://localhost/subjects/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:52:23) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;35;1mSubject Load (0.2ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 24) [0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 23) [0m
+Completed in 71ms (View: 47, DB: 6) | 200 OK [http://localhost/slots]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:52:56) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` ORDER BY time[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;35;1mSlot Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.2ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 24) [0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 23) [0m
+Completed in 88ms (View: 65, DB: 6) | 200 OK [http://localhost/slots]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#1471152679 (for 127.0.0.1 at 2009-12-14 19:53:00) [POST]
+  Parameters: {"action"=>"1471152679", "_method"=>"cancel", "authenticity_token"=>"Illrjv5X5so+Pn5FRgjifzj1F8G0ariok2UCr/nPvTY=", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+
+ActionController::UnknownAction (No action responded to 1471152679. Actions: admin_only, cancel, controller_page_title, create, destroy, edit, index, new, page_title, show, signed_in_as_admin?, update, and users_only):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:53:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (51.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 24) [0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 23) [0m
+Completed in 129ms (View: 51, DB: 58) | 200 OK [http://localhost/slots]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:54:33) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` ORDER BY time[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;35;1mSlot Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+
+ActionView::TemplateError (undefined method `cancel_slot_path' for #<ActionView::Base:0x244ec40>) on line #19 of app/views/slots/index.html.erb:
+16:     <td><%= link_to 'Show', slot %></td>
+17:     <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
+18:     <td><%= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete %></td>
+19:   	<td><%= link_to 'Cancel', cancel_slot_path(slot)  %></td>
+20:   
+21:   </tr>
+22: <% end %>
+
+    app/views/slots/index.html.erb:19
+    app/views/slots/index.html.erb:7:in `each'
+    app/views/slots/index.html.erb:7
+    app/controllers/slots_controller.rb:10:in `index'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (118.3ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:54:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+
+ActionView::TemplateError (undefined method `cancel_slot_path' for #<ActionView::Base:0x2591350>) on line #19 of app/views/slots/index.html.erb:
+16:     <td><%= link_to 'Show', slot %></td>
+17:     <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
+18:     <td><%= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete %></td>
+19:   	<td><%= link_to 'Cancel', cancel_slot_path(slot)  %></td>
+20:   
+21:   </tr>
+22: <% end %>
+
+    app/views/slots/index.html.erb:19
+    app/views/slots/index.html.erb:7:in `each'
+    app/views/slots/index.html.erb:7
+    app/controllers/slots_controller.rb:10:in `index'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (45.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:55:20) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 24) [0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 23) [0m
+Completed in 230ms (View: 194, DB: 7) | 200 OK [http://localhost/slots]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#cancel (for 127.0.0.1 at 2009-12-14 19:55:28) [GET]
+  Parameters: {"action"=>"cancel", "id"=>"1471152679", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.3ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+
+ArgumentError (wrong number of arguments (2 for 1)):
+  app/controllers/slots_controller.rb:43:in `page_title'
+  app/controllers/slots_controller.rb:43:in `cancel'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (35.7ms)
+Rendered rescues/_request_and_response (1.9ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#cancel (for 127.0.0.1 at 2009-12-14 19:55:51) [GET]
+  Parameters: {"action"=>"cancel", "id"=>"1471152679", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSlot Update (0.2ms)[0m   [0;1mUPDATE `slots` SET `cancelled` = 1, `updated_at` = '2009-12-15 00:55:51' WHERE `id` = 7[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+
+NameError (undefined local variable or method `slot' for #<SlotsController:0x22b6978>):
+  app/controllers/slots_controller.rb:48:in `cancel'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (102.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#cancel (for 127.0.0.1 at 2009-12-14 19:56:03) [GET]
+  Parameters: {"action"=>"cancel", "id"=>"1471152679", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSubject Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.5ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+
+ActionView::MissingTemplate (Missing template slot_notifier/cancelled.erb in view path app/views:/Library/Ruby/Gems/1.8/gems/clearance-0.8.4/app/views):
+  app/controllers/slots_controller.rb:48:in `cancel'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#cancel (for 127.0.0.1 at 2009-12-14 19:56:40) [GET]
+  Parameters: {"action"=>"cancel", "id"=>"1471152679", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSubject Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.2ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+
+ActionView::MissingTemplate (Missing template slot_notifier/cancelled.erb in view path app/views:/Library/Ruby/Gems/1.8/gems/clearance-0.8.4/app/views):
+  app/controllers/slots_controller.rb:48:in `cancel'
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#cancel (for 127.0.0.1 at 2009-12-14 19:57:09) [GET]
+  Parameters: {"action"=>"cancel", "id"=>"1471152679", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`hashed_id` = '1471152679') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSubject Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.2ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+Sent mail to edave@mit.edu
+
+Date: Mon, 14 Dec 2009 19:57:09 -0500
+From: noreply@halab-experiments.mit.edu
+To: edave@mit.edu
+Subject: HALab Study :: Experiment Cancelled
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4b26dee5aaf5c_115a11b59da131
+
+
+--mimepart_4b26dee5aaf5c_115a11b59da131
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+We're sorry, we had to cancel your experiment.
+
+Repairs to the helicopter have taken longer than anticipated and we are c=
+ancelling experiments this week.
+
+If you are still interested in participating, please email David Pitman a=
+t dpitman@mit.edu to be notified when we will run our next round of exper=
+iments (likely over IAP).
+
+Thanks for your understanding!
+
+--mimepart_4b26dee5aaf5c_115a11b59da131
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<html lang=3D"en">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+<title>Experiment confirmation</title>
+<link href=3D"halab-experiments.mit.edu/default.css" rel=3D"stylesheet" /=
+>
+<style type=3D"text/css"><!--  --></style>
+</head>
+<body>
+<div id=3D"header">
+   <img class=3D"logo" src=3D"http://halab-experiments.mit.edu/images/log=
+o.gif" border=3D"0" alt=3D"" />
+</div><br style=3D"clear:both" />
+<div id=3D"page">
+    <h2>We're sorry, we had to cancel your experiment.</h2>
+
+<p>Repairs to the helicopter have taken longer than anticipated and we ar=
+e cancelling experiments this week.</p>
+
+<p>If you are still interested in participating, please email David Pitma=
+n at dpitman@mit.edu to be notified when we will run our next round of ex=
+periments (likely over IAP).</p>
+
+<p>Thanks for your understanding!</p>
+</div>
+</body></html>=
+
+--mimepart_4b26dee5aaf5c_115a11b59da131--
+Rendering template within layouts/application
+Rendering slots/cancel
+Completed in 3595ms (View: 11, DB: 6) | 200 OK [http://localhost/slots/1471152679/cancel]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:57:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 24) [0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 23) [0m
+Completed in 89ms (View: 65, DB: 6) | 200 OK [http://localhost/slots]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:57:51) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` ORDER BY time[0m
+  [4;36;1mSlot Load (0.2ms)[0m   [0;1mSELECT * FROM `slots` WHERE (subject_id is not NULL) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;35;1mSlot Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSubject Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSubject Load (0.2ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;36;1mSubject Load (0.4ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 24) [0m
+  [4;35;1mSubject Load (0.3ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 23) [0m
+Completed in 88ms (View: 64, DB: 7) | 200 OK [http://localhost/slots]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:59:13) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (29.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.0ms)[0m   [0mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0)' at line 1: SELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled is 0) [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0)' at line 1: SELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled is 0) ):
+  app/controllers/slots_controller.rb:9:in `index'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (43.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:59:29) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.0ms)[0m   [0mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '== 0)' at line 1: SELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled == 0) [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '== 0)' at line 1: SELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled == 0) ):
+  app/controllers/slots_controller.rb:9:in `index'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (44.6ms)
+Rendered rescues/_request_and_response (72.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 19:59:49) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.0ms)[0m   [0mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0)' at line 1: SELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled is 0) [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0)' at line 1: SELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled is 0) ):
+  app/controllers/slots_controller.rb:9:in `index'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (43.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2009-12-14 20:00:57) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`remember_token` = 'a1d5b4476d12710bd247dc39374ce1816f32b5b4') LIMIT 1[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` ORDER BY time[0m
+  [4;35;1mSlot Load (0.4ms)[0m   [0mSELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled = 0) [0m
+Rendering template within layouts/application
+Rendering slots/index
+  [4;36;1mSlot Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSubject Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSubject Load (0.2ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 22) [0m
+  [4;35;1mSubject Load (0.4ms)[0m   [0mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 24) [0m
+  [4;36;1mSubject Load (0.3ms)[0m   [0;1mSELECT * FROM `subjects` WHERE (`subjects`.`id` = 23) [0m
+Completed in 93ms (View: 63, DB: 9) | 200 OK [http://localhost/slots]

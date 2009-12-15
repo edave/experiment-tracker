@@ -38,6 +38,20 @@ class SlotsController < ApplicationController
     end
   end
 
+  def cancel
+    @slot = Slot.find_by_hashed_id(params[:id])
+    page_title(["Slot Cancelled", @slot.human_time])
+    
+    @slot.cancelled = true
+    @slot.save!
+    
+    SlotNotifier.deliver_cancelled(@slot)
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @slot }
+    end
+  end
+
   # GET /slots/1/edit
   def edit
     

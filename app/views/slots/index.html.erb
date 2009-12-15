@@ -6,7 +6,7 @@
 
 <% @slots.each do |slot| %>
   <tr>
-  	<td><%= slot.human_time %></td>
+  	<td><% if slot.cancelled %><s><%= slot.human_time %></s><% else %><%= slot.human_time %><%end%></td>
 	<td><% unless slot.subject.nil? %>
 		<%= slot.subject.name %>
 		<% else %>
@@ -16,6 +16,8 @@
     <td><%= link_to 'Show', slot %></td>
     <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
     <td><%= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete %></td>
+  	<td><%= link_to 'Cancel', slot, :confirm => 'Are you sure?', :method => :cancel %></td>
+  
   </tr>
 <% end %>
 </table>

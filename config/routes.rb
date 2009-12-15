@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :subjects
 
-  map.resources :slots
+  map.resources :slots, :member => {:cancel => :get}
 
   map.resources :experiments
   

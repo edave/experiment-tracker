@@ -4,7 +4,15 @@ class SlotNotifier < ActionMailer::Base
     setup_email(slot)
     layout 'default'
     css 'default'
-    @subject    += ' Reminder'
+    @subject    += 'Reminder'
+  end
+  
+  def cancelled(slot)
+    setup_email(slot)
+    layout 'default'
+    css 'default'
+    
+    @subject    += 'Experiment Cancelled'
   end
  
   protected

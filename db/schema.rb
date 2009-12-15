@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091213223916) do
+ActiveRecord::Schema.define(:version => 20091215004211) do
 
   create_table "experiments", :force => true do |t|
     t.string   "name",                :limit => 256
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20091213223916) do
     t.integer  "hashed_id",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "cancelled",     :default => false
   end
 
   create_table "subjects", :force => true do |t|
