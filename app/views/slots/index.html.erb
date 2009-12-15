@@ -16,7 +16,7 @@
     <td><%= link_to 'Show', slot %></td>
     <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
     <td><%= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete %></td>
-  	<td><%= link_to 'Cancel', slot, :confirm => 'Are you sure?', :method => :cancel %></td>
+  	<td><%= link_to 'Cancel', cancel_slot_path(slot), :confirm => 'Are you sure?' %></td>
   
   </tr>
 <% end %>
