@@ -1,20 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title><% if ENV["RAILS_ENV"] == 'development' %>Experiment Tracker (DEV)<% else %>Humans & Automation Lab Experiments<% end %> <%= sanitize(page_title) %></title>
-		<%= javascript_include_tag :defaults %>
-		<%= stylesheet_link_tag 'scaffold' %>
-		<%= stylesheet_link_tag 'default' %>
-		<!--[if IE 7]><%= stylesheet_link_tag 'default-IE7' %><![endif]--><!--[if IE 8]><%= stylesheet_link_tag 'default-IE8' %><![endif]-->
-		<%= calendar_date_select_includes "red"  %>
-	</head>
+<%= render :partial => '/helpers/header' %>
 	<body>
+		<div class="header application">
+		<div id="banner">Experiment Signup Tool</div>
 		<% if signed_in? %>
 		<div class="signin">
 		<%= link_to 'sign out', session_path, :method => :delete %> 
 		</div>
 		<% end %>
+		</div>
 		  <%= yield %>
 		<div id="footer">
 			<a href="/">&copy; 2009 </a>

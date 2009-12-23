@@ -5,8 +5,19 @@ class CreateExperiments < ActiveRecord::Migration
       t.column :desc, :blob
       t.column :hashed_id,   :integer,     :default => 0
       t.column :time_length, :int
+      t.column :user_id,   :integer, :default => 0
+      t.column :location_id, :integer, :default => 0
+      t.column :slot_close_time, :integer, :default => 0
+      t.column :num_subjects, :integer, :default => 0
+      t.column :compensation, :integer, :default => 0
+      t.column :open, :boolean, :default => false
       t.timestamps
+      t.column :lock_version, :integer, :default=>0
     end
+    
+    add_index :experiments, :user_id
+    add_index :experiments, :open
+    add_index :experiments, :hashed_id
   end
 
   def self.down

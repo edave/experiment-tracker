@@ -6,6 +6,7 @@
 
 <% @experiments.each do |experiment| %>
   <tr>
+  	<td><%= experiment.name %></td>
     <td><%= link_to 'Show', experiment %></td>
     <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
     <td><%= link_to 'Destroy', experiment, :confirm => 'Are you sure?', :method => :delete %></td>

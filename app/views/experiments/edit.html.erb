@@ -1,12 +1,6 @@
 <h1>Editing experiment</h1>
 
-<% form_for(@experiment) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<%= render :partial => 'form_experiment', :locals => {:experiment => @experiment} %>
 
 <%= link_to 'Show', @experiment %> |
 <%= link_to 'Back', experiments_path %>

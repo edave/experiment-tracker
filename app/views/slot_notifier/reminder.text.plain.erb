@@ -4,8 +4,12 @@ This is a reminder that you are signed up for an experiment with HALab tomorrow.
 
 Time: <%= @slot.human_time %>
 
-Experiment Contact:
-Please contact David Pitman at dpitman@mit.edu or 617-901-8772 if you have any questions.
+The experiment will last approximately <%= @experiment.human_time_length %> and you will be compensated $<%= @experiment.compensation %> for your participation.
 
-Location
-Meet the experiment contact in the entrance of Building 41 - http://whereis.mit.edu/?selection=41&zoom=16
+Location: <%= @experiment.location.building %>-<%= @experiment.location.room %> ( http://whereis.mit.edu/?selection=<%= @experiment.location.building %>&zoom=16 )
+<%= @experiment.location.instructions %>
+
+Experiment Contact
+Please contact <%= @experiment.user.name %> at <%= @experiment.user.email %> or <%= @experiment.user.phone %> if you have any questions.
+
+

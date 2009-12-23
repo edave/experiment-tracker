@@ -1,27 +1,39 @@
 <h1>Signup for an experiment slot</h1>
 
 <h2>Contact Information</h2>
-<p>Your email is used solely to contact you about the experiment and is not shared with anyone.</p>
+<small>Your email is used solely to contact you about the experiment and is not shared with anyone.</small>
 <% form_for(@subject, :html => {:autocomplete=>"off"}) do |f| %>
   <%= f.error_messages %>
 	<h3>Name<span style="color:red">*</span></h3>
-	<%= f.text_field :name %><br/>
+		<small><%= error_message_on :subject, :name,
+               :prepend_text => "Name " %></small>
+	<%= f.text_field :name, :autocomplete => "off" %><br/>
 	
 	<h3>Email<span style="color:red">*</span></h3>
-	<%= f.text_field :email %><br />
+	<small><%= error_message_on :subject, :email,
+               :prepend_text => "Email " %></small>
+	<%= f.text_field :email, :autocomplete => "off" %><br />
 	
 	<h3>Phone Number (optional)</h3>
-	<%= f.text_field :phone_number %><br /><br />
+		<small><%= error_message_on :subject, :phone,
+               :prepend_text => "Phone " %></small>
+	<%= f.text_field :phone_number, :autocomplete => "off", :size=>12 %><br /><br />
 	
 	<h3>Time Slot<span style="color:red">*</span></h3>
-	Select a time (the experiment will run approximately 1hr 15min)<br />
-	
+	Select a time (the experiment will take approximately <%= @experiment.human_time_length %>)<br />
+		<small><%= error_message_on :subject, :time_slot,
+               :prepend_text => "Time slot " %></small>
 	<% for slot in @slots %>
 	<input class="slot" type="radio" name="slot_id" id="slot-<%= slot.hashed_id %>" value="<%= slot.hashed_id%>" <% if params[:slot_id].to_i == slot.hashed_id %>checked<%end%> >
 		<label for="slot-<%= slot.hashed_id %>" ><%= slot.human_time %></label><br />
 	<% end %>
-	
+	<input type="hidden" name="experiment_id" id="experiment_id" value="<%= @experiment.hashed_id%>" />
   <p>
     <%= f.submit 'Sign up!' %>
   </p>
 <% end %>
+		<script type="text/javascript">
+	jQuery(document).ready(function () {
+			jQuery("input#subject_phone_number").mask("999-999-9999", {placeholder:" "});
+			});
+	</script>

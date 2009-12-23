@@ -1,6 +1,6 @@
 
 # Obfuscate ids
-HASHED_PRIME = 2971215073
+HASHED_PRIME = 321060967
 HASHED_MAXID = 2**31-1
 
 class Fixnum

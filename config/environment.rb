@@ -5,6 +5,7 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 DO_NOT_REPLY = "donotreply@halab-experiments.mit.edu"
 
+ENCRYPTED_ATTR_PASSKEY = "BWzMfbB3VSwbUxuO"
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -18,22 +19,33 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
   # Specify gems that this application depends on and have them installed with rake gems:install
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  # config.gem "aws-s3", :lib => "aws/s3"
+   
+  # Date selecter UI
   config.gem "calendar_date_select"
   
+  # User stuff
   config.gem "clearance",
   :lib     => 'clearance',
   :source  => 'http://gemcutter.org',
   :version => '0.8.4'
+  
+  # Both are for awesome_emailer plugin
   config.gem 'hpricot', :version => '=0.6.161'
   config.gem 'csspool', :version => '=0.2.6'
   
+  # For google calendar
   config.gem 'gcal4ruby'
   
+  # For encrypting model attributes
+  config.gem 'attr_encrypted', :version => '~> 1.0.8', 
+  :lib => 'attr_encrypted', :source => 'http://gems.github.com'
+  
+  # For background tasks
   config.gem 'rufus-scheduler', :lib => "rufus/scheduler"
+  
+  # For Markdown text processing
+  config.gem 'bluecloth', :version => '~> 2.0.5', :lib => 'bluecloth'
+  
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -57,7 +69,6 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  #config.action_mailer.delivery_method = :sendmail
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address  => "mail.hci4.me",
@@ -67,6 +78,10 @@ Rails::Initializer.run do |config|
     :password  => "5VQ891zTUI6C",
     :authentication  => :login
       } 
-  config.action_mailer.raise_delivery_errors = true
-
+      
+   if ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
+   config.action_mailer.delivery_method = :sendmail
+   config.action_mailer.raise_delivery_errors = false
+  end
+  
 end

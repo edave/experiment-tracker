@@ -36,6 +36,10 @@ module CustomValidations
       validates_format_of(attr_names, 
         :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,4})\Z/i,
         :message => "Please enter an email address like me@example.com")
+        
+      if configuration[:encrypted] 
+        attr_names = ("encrypted_" + attr_names.to_s).to_sym
+      end
       validates_uniqueness_of(attr_names, :case_sensitive => false) \
         if configuration[:unique]
     end

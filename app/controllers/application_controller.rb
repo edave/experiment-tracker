@@ -35,5 +35,23 @@ class ApplicationController < ActionController::Base
     end
   end
  
+ def development_env?
+   ENV['RAILS_ENV'] == 'development'
+ end
+ 
+ def production_env?
+   ENV['RAILS_ENV'] == 'production'
+ end
+ 
+   def use_markdown_editor=(value)
+    @use_markdown_editor = (value)
+  end
+  
+  def use_markdown_editor?
+    return @use_markdown_editor
+  end
+  
+  
+ helper_method :development_env?, :production_env?, :use_markdown_editor=, :use_markdown_editor?
 
 end

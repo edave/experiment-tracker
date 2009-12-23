@@ -4,9 +4,10 @@ class SlotsController < ApplicationController
   # GET /slots
   # GET /slots.xml
   def index
-    page_title("Time Slots")
-    @slots = Slot.find(:all, :order => "time")
-    @filled_slots = Slot.find_by_occupied.length
+    @experiment = Experiment.find_by_hashed_id(params[id])
+    @slots = Slot.find(:conditions => {:experiment_id => @experiment.id}, :order => "time")
+    page_title(@experiment.name, "Time Slots")
+    @filled_slots = Slot.find_by_occupied(@experiment).length
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @slots }
@@ -17,12 +18,16 @@ class SlotsController < ApplicationController
   # GET /slots/1.xml
   def show
     
-    @slot = Slot.find_by_hashed_id(params[:id])
-    page_title(["Slot", @slot.human_time])
-    
+    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @experiment = @slot.experiment
+    if @experiment.can_modify?(current_user)
+    page_title([@experiment.name, "Slot", @slot.human_time])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @slot }
+    end
+    else
+      
     end
   end
 
@@ -39,13 +44,15 @@ class SlotsController < ApplicationController
   end
 
   def cancel
-    @slot = Slot.find_by_hashed_id(params[:id])
-    page_title(["Slot Cancelled", @slot.human_time])
-    
+    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @experiment = @slot.experiment
+    page_title([@experiment.name, "Slot Cancelled", @slot.human_time])
+    if @experiment.can_modify?(current_user)
     @slot.cancelled = true
     @slot.save!
     
     SlotNotifier.deliver_cancelled(@slot)
+    end
     respond_to do |format|
       format.html
       format.xml  { render :xml => @slot }
@@ -55,9 +62,13 @@ class SlotsController < ApplicationController
   # GET /slots/1/edit
   def edit
     
-    @slot = Slot.find_by_hashed_id(params[:id])
-    page_title(["Edit Slot", @slot.human_time])
-    
+    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @experiment = @slot.experiment
+    if @experiment.owned_by?(current_user)
+    page_title([@experiment.name, "Edit Slot", @slot.human_time])
+    else
+    redirect_to(:controller => :slots, :action => :index, :id=> @experiment.hashed_id)
+    end
   end
 
   # POST /slots
@@ -67,7 +78,7 @@ class SlotsController < ApplicationController
     respond_to do |format|
       if @slot.save
         flash[:notice] = 'Slot was successfully created.'
-        format.html { redirect_to(@slot) }
+        format.html { redirect_to(@slot.experiment) }
         format.xml  { render :xml => @slot, :status => :created, :location => @slot }
       else
         format.html { render :action => "new" }
@@ -79,10 +90,11 @@ class SlotsController < ApplicationController
   # PUT /slots/1
   # PUT /slots/1.xml
   def update
-    @slot = Slot.find_by_hashed_id(params[:id])
-
+    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @experiment = @slot.experiment
+    
     respond_to do |format|
-      if @slot.update_attributes(params[:slot])
+      if @experiment.can_modify?(current_user) and @slot.update_attributes(params[:slot])
         flash[:notice] = 'Slot was successfully updated.'
         format.html { redirect_to(@slot) }
         format.xml  { head :ok }
@@ -96,9 +108,11 @@ class SlotsController < ApplicationController
   # DELETE /slots/1
   # DELETE /slots/1.xml
   def destroy
-    @slot = Slot.find_by_hashed_id(params[:id])
-    #@slot.destroy
-
+    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @experiment = @slot.experiment
+    if @experiment.can_modify?(current_user)
+      @slot.destroy
+    end
     respond_to do |format|
       format.html { redirect_to(slots_url) }
       format.xml  { head :ok }

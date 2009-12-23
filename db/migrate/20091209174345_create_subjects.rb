@@ -1,12 +1,15 @@
 class CreateSubjects < ActiveRecord::Migration
   def self.up
     create_table :subjects do |t|
-      t.column :email,                     :string, :limit => 256
-      t.column :name,                :string, :limit => 60
-      t.column :phone_number,       :string, :limit => 30
-      t.column  :hashed_id,   :integer,     :default => 0
+      t.column :encrypted_email,               :string
+      t.column :encrypted_name,                :string
+      t.column :encrypted_phone_number,        :string
+      t.column :hashed_id,   :integer,     :default => 0
       t.timestamps
+      t.column :lock_version, :integer, :default=>0
     end
+    add_index :subjects, :hashed_id
+    
   end
 
   def self.down

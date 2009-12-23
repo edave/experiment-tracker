@@ -1,18 +1,20 @@
 require 'clearance'
 
 class UsersController < Clearance::UsersController
-  before_filter :admin_only, :only => [ :index, :show, :create, :new, :update, :edit ]
+  before_filter :admin_only, :only => [ :index, :show, :create, :new, :update, :edit ] if ENV['RAILS_ENV'] == 'production'
+  before_filter :admin_only, :only => [ :index, :show] if ENV['RAILS_ENV'] == 'development'
   before_filter :get_user, :only => [ :edit, :update ]
   
   def index
-    @users = User.find :all
+    @users = User.find_by_hashed_id(:all)
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_hashed_id(params[:id]) if get_user().hashed_id == params[:id]
   end
   
   def edit
+    @user = User.find_by_hashed_id(params[:id]) if get_user().hashed_id == params[:id]
   end
   
   def update
@@ -40,7 +42,7 @@ class UsersController < Clearance::UsersController
   
   def get_user
     if signed_in_as_admin?
-      @user = User.find(params[:id])
+      @user = User.find_by_hashed_id(params[:id])
     elsif signed_in?
       @user = current_user
     end

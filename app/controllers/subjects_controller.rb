@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
   before_filter :authenticate, {:except => [:new, :update, :create, :confirmation]}
-
+  layout 'external'
+  
   # GET /subjects
   # GET /subjects.xml
   def index
@@ -8,8 +9,7 @@ class SubjectsController < ApplicationController
     page_title("Subjects")
     
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @subjects }
+      format.html { render :layout => 'application' }
     end
   end
 
@@ -19,17 +19,16 @@ class SubjectsController < ApplicationController
     @subject = Subject.find_by_hashed_id(params[:id])
     page_title(["Subject", @subject.name])
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @subject }
+      format.html { render :layout => 'application' }
     end
   end
 
   # GET /subjects/new
   # GET /subjects/new.xml
   def new
-    @experiment = Experiment.find(:first)
+    @experiment = Experiment.find_by_hashed_id(params[:id])
     page_title([@experiment.name, "Sign up"])
-    if Slot.find_by_occupied.length > 15
+    if Slot.find_by_occupied(@experiment).length > 15
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
     end
@@ -46,6 +45,7 @@ class SubjectsController < ApplicationController
   def edit
     @subject = Subject.find_by_hashed_id(params[:id])
     page_title(["Edit Subject", @subject.name])
+    render :layout => 'application'
   end
   
   def confirmation
@@ -60,8 +60,8 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.xml
   def create
-     @experiment = Experiment.find(:first)
-    if Slot.find_by_occupied.length > 15
+     @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
+    if Slot.find_by_occupied(@experiment).length >= @experiment.num_subjects
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
     end
@@ -70,16 +70,20 @@ class SubjectsController < ApplicationController
     @slot_id = params[:slot_id]
     @slot = Slot.find_by_hashed_id(@slot_id)
     respond_to do |format|
-      if @subject.valid? and !@slot.nil? and @slot.subject.nil? and @subject.save
-        @slot.subject = @subject
-        @slot.save
+      if @subject.valid? and !@slot.nil? and @slot.subject.nil?
+        @subject.transaction do
+          @slot.transaction do
+            @subject.save
+            @slot.subject = @subject
+            @slot.save
+       if false
         SubjectNotifier.deliver_confirmation(@subject)
         
         service = GCal4Ruby::Service.new
         service.authenticate('dpitmantest@gmail.com', 'halhalhal')
 
         calendar = GCal4Ruby::Calendar.find(service, 'UROP Availability', {:scope => :first})
-        endtime = @slot.time + 75.minutes
+        endtime = @slot.time + @experiment.time.minutes
         
         event = GCal4Ruby::Event.new(calendar)
         event.title = 'Experiment - ' + @subject.name
@@ -88,10 +92,12 @@ class SubjectsController < ApplicationController
         event.start = @slot.time
         event.end = endtime
         event.save
-
+        end
         #flash[:notice] = 'Subject was successfully created.'
         format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id) }
         format.xml  { render :xml => @subject, :status => :created, :location => @subject }
+      end
+      end
       else
         
         if @slot == nil

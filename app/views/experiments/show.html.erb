@@ -1,3 +1,24 @@
-
+<h1><%= @experiment.name %></h1>
+<div class="attribute"><span class="title">Compensation:</span> $<%= @experiment.compensation %></div>
+<div class="attribute"><span class="title">Time per slot:</span> <%= @experiment.human_time_length %></div>
+<div class="attribute"><span class="title">Max # of participants: <%= @experiment.num_subjects %></span>
+<div class="attribute"><span class="title">Contact:</span> <%= @experiment.user.email %></div>
+<div class="attribute"><span class="title">Location:</span><br />
+Bldg. <br />
+Room <br />
+</div>
+<div class="title">Description:</div>
+<div class="desc"><%= markdown(@experiment.desc) %></div>
+<div><%= link_to 'Preview signup page', :action=>:participate, :id => @experiment.hashed_id %></div>
+<div><%= link_to 'Preview confirmation page', :action=>:participate, :id => @experiment.hashed_id %></div>
+<div class="slots">
+	<% unless @experiment.slots.empty? %>
+	<%= render :partial => '/slots/slot_table', :locals => {:slots => @experiment.slots} %>
+	<% else %>
+	<h3>No Slots</h3>
+	<%= link_to "Add a slot", :controller => :slots, :action => :new, :id=>@experiment.hashed_id%>
+	<% end %>
+</div>
+<br />
 <%= link_to 'Edit', edit_experiment_path(@experiment) %> |
 <%= link_to 'Back', experiments_path %>
