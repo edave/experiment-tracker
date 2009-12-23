@@ -1,0 +1,39 @@
+<%# 
+  Display slots for an experiment
+  render :partial => "slots/slot_table", 
+         :locals => {:slots => @slots_in_experiment}
+-%>
+<% num_filled = 0 
+   for slot in slots
+	num_filled += 1 if slot.occupied?
+   end
+%>
+<%= num_filled %> of <%= slots.length %> filled<br />
+<table>
+<thead>
+	
+</thead>
+<tbody>
+<% slots.each do |slot| %>
+  <tr>
+  	<td><% if slot.cancelled %><s><%= slot.human_time %></s><% else %><%= slot.human_time %><%end%></td>
+	<td><% unless slot.subject.nil? %>
+		<%= slot.subject.name %>
+		<% else %>
+		<b style="color:#22EE22">OPEN</b>
+		<% end %>
+	</td>
+    <td><%= link_to 'Show', slot %></td>
+    <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
+    <td><%= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete %></td>
+  	<td><% if slot.cancelled %><div class="cancelled">CANCELLED</div>
+		<% else %><%= link_to 'Cancel', cancel_slot_path(slot), :confirm => 'Are you sure?' %><%end%></td>
+  
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New slot', new_slot_path %>

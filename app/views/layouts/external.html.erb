@@ -1,0 +1,14 @@
+<%= render :partial => '/helpers/header' %>
+	<body>
+		<div class="header external">
+		<img src="/images/logo.gif" id="banner" />
+		<div id="banner">MIT Humans & Automation Lab<br/> Experiment Signup</h1>
+		</div>
+		  <%= yield %>
+		<div id="footer">
+			<a href="/">&copy; 2009 </a>
+            | <a href="javascript:none;"><%= SOURCE_REVISION_DETAILS %></a>
+        </div>
+		</div>
+	</body>
+</html>

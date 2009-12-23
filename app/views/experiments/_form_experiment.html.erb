@@ -1,0 +1,22 @@
+<% form_for(experiment) do |f| %>
+  <%= f.error_messages %>
+  <h3>Name</h3>
+	<%= f.text_field :name, :size => 40 %>
+ <h3>Compensation</h3>
+ $<%= f.text_field :compensation, :size => 3 %>
+ <h3>Max # of subjects</h3>
+ <%= f.text_field :num_subjects, :size => 2 %>
+ <h3>Time for each experiment slot</h3>
+ <%= f.text_field :time_length, :size => 2 %>
+	<h3>Description:</h3>
+	<%= f.text_area :desc, :size => 30, :class=>'markItUp' %>
+	
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+<script type="text/javascript" >
+   jQuery(document).ready(function() {
+       jQuery(".markItUp").markItUp(myMarkdownSettings);
+   });
+</script>
