@@ -1,6 +1,7 @@
 class SlotsController < ApplicationController
-  before_filter :authenticate
-
+  before_filter :login_required
+  authorize_role [:admin, :experimenter]
+  
   # GET /slots
   # GET /slots.xml
   def index

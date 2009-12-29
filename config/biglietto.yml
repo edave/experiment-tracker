@@ -1,0 +1,15 @@
+common:
+  host: "localhost:3000"
+  sender_email_address: "no-reply@halab-experiments.mit.edu"
+  app_name: "Experiment Tool Common"
+  failure_attemps: 5
+  use_ssl: false
+development:
+  host: "localhost:3001"
+  app_name: "Experiment Tool Development"
+test:
+  app_name: "Experiment Tool Test"
+production:
+ host: "halab-experiments.mit.edu"
+ use_ssl: true
+ app_name: "Experiment Tool"

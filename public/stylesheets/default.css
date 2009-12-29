@@ -26,6 +26,23 @@ div.signin{
 	color:#fff;
 }
 
+div#pwd-helper{
+	width:240px;
+}
+div#pwd-helper div{
+	margin-top:9px;
+	 -webkit-box-shadow: 0 0 10px #999;
+    -moz-box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #999;
+}
+div#pwd-helper div.validation-success{
+	border: 2px solid #90D888;
+}
+div#pwd-helper div.validation-error{
+	border: 2px solid #ED7064;
+}
+
+
 .clear  {
 	clear:both;
 }

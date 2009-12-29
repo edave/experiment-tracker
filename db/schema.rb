@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215004211) do
+ActiveRecord::Schema.define(:version => 20091223231236) do
 
   create_table "experiments", :force => true do |t|
     t.string   "name",            :limit => 256
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20091215004211) do
     t.integer  "hashed_id",                      :default => 0
     t.integer  "time_length"
     t.integer  "user_id",                        :default => 0
+    t.integer  "location_id",                    :default => 0
     t.integer  "slot_close_time",                :default => 0
     t.integer  "num_subjects",                   :default => 0
     t.integer  "compensation",                   :default => 0
@@ -29,6 +30,32 @@ ActiveRecord::Schema.define(:version => 20091215004211) do
   add_index "experiments", ["hashed_id"], :name => "index_experiments_on_hashed_id"
   add_index "experiments", ["open"], :name => "index_experiments_on_open"
   add_index "experiments", ["user_id"], :name => "index_experiments_on_user_id"
+
+  create_table "privileges", :force => true do |t|
+    t.integer  "hashed_id",           :default => 0
+    t.integer  "role_id",             :default => 0
+    t.integer  "user_id",             :default => 0
+    t.integer  "lock_version",        :default => 0
+    t.integer  "modified_by_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "privileges", ["hashed_id"], :name => "index_privileges_on_hashed_id"
+  add_index "privileges", ["role_id"], :name => "index_privileges_on_role_id"
+  add_index "privileges", ["user_id"], :name => "index_privileges_on_user_id"
+
+  create_table "roles", :force => true do |t|
+    t.integer  "hashed_id",    :default => 0
+    t.string   "name"
+    t.string   "slug"
+    t.string   "description"
+    t.integer  "lock_version", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["hashed_id"], :name => "index_roles_on_hashed_id"
 
   create_table "slots", :force => true do |t|
     t.integer  "subject_id"
@@ -59,20 +86,37 @@ ActiveRecord::Schema.define(:version => 20091215004211) do
   add_index "subjects", ["hashed_id"], :name => "index_subjects_on_hashed_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email"
-    t.string   "encrypted_password", :limit => 128
-    t.string   "salt",               :limit => 128
-    t.string   "confirmation_token", :limit => 128
-    t.string   "remember_token",     :limit => 128
-    t.boolean  "email_confirmed",                   :default => false, :null => false
-    t.boolean  "admin"
+    t.integer  "hashed_id",                                :default => 0
+    t.string   "login",                     :limit => 40
+    t.string   "name",                      :limit => 100
+    t.string   "phone",                     :limit => 20
+    t.string   "email",                     :limit => 256
+    t.string   "crypted_password",          :limit => 64
+    t.string   "salt",                      :limit => 64
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
+    t.datetime "last_authenticated_at"
+    t.string   "last_authenticated_ip"
+    t.string   "activation_code",           :limit => 64
+    t.datetime "activated_at"
+    t.boolean  "recover_requested",                        :default => false
+    t.datetime "recover_requested_at"
+    t.string   "recover_code",              :limit => 64
+    t.string   "recover_in_process_code",   :limit => 64
+    t.integer  "failure",                                  :default => 0
+    t.datetime "last_failed_at"
+    t.string   "last_failed_ip"
+    t.integer  "eula_version",                             :default => 0
+    t.boolean  "frozen_in_db",                             :default => false
+    t.datetime "deactivated_at"
+    t.integer  "lock_version",                             :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["admin"], :name => "index_users_on_admin"
   add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["id", "confirmation_token"], :name => "index_users_on_id_and_confirmation_token"
+  add_index "users", ["hashed_id"], :name => "index_users_on_hashed_id"
+  add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

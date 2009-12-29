@@ -23,12 +23,6 @@ Rails::Initializer.run do |config|
   # Date selecter UI
   config.gem "calendar_date_select"
   
-  # User stuff
-  config.gem "clearance",
-  :lib     => 'clearance',
-  :source  => 'http://gemcutter.org',
-  :version => '0.8.4'
-  
   # Both are for awesome_emailer plugin
   config.gem 'hpricot', :version => '=0.6.161'
   config.gem 'csspool', :version => '=0.2.6'
@@ -78,10 +72,5 @@ Rails::Initializer.run do |config|
     :password  => "5VQ891zTUI6C",
     :authentication  => :login
       } 
-      
-   if ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
-   config.action_mailer.delivery_method = :sendmail
-   config.action_mailer.raise_delivery_errors = false
-  end
   
 end

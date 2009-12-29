@@ -1,0 +1,22 @@
+	<p><form class="box" id="session" method="post" action="/sessions">
+	<%= request_forgery_protection_tag %>
+		
+    <label for="login">Username:</label><br />
+    <input autocomplete=off name="login" type="text" value="" /><br /><br />
+    
+    <label for="password">Password:</label><br />
+    <input autocomplete=off name="password" type="password" value="" /><br /><br />
+ 
+   <input type="submit" style="display:none;" />
+    
+    <p><a class="button" href="javascript:void(0);" onClick="$('session').submit();">Login &raquo;</a></p>		
+    
+	<br />
+    <input autocomplete=off name="remember_me" id="remember_me" type=checkbox />
+    <label for="remember_me">Remember me on this computer</label>
+ 
+
+    </form>
+	</p>
+    
+	<p><%= link_to "Forget your password?", :controller=>:users, :action=>:reset %></p>

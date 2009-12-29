@@ -9,6 +9,19 @@ require 'lib/hashed_id'
 
 require 'lib/custom_validations'
 
+require 'lib/deactivated'
+
+require 'lib/eula'
+
+require 'lib/random_strings'
+
+class ActiveRecord::Base
+  # Give all models access to the current manager & user, both 
+  # for doing constrained lookups and for storing whodunit.
+  cattr_accessor :current_user_id
+end
+
+
 class ::Date
   def beginning_of_day_in_zone
     Time.zone.parse(self.to_s)

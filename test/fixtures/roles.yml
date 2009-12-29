@@ -1,0 +1,18 @@
+roles_1: 
+  slug: admin
+  name: Administrator
+  updated_at: 2009-05-31 00:00:00
+  lock_version: 
+  id: "1"
+  hashed_id: "823731425"
+  description: App Administrator
+  created_at: 2009-05-31 00:00:00
+roles_2: 
+  slug: experimenter
+  name: Experimenter
+  updated_at: 2009-05-31 00:00:00
+  lock_version: 
+  id: "2"
+  hashed_id: "1647462850"
+  description: Experimenter
+  created_at: 2009-05-31 00:00:00

@@ -9,9 +9,18 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :experiments
   
-  map.resources :users
   
   map.resources :preview, :member => {:markdown => :post}
+
+  map.resources :sessions, :collection => {:denied => :get }
+
+  map.resources :users, :collection => {:reset => :get, :send_reset => :put, :reset_password => :get, :help => :get,
+                                        :submit_reset_password => :put, :list => :get},  :requirements => { :protocol => 'https' }
+  map.resources :users, :member => {:change_password => :post,  :edit => :get},  :requirements => { :protocol => 'https' }
+
+  map.signup '/signup', :controller => 'user', :action => 'new',  :requirements => { :protocol => 'https' }
+  map.login  '/signin', :controller => 'sessions', :action => 'new', :requirements => { :protocol => 'https' }
+  map.logout '/signout', :controller => 'sessions', :action => 'destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

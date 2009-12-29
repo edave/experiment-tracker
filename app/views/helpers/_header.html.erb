@@ -3,9 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title><% if ENV["RAILS_ENV"] == 'development' %>Experiment Tracker (DEV EXT)<% else %>Humans & Automation Lab Experiments<% end %> <%= sanitize(page_title) %></title>
-		<%= stylesheet_link_tag 'default' %>
-		<%= stylesheet_link_tag 'jquery-ui/jquery-ui-1.7.2.custom.css' %>
-        <% if production_env? %>
+		<% if production_env? %>
         <script src="http://www.google.com/jsapi">
         </script>
         <script>
@@ -13,9 +11,13 @@
             google.load("jquery", "1.3.2");
         </script>
         <%= javascript_include_tag 'date-en-US', 'jquery-ui-1.7.2.custom.min',  'jquery.highlight-3', 'jquery.maskedinput-1.2.2.min' %>
-        <% else %>
-        <%= javascript_include_tag :defaults, 'date-en-US', 'jquery-1.3.2.min', 'jquery.highlight-3', 'jquery.maskedinput-1.2.2.min', 'jquery-ui-1.7.2.custom.min'%>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?3.0.0/build/cssreset/reset-min.css&3.0.0/build/cssfonts/fonts-min.css">
+		<% else %>
+        <%= stylesheet_link_tag 'yui-reset-font.css' %>
+		<%= javascript_include_tag :defaults, 'date-en-US', 'jquery-1.3.2.min', 'jquery.highlight-3', 'jquery.maskedinput-1.2.2.min', 'jquery-ui-1.7.2.custom.min'%>
         <% end %>
+		<%= stylesheet_link_tag 'default' %>
+		<%= stylesheet_link_tag 'jquery-ui/jquery-ui-1.7.2.custom.css' %>
 		<!--[if IE 7]><%= stylesheet_link_tag 'default-IE7' %><![endif]--><!--[if IE 8]><%= stylesheet_link_tag 'default-IE8' %><![endif]-->
 		<%= calendar_date_select_includes "red"  %>
 		<% if use_markdown_editor? %>

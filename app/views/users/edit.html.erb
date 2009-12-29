@@ -1,0 +1,69 @@
+<div id="content">
+    <h1>Account Information</h1>
+    <p>
+        Enter your current password to change your email address or 
+        your password
+    </p>
+    <%= error_messages_for :user,
+    :header_message => "Oops Please Try Again!",
+    :message => "We had a problem with some of what you entered." %>
+    <p>
+        <form class="box" id="user_edit" method="post" action="/user/update/<%= @user.hashed_id if @user %>">
+            <%= request_forgery_protection_tag %>
+            <small>
+                <%= error_message_on "user", "supplied_password", :prepend_text => "Current Password " %>
+            </small>
+            <h2>Current password<span class="orange">*</span><input autocomplete=off name="user[supplied_password]" type="password" value="" />
+                <br/>
+                <br/>
+            </h2>
+            <div class="left" style="padding-top:22px">
+                <small>
+                    <%= error_message_on "user", "email", :prepend_text => "Email " %>
+                </small>
+                <label for="user_email">
+                    Email
+                </label>
+                <br/>
+                <input autocomplete=off name="user[email]" type="text" value="<%= @user.email unless @user.email.nil? %>" />
+                <br/>
+                <br/>
+            </div>
+            <div class="left margin-left " style="padding-top: 40px">
+                <b>and/or</b>
+            </div>
+            <div class="column-left margin-left">
+                <small>
+                    <%= error_message_on "user", "password", :prepend_text => "New Password " %>
+                </small>
+                <label for="user_password">
+                    New Password
+                </label>
+                <br/>
+                <input id="user_password" autocomplete=off name="user[password]" type="password" value="" />
+                <br/>
+                <br/>
+                <label for="user_password_confirmation">
+                    Re-enter New Password
+                </label>
+                <br/>
+                <input id="user_password_confirmation" autocomplete=off name="user[password_confirmation]" type="password" value="" />
+                <br/>
+                <br/>
+            </div>
+			<div class="column-left">
+				  <%= render :partial=>'password_helper' %>
+			</div>
+            <br style='clear:both; '/>
+            <p style="margin-top:25px;">
+                <%= button_form('Save Changes &raquo;', {:type=>'action', :height=>'medium'}) %> &nbsp; <a href="/">cancel</a>
+            </p>
+        </form>
+    </p>
+</div>
+<script type="text/javascript">
+    	jQuery(document).ready(function () {
+    			passwordHelper(jQuery("input#user_password"), jQuery("input#user_password_confirmation"), "<%= @user.login %>");
+    			});
+    	
+</script>

@@ -1,6 +1,7 @@
 class ExperimentsController < ApplicationController
-  before_filter :authenticate, {:except => [:filled, :participate]}
-
+  before_filter :login_required, {:except => [:filled, :participate]}
+  authorize_role [:admin, :experimenter], {:except => [:filled, :participate]}
+  
   # GET /experiments
   # GET /experiments.xml
   def index

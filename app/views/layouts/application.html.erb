@@ -2,9 +2,9 @@
 	<body>
 		<div class="header application">
 		<div id="banner">Experiment Signup Tool</div>
-		<% if signed_in? %>
+		<% if logged_in? %>
 		<div class="signin">
-		<%= link_to 'sign out', session_path, :method => :delete %> 
+		<%= link_to 'sign out', :controller => :sessions, :action => :destroy %> 
 		</div>
 		<% end %>
 		</div>

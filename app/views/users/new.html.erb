@@ -1,0 +1,57 @@
+<div id="content" class="wide signup" >
+	<h1>Sign up for an account with the HALab Experimenter!</h1>
+	<%= error_messages_for :user, :privilege, :role %><br />
+
+<div>
+	<div class="column-left">
+       <% form_for :user, :url => { :action => "create" } do |f| -%>
+		<h2 style="margin-left:100px;">Tell us about yourself</h2>
+		<label for="user_name">Name </label>
+		<input id="user_name" name="user[name]" value="<%= @user.name %>" autocomplete="off" /><br style="clear:both" />
+
+		<label for="user_phone">Phone Number </label>
+		<input id="user_phone" name="user[phone]" autocomplete="off"  value="<%= @user.phone %>" /><br style="clear:both" />
+
+		<label for="user_email">Email </label>
+		<input id="user_email" name="user[email]" autocomplete="off" value="<%= @user.email %>" /><br style="clear:both" />
+</div>
+
+<br style="clear:both;" />
+<h2 style="margin-left:100px; margin-bottom:0">Setup your account</h2>
+<div class="column-left">
+	<p><label for="login" class="user">Login </label>
+		<%= f.text_field :login, :autocomplete => "off" %></p>
+		<p><label for="password" class="user">Password </label>
+		<%= f.password_field :password, :autocomplete => "off" %></p>
+		<p><label for="password_confirmation" class="user" style="margin-top:0">Re-enter Password </label>
+		<%= f.password_field :password_confirmation, :autocomplete => "off" %></p>
+		
+		<p style="margin-top:20px; margin-left:90px;"><input name="user[eula]" type="hidden" value="0" /><input id="user_eula" name="user[eula]" type="checkbox" value="1" /><label for="user_eula" style="float:none;">&nbsp; I accept the <a href="/home/user_agreement">Terms of Use</a> and <a href="/home/privacy_policy">Privacy Policy</a></label></p>
+	
+		<br />
+		<div style="margin-top:20px; margin-left:90px;">
+		   <%= f.submit 'Sign up!' %>
+		</div>
+		</div>
+		
+<div class="column-right" style="margin-right:70px">
+			<%= render :partial=>'password_helper' %>
+		</div>
+		<br style="clear:both" />
+		
+	</div>
+
+	<% end -%>
+</div>
+
+		<script type="text/javascript">
+	jQuery(document).ready(function () {
+			// Phone number filter
+			var phone_field = jQuery("input#user_phone");
+			var mask = "999-999-9999";
+			phone_field.mask(mask, {placeholder:" "});
+			
+			// Password helper
+			passwordHelper(jQuery("input#user_password"), jQuery("input#user_password_confirmation"), jQuery("input#user_login"));
+			});
+	</script>

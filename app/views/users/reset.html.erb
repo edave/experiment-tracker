@@ -1,0 +1,21 @@
+<div id="login_page">
+	<div id="content" >
+		<div id="main">
+			<h1>Reset your password</h1>
+
+			<div id="login">
+				<% form_tag send_reset_user_path, :class => "box", :id => "reset_user" do -%>
+				<%= request_forgery_protection_tag %>
+				<label for="login">Login </label><%= text_field_tag :login %><br />
+
+				<label for="email">Email </label><%= text_field_tag :email %><br /><br />
+
+				<p><%= button_form('Reset Password', {:type=>:action, :height=>:medium, :disableAfterClick=>true }) %></p>		
+				<% end -%>
+				
+				<br style="clear:both;" />
+			</div>
+
+		</div>    
+	</div>
+</div>

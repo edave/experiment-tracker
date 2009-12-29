@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
-  before_filter :authenticate, {:except => [:new, :update, :create, :confirmation]}
+  before_filter :login_required, {:except => [:new, :update, :create, :confirmation]}
+  authorize_role [:admin, :experimenter], {:except => [:new, :update, :create, :confirmation]}
+  
   layout 'external'
   
   # GET /subjects

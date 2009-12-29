@@ -1,0 +1,30 @@
+<div class="content" >
+<h1>User List</h1>
+<table id="default_table">
+    <thead>
+        <tr>
+            <%= render :partial => "helpers/table_header", :locals => {:label => "Username", :key_name => "login", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:label => "Email", :key_name => "email", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:label => "Roles", :key_name => "activated?", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:label => "Active", :key_name => "roles", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:label => "Last good login", :key_name => "last_authenticated_at", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:label => "Last good IP", :key_name => "last_authenticated_ip", :flip => false }%>
+            <%= render :partial => "helpers/table_header", :locals => {:label => "Failed Login Attempts", :key_name => "failure", :flip => false }%>
+
+        </td>    
+    </thead>
+<% @users.each do |user| %>
+    <tr <% unless mark_every(2) %>class="odd"<% end %>>
+        <td><a href="/user/show/<%= user.hashed_id %>" /><%= user.login %></a></td>
+        <td><%= mail_to user.email %></td>
+        <td><% user.roles.each do |role| %>
+            <%= role.name %><br />
+            <% end %>
+        <td><img src="/images/icons/<% if user.activated? and !user.deactivated? %>green-check.png<% elsif user.deactivated? %>red-x.png<% else %>blue-squiggle.png<% end %>" /></td>
+        <td><%= user.last_authenticated_at %></td>
+        <td><%= user.last_authenticated_ip %></td>
+        <td><%= user.failure %></td>
+   </tr>
+<%end%>
+</table>
+</div>

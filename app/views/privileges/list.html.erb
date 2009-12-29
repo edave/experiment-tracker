@@ -1,0 +1,27 @@
+<div class="content" >
+<h1>Privilege List</h1>
+<%= link_to("Add Privilege", { :action => "new" })%>
+<table id="default_table">
+    <thead>
+        <tr>
+            <%= render :partial => "manager/table_header", :locals => {:label => "ID", :key_name => "id", :flip => false }%>
+            <%= render :partial => "manager/table_header", :locals => {:label => "Username", :key_name => "user.login", :flip => false }%>
+		    <%= render :partial => "manager/table_header", :locals => {:label => "Role", :key_name => "role.name", :flip => false }%>
+		    <%= render :partial => "manager/table_header", :locals => {:label => "Created", :key_name => "created_at", :flip => false }%>
+		    <%= render :partial => "manager/table_header", :locals => {:label => "Updated", :key_name => "updated_at", :flip => false }%>
+            <%= render :partial => "manager/table_header", :locals => {:label => "Modified by", :key_name => "modified_by_user.login", :flip => false }%>
+
+        </td>    
+    </thead>
+<% @privileges.each do |privilege| %>
+    <tr <% unless mark_every(2) %>class="odd"<% end %>>
+        <td><a href="/privilege/show/<%= privilege.id %>" ><%= privilege.id%></a></td>
+        <td><%= privilege.user.login %></td>
+        <td><%= privilege.role.name %></td>
+        <td><%= privilege.created_at %></td>
+        <td><%= privilege.updated_at %></td>
+        <td><%= privilege.modified_by_user.login %></td>
+   </tr>
+<%end%>
+</table>
+</div>
