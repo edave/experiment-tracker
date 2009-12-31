@@ -1,11 +1,4 @@
-<img src="/images/logo.gif" />
-<h1>MIT Humans & Automation Lab Experiment Signup</h1>
-
 <p>Welcome to the Humans & Automation Lab site for signing up to participate in experiments</p>
-
-<h2>MAV-VUE Usability Study</h2>
-<p>The Humans & Automation Lab is conducting a study with participants flying an autonomous mini-helicopter using an iPhone. The study will take approximately 1 hour and 15 minutes, and you will be compensated $15 for your participation. You must have eye sight within 20/25 (w/ contacts or glasses is okay) and not be color blind.</p>
-
-<p>The best pilot will win a $100 gift certificate to Best Buy!</p>
-
-<a href="/subjects/new"><h3>Sign up here</h3></a>
+<% for experiment in @experiments do %>
+<%= render :partial => "helpers/experiment", :locals => {:experiment => experiment, :show_signup_link => true, :show_title => true } %>
+<% end %>

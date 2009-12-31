@@ -1,0 +1,21 @@
+<%# 
+ For experiment models
+ experiment: experiment model object
+ show_signup_link bool, show the signup link
+ show_title: bool, show the tile
+#%>
+<% show_title = false if show_title == nil
+   show_signup_link = false if show_signup_link == nil
+%>
+<div class="experiment">
+	<% if show_title %>
+	<div class="title"><%= experiment.name %></div>
+	<% end %>
+	<div class="desc"><%= markdown(experiment.desc) %></div>
+	<div class="time"><b>Length:</b> approximately <%= experiment.human_time_length %></div>
+	<div class="comp"><b>Compensation:</b> $<%= experiment.compensation%> for participating</div>
+	<div class="location"><b>Location</b> This experiment is conducted on the MIT campus, you will receive instructions for the experiment location after signing up.</div>
+	<% if show_signup_link %>
+	<%= link_to '<div class="signup">Sign up here</div>', :controller => :subject, :action => :new, :id => experiment.hashed_id %>
+	<% end %>
+</div>

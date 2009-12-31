@@ -1,14 +1,4 @@
 <h1><%= @experiment.name %></h1>
 <p>Welcome to the Humans & Automation Lab site for signing up to participate in experiments.</p>
-
-<div class="description"><%= markdown(@experiment.desc) %></div>
-
-<h2>Compensation</h2>
-<p>For your participation in this experiment, you will be compensated $<%= @experiment.compensation %></p>
-
-<h2>Location</h2>
-<p>This experiment is conducted on the MIT campus, you will receive instructions for the experiment location after signing up.</p>
-
-<%= link_to '<h3>Click here to signup</h3>', :controller => :subjects, :action => :new, :id=>@experiment.hashed_id %>
-
+<%= render :partial => 'helpers/experiment', :locals => {:experiment => @experiment, :show_signup_link => true } %>
 <div class="questions">If you have any questions, contact <%= @experiment.user.email %></div>
