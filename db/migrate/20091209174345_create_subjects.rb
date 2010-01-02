@@ -9,7 +9,6 @@ class CreateSubjects < ActiveRecord::Migration
       t.column :lock_version, :integer, :default=>0
     end
     add_index :subjects, :hashed_id
-    
   end
 
   def self.down

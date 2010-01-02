@@ -30,6 +30,10 @@ Rails::Initializer.run do |config|
   # For google calendar
   config.gem 'gcal4ruby'
   
+  # For Rooster
+  config.gem 'daemons', :version => '>=1.0.10'
+  config.gem 'eventmachine', :version => '>=0.12.10'
+  
   # For encrypting model attributes
   config.gem 'attr_encrypted', :version => '~> 1.0.8', 
   :lib => 'attr_encrypted', :source => 'http://gems.github.com'

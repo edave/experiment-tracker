@@ -78,23 +78,7 @@ class SubjectsController < ApplicationController
             @subject.save
             @slot.subject = @subject
             @slot.save
-       if false
-        SubjectNotifier.deliver_confirmation(@subject)
         
-        service = GCal4Ruby::Service.new
-        service.authenticate('dpitmantest@gmail.com', 'halhalhal')
-
-        calendar = GCal4Ruby::Calendar.find(service, 'UROP Availability', {:scope => :first})
-        endtime = @slot.time + @experiment.time.minutes
-        
-        event = GCal4Ruby::Event.new(calendar)
-        event.title = 'Experiment - ' + @subject.name
-        event.content = 'Experiment: '
-        event.where = "Bldg 41"
-        event.start = @slot.time
-        event.end = endtime
-        event.save
-        end
         #flash[:notice] = 'Subject was successfully created.'
         format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id) }
         format.xml  { render :xml => @subject, :status => :created, :location => @subject }

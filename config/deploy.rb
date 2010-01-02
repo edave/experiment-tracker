@@ -40,4 +40,12 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
     run "touch #{current_release}/tmp/restart.txt"
   end
 
- end
+end
+
+namespace :rooster do
+  desc "Reload Rooster Daemon"
+  task :reload, :roles => :rooster do
+    rails_env = fetch(:rails_env, "production")
+    run "cd #{current_path} && sudo rake RAILS_ENV=#{rails_env} rooster:reload"
+  end
+end

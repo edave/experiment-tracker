@@ -6,8 +6,8 @@ Time: <%= @slot.human_time %>
 
 The experiment will last approximately <%= @experiment.human_time_length %> and you will be compensated $<%= @experiment.compensation %> for your participation.
 
-Location: <%= @experiment.location.building %>-<%= @experiment.location.room %> ( http://whereis.mit.edu/?selection=<%= @experiment.location.building %>&zoom=16 )
-<%= @experiment.location.instructions %>
+Location: <%= @experiment.location.human_location %> - <%= @experiment.location.url %>
+<%= @experiment.location.directions %>
 
 Experiment Contact
 Please contact <%= @experiment.user.name %> at <%= @experiment.user.email %> or <%= @experiment.user.phone %> if you have any questions.

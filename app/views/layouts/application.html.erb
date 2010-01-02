@@ -2,14 +2,18 @@
 	<body>
 		<div class="header application">
 		<div id="banner">Experiment Signup Tool</div>
-		<% if logged_in? %>
-		<div class="signin">
-		<%= link_to 'sign out', :controller => :sessions, :action => :destroy %> 
+		<div class="tabs">
+			<a href="/signout" ><div class="tab" id="signout" >Signout</div></a>
+			<a href="/locations" ><div class="tab">Locations</div></a>
+			<a href="/calendars" ><div class="tab">Calendars</div></a>
+			<a href="/experiments" ><div class="tab">Experiments</div></a>
+			
 		</div>
-		<% end %>
 		</div>
 				<br clear="all" />
+		<div class="content">
 		  <%= yield %>
+		  </div>
 		<div id="footer">
 			<a href="/">&copy; 2009 </a>
             | <a href="javascript:none;"><%= SOURCE_REVISION_DETAILS %></a>

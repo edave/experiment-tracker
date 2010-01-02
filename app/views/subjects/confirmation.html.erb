@@ -4,13 +4,11 @@
 <p>An email has been sent to <%= @subject.email %> with a copy of this information.</p>
 
 <h2>Time</h2>
-You are signed up for an experiment at <b><%= @slot.human_time %></b>
-<p>The experiment will last approximately 1hr 15min and you will be compensated $15 for your participation.</p>
+<p>You are signed up for an experiment at <b><%= @slot.human_time %></b></p>
+<p>The experiment will last approximately <%= @experiment.human_time_length %> and you will be compensated $<%= @experiment.compensation %> for your participation.</p>
 
+<h2>Location: <a href="<%= @experiment.location.url %>"><%= @experiment.location.human_location %></a></h2>
+<p><%= @experiment.location.directions %></p>
 
-<h2>Instructions</h2>
 <b>Experiment Contact</b>
-<p>Please contact David Pitman at <a href="mailto:dpitman@mit.edu">dpitman@mit.edu</a> or 617-901-8772 if you have any questions.</p>
-
-<b>Location</b>
-<p>Meet the experiment contact in the entrance of <a href="http://whereis.mit.edu/?selection=41&zoom=16">Building 41</a></p>
+<p>Please contact <%= @experiment.user.name %> at <a href="mailto:<%= @experiment.user.email %>"><%= @experiment.user.email %></a> or <%= @experiment.user.phone %> if you have any questions.</p>

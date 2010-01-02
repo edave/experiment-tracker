@@ -6,10 +6,8 @@ This is a reminder that you are signed up for an experiment with HALab tomorrow.
 
 <p>The experiment will last approximately <%= @experiment.human_time_length %> and you will be compensated $<%= @experiment.compensation %> for your participation.</p>
 
-<h2>Location: <a href="http://whereis.mit.edu/?selection=<%= @experiment.location.building %>&zoom=16">Building <%= @experiment.location.building %>-<%= @experiment.location.room %></a></h2>
-<p><%= @experiment.location.instructions %></p>
+<h2>Location: <a href="<%= @experiment.location.url %>"><%= @experiment.location.human_location %></a></h2>
+<p><%= @experiment.location.directions %></p>
 
 <b>Experiment Contact</b>
 <p>Please contact <%= @experiment.user.name %> at <a href="mailto:<%= @experiment.user.email %>"><%= @experiment.user.email %></a> or <%= @experiment.user.phone %> if you have any questions.</p>
-
-

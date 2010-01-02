@@ -12260,3 +12260,2061 @@ ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.cs
   -e:2
 
 Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (34.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+Migrating to CreateSlots (20091209182458)
+Migrating to CreateExperiments (20091209184553)
+Migrating to Users (20091223230845)
+Migrating to Roles (20091223231236)
+Migrating to CreateGoogleCalendars (20100101005931)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+Migrating to CreateSlots (20091209182458)
+Migrating to CreateExperiments (20091209184553)
+Migrating to Users (20091223230845)
+Migrating to Roles (20091223231236)
+Migrating to CreateGoogleCalendars (20100101005931)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+Migrating to CreateSlots (20091209182458)
+Migrating to CreateExperiments (20091209184553)
+Migrating to Users (20091223230845)
+Migrating to Roles (20091223231236)
+Migrating to CreateGoogleCalendars (20100101005931)
+  [4;36;1mSQL (187.7ms)[0m   [0;1mCREATE TABLE `google_calendars` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `encrypted_login` varchar(255), `encrypted_password` varchar(255), `calendar_id` varchar(255), `name` varchar(255), `hashed_id` int(11) DEFAULT 0, `lock_version` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (226.7ms)[0m   [0mCREATE INDEX `index_google_calendars_on_hashed_id` ON `google_calendars` (`hashed_id`)[0m
+  [4;36;1mSQL (129.2ms)[0m   [0;1mALTER TABLE `experiments` ADD `google_login_id` int[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100101005931')[0m
+Migrating to CreateLocations (20100101235716)
+  [4;36;1mSQL (112.0ms)[0m   [0;1mCREATE TABLE `locations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `building` varchar(255), `room` varchar(255), `directions` varchar(255), `hashed_id` int(11) DEFAULT 0, `lock_version` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (162.9ms)[0m   [0mCREATE INDEX `index_locations_on_hashed_id` ON `locations` (`hashed_id`)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100101235716')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `experiments`[0m
+  [4;36;1mSQL (17.6ms)[0m   [0;1mSHOW KEYS FROM `experiments`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `google_calendars`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `google_calendars`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `locations`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `locations`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `locations`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `privileges`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `privileges`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `privileges`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `slots`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `slots`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `subjects`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `subjects`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateLocations (20100101235716)
+  [4;36;1mSQL (1.9ms)[0m   [0;1mDROP TABLE `locations`[0m
+  [4;35;1mSQL (18.2ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100101235716'[0m
+Migrating to CreateGoogleCalendars (20100101005931)
+  [4;36;1mSQL (14.1ms)[0m   [0;1mDROP TABLE `google_calendars`[0m
+  [4;35;1mSQL (234.1ms)[0m   [0mALTER TABLE `experiments` DROP `google_login_id`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mDELETE FROM schema_migrations WHERE version = '20100101005931'[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `experiments`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `experiments`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `privileges`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `privileges`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `privileges`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `slots`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `slots`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `subjects`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `subjects`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSubjects (20091209174345)
+Migrating to CreateSlots (20091209182458)
+Migrating to CreateExperiments (20091209184553)
+Migrating to Users (20091223230845)
+Migrating to Roles (20091223231236)
+Migrating to CreateGoogleCalendars (20100101005931)
+  [4;36;1mSQL (71.4ms)[0m   [0;1mCREATE TABLE `google_calendars` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `encrypted_login` varchar(255), `encrypted_password` varchar(255), `calendar_id` varchar(255), `name` varchar(255), `hashed_id` int(11) DEFAULT 0, `lock_version` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (182.8ms)[0m   [0mCREATE INDEX `index_google_calendars_on_hashed_id` ON `google_calendars` (`hashed_id`)[0m
+  [4;36;1mSQL (124.0ms)[0m   [0;1mALTER TABLE `experiments` ADD `google_calendar_id` int[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100101005931')[0m
+Migrating to CreateLocations (20100101235716)
+  [4;36;1mSQL (87.6ms)[0m   [0;1mCREATE TABLE `locations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `building` varchar(255), `room` varchar(255), `directions` varchar(255), `hashed_id` int(11) DEFAULT 0, `lock_version` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (128.7ms)[0m   [0mCREATE INDEX `index_locations_on_hashed_id` ON `locations` (`hashed_id`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100101235716')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `experiments`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `experiments`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `google_calendars`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `google_calendars`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `locations`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `locations`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `locations`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `privileges`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `privileges`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW KEYS FROM `privileges`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `slots`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `slots`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `subjects`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `subjects`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `subjects`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#new (for 127.0.0.1 at 2010-01-02 01:37:24) [GET]
+  Parameters: {"action"=>"new", "controller"=>"subjects"}
+  [4;36;1mGoogleCalendar Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+
+NoMethodError (undefined method `validate_presence_of' for #<Class:0x25953ec>):
+  /Library/Ruby/Gems/1.8/gems/attr_encrypted-1.0.8/lib/huberry/attr_encrypted/adapters/active_record.rb:48:in `method_missing'
+  app/models/google_calendar.rb:8
+  /lib/hashed_id.rb:31:in `belongs_to'
+  app/models/experiment.rb:4
+  app/controllers/subjects_controller.rb:31:in `new'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (50.8ms)
+Rendered rescues/_request_and_response (1.9ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#new (for 127.0.0.1 at 2010-01-02 01:39:11) [GET]
+  Parameters: {"action"=>"new", "controller"=>"subjects"}
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` IS NULL) LIMIT 1[0m
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/controllers/subjects_controller.rb:32:in `new'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (33.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:39:37) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+Redirected to http://localhost:3000/sessions/denied
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 1) | 302 Found [http://localhost/experiments]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#denied (for 127.0.0.1 at 2010-01-02 01:39:37) [GET]
+  Parameters: {"action"=>"denied", "controller"=>"sessions"}
+Rendering template within layouts/external
+Rendering sessions/denied
+Rendered sessions/_login_box (2.9ms)
+Rendered helpers/_header (53.8ms)
+Completed in 172ms (View: 169, DB: 0) | 200 OK [http://localhost/sessions/denied]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:39:37) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-01-02 01:39:42) [POST]
+  Parameters: {"action"=>"create", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "controller"=>"sessions", "login"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'edave' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'dpitman@gmail.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'edave' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update with optimistic locking (0.4ms)[0m   [0;1m UPDATE `users`
+ SET `last_failed_ip` = '127.0.0.1', `failure` = 1, `lock_version` = 5, `updated_at` = '2010-01-02 06:39:44', `last_failed_at` = '2010-01-02 06:39:43'
+ WHERE id = 1
+ AND `lock_version` = 4
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (login = 'edave' and activated_at IS NOT NULL) LIMIT 1[0m
+Rendering template within layouts/external
+Rendering sessions/new
+Rendered sessions/_login_box (1.0ms)
+Rendered helpers/_header (5.0ms)
+Completed in 1523ms (View: 32, DB: 5) | 200 OK [http://localhost/sessions]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:39:44) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-01-02 01:40:08) [POST]
+  Parameters: {"action"=>"create", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "controller"=>"sessions", "login"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (login = 'edave' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'dpitman@gmail.com' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'edave' AND `users`.id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update with optimistic locking (0.3ms)[0m   [0;1m UPDATE `users`
+ SET `failure` = 0, `lock_version` = 6, `updated_at` = '2010-01-02 06:40:08', `last_authenticated_at` = '2010-01-02 06:40:08'
+ WHERE id = 1
+ AND `lock_version` = 5
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/experiments
+Completed in 35ms (DB: 4) | 302 Found [http://localhost/sessions]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:40:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.2ms)
+Completed in 185ms (View: 37, DB: 9) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:40:09) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#show (for 127.0.0.1 at 2010-01-02 01:40:14) [GET]
+  Parameters: {"action"=>"show", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/show
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSubject Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSlot Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `slots` WHERE (`slots`.experiment_id = 1) [0m
+Rendered helpers/_header (5.1ms)
+Completed in 143ms (View: 77, DB: 12) | 200 OK [http://localhost/experiments/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:40:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:40:18) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+
+NoMethodError (private method `calendars_select_array' called for #<ExperimentsController:0x24e2ddc>):
+  app/controllers/experiments_controller.rb:57:in `edit'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (36.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:40:49) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (21.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.4ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+
+ActionView::TemplateError (wrong number of arguments (0 for 1)) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <select>
+11:  <%= form.select(:id, @calendars, :hashed_id, :name) %>
+12: </select>
+13: <h3>Location</h3>
+14:  <select>
+
+    app/views/experiments/_form_experiment.html.erb:11:in `form'
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (51.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:41:35) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+
+ActionView::TemplateError (wrong number of arguments (0 for 1)) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <select>
+11:  <%= form.select(:id, @calendars, :hashed_id, :name) %>
+12: </select>
+13: <h3>Location</h3>
+14:  <select>
+
+    app/views/experiments/_form_experiment.html.erb:11:in `form'
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (52.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:42:58) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+
+ActionView::TemplateError (wrong number of arguments (0 for 1)) on line #12 of app/views/experiments/_form_experiment.html.erb:
+9:  <h3>Google Calendar</h3>
+10:  <% unless @calendars.nil? %>
+11:  <select>
+12:  <%= form.select(:id, @calendars, :hashed_id, :name) %>
+13: </select>
+14:  <% else %>
+15:  <p>No calendars exist</p>
+
+    app/views/experiments/_form_experiment.html.erb:12:in `form'
+    app/views/experiments/_form_experiment.html.erb:12
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (52.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:43:10) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+
+ActionView::TemplateError (wrong number of arguments (0 for 1)) on line #12 of app/views/experiments/_form_experiment.html.erb:
+9:  <h3>Google Calendar</h3>
+10:  <% unless @calendars == nil %>
+11:  <select>
+12:  <%= form.select(:id, @calendars, :hashed_id, :name) %>
+13: </select>
+14:  <% else %>
+15:  <p>No calendars exist</p>
+
+    app/views/experiments/_form_experiment.html.erb:12:in `form'
+    app/views/experiments/_form_experiment.html.erb:12
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (53.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:43:30) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.4ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+
+ActionView::TemplateError (wrong number of arguments (0 for 1)) on line #12 of app/views/experiments/_form_experiment.html.erb:
+9:  <h3>Google Calendar</h3>
+10:  <% unless @calendars == nil %>
+11:  <select>
+12:  <%= form.collection_select(:id, @calendars, :hashed_id, :name) %>
+13: </select>
+14:  <% else %>
+15:  <p>No calendars exist</p>
+
+    app/views/experiments/_form_experiment.html.erb:12:in `form'
+    app/views/experiments/_form_experiment.html.erb:12
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (52.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:44:17) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.5ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+Rendered experiments/_form_experiment (7.3ms)
+Rendered helpers/_header (6.2ms)
+Completed in 170ms (View: 20, DB: 10) | 200 OK [http://localhost/experiments/321060967/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:44:17) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:44:45) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+Rendered experiments/_form_experiment (6.7ms)
+Rendered helpers/_header (7.1ms)
+Completed in 158ms (View: 21, DB: 9) | 200 OK [http://localhost/experiments/321060967/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:44:45) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:45:13) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.5ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+Rendered experiments/_form_experiment (6.6ms)
+Rendered helpers/_header (80.2ms)
+Completed in 155ms (View: 93, DB: 9) | 200 OK [http://localhost/experiments/321060967/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 01:45:14) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.4ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+Rendered experiments/_form_experiment (4.9ms)
+Rendered helpers/_header (6.0ms)
+Completed in 79ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments/321060967/edit]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:45:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#update (for 127.0.0.1 at 2010-01-02 01:46:06) [PUT]
+  Parameters: {"commit"=>"Create", "action"=>"update", "_method"=>"put", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "id"=>"321060967", "controller"=>"experiments", "experiment"=>{"name"=>"[FILTERED]", "time_length"=>"75", "num_subjects"=>"4", "desc"=>"# Want fun?\r\n\r\nHeck ya!", "compensation"=>"15"}}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mLocation Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `locations`[0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mSQL (19.8ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <option>
+11:  <%= f.collection_select(:id, @calendars, :hashed_id, :name) %>
+12: </option>
+13: <h3>Location</h3>
+14: <option>
+
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    app/controllers/experiments_controller.rb:98:in `update'
+    app/controllers/experiments_controller.rb:92:in `update'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (58.2ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#update (for 127.0.0.1 at 2010-01-02 01:46:44) [PUT]
+  Parameters: {"commit"=>"Create", "action"=>"update", "_method"=>"put", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "id"=>"321060967", "controller"=>"experiments", "experiment"=>{"name"=>"[FILTERED]", "time_length"=>"75", "num_subjects"=>"4", "desc"=>"# Want fun?\r\n\r\nHeck ya!", "compensation"=>"15"}}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mLocation Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `locations`[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <option>
+11:  <%= f.collection_select(:id, @calendars, :hashed_id, :name) %>
+12: </option>
+13: <h3>Location</h3>
+14: <option>
+
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    app/controllers/experiments_controller.rb:102:in `update'
+    app/controllers/experiments_controller.rb:96:in `update'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (57.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#update (for 127.0.0.1 at 2010-01-02 01:46:48) [PUT]
+  Parameters: {"commit"=>"Create", "action"=>"update", "_method"=>"put", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "id"=>"321060967", "controller"=>"experiments", "experiment"=>{"name"=>"[FILTERED]", "time_length"=>"75", "num_subjects"=>"4", "desc"=>"# Want fun?\r\n\r\nHeck ya!", "compensation"=>"15"}}
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mLocation Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `locations`[0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <option>
+11:  <%= f.collection_select(:id, @calendars, :hashed_id, :name) %>
+12: </option>
+13: <h3>Location</h3>
+14: <option>
+
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    app/controllers/experiments_controller.rb:102:in `update'
+    app/controllers/experiments_controller.rb:96:in `update'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (144.0ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#update (for 127.0.0.1 at 2010-01-02 01:47:01) [PUT]
+  Parameters: {"commit"=>"Create", "action"=>"update", "_method"=>"put", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "id"=>"321060967", "controller"=>"experiments", "experiment"=>{"name"=>"[FILTERED]", "time_length"=>"75", "num_subjects"=>"4", "desc"=>"# Want fun?\r\n\r\nHeck ya!", "compensation"=>"15"}}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (3.7ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mLocation Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `locations`[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <option>
+11:  <%= f.collection_select(:id, @calendars, :hashed_id, :name) %>
+12: </option>
+13: <h3>Location</h3>
+14: <option>
+
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    app/controllers/experiments_controller.rb:99:in `update'
+    app/controllers/experiments_controller.rb:93:in `update'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (143.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#update (for 127.0.0.1 at 2010-01-02 01:47:46) [PUT]
+  Parameters: {"commit"=>"Create", "action"=>"update", "_method"=>"put", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "id"=>"321060967", "controller"=>"experiments", "experiment"=>{"name"=>"[FILTERED]", "time_length"=>"75", "num_subjects"=>"4", "desc"=>"# Want fun?\r\n\r\nHeck ya!", "compensation"=>"15"}}
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mLocation Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `locations`[0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <option>
+11:  <%= f.collection_select(:id, @calendars, :hashed_id, :name) %>
+12: </option>
+13: <h3>Location</h3>
+14: <option>
+
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    app/controllers/experiments_controller.rb:102:in `update'
+    app/controllers/experiments_controller.rb:96:in `update'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (142.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#update (for 127.0.0.1 at 2010-01-02 01:47:48) [PUT]
+  Parameters: {"commit"=>"Create", "action"=>"update", "_method"=>"put", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "id"=>"321060967", "controller"=>"experiments", "experiment"=>{"name"=>"[FILTERED]", "time_length"=>"75", "num_subjects"=>"4", "desc"=>"# Want fun?\r\n\r\nHeck ya!", "compensation"=>"15"}}
+  [4;36;1mUser Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mLocation Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `locations`[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.map) on line #11 of app/views/experiments/_form_experiment.html.erb:
+8:  <%= f.text_field :num_subjects, :size => 2 %>
+9:  <h3>Google Calendar</h3>
+10:  <option>
+11:  <%= f.collection_select(:id, @calendars, :hashed_id, :name) %>
+12: </option>
+13: <h3>Location</h3>
+14: <option>
+
+    app/views/experiments/_form_experiment.html.erb:11
+    app/views/experiments/_form_experiment.html.erb:1
+    app/views/experiments/edit.html.erb:3
+    app/controllers/experiments_controller.rb:102:in `update'
+    app/controllers/experiments_controller.rb:96:in `update'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (142.7ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#update (for 127.0.0.1 at 2010-01-02 01:48:02) [PUT]
+  Parameters: {"commit"=>"Create", "action"=>"update", "_method"=>"put", "authenticity_token"=>"iUduVG3+r9Kqlj5F7GqsCGA8Ad62TEHmoL1gIt97fF8=", "id"=>"321060967", "controller"=>"experiments", "experiment"=>{"name"=>"[FILTERED]", "time_length"=>"75", "num_subjects"=>"4", "desc"=>"# Want fun?\r\n\r\nHeck ya!", "compensation"=>"15"}}
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;36;1mRole Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mGoogleCalendar Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.4ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mLocation Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `locations`[0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mGoogleCalendar Load (0.2ms)[0m   [0;1mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;35;1mLocation Load (0.2ms)[0m   [0mSELECT * FROM `locations` ORDER BY building[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `locations` WHERE (`locations`.`id` = 0) [0m
+Rendered experiments/_form_experiment (9.5ms)
+Rendered helpers/_header (6.0ms)
+Completed in 107ms (View: 18, DB: 13) | 200 OK [http://localhost/experiments/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:48:02) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SlotsController#index (for 127.0.0.1 at 2010-01-02 01:52:57) [GET]
+  Parameters: {"action"=>"index", "controller"=>"slots"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` IS NULL) LIMIT 1[0m
+  [4;35;1mSubject Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+
+RuntimeError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id):
+  app/controllers/slots_controller.rb:9:in `index'
+  -e:2:in `load'
+  -e:2
+
+Rendered rescues/_trace (33.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:53:02) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.0ms)
+Completed in 155ms (View: 18, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:53:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:54:26) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.7ms)
+Completed in 73ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:54:26) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:54:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.5ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.0ms)
+Completed in 75ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:54:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:55:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 81ms (View: 18, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:55:11) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:58:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 147ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:58:01) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 01:59:46) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.2ms)
+Completed in 144ms (View: 14, DB: 9) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 01:59:47) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:00:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 73ms (View: 14, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:00:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:01:13) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.4ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.0ms)
+Completed in 75ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:01:13) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:02:06) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.0ms)
+Completed in 75ms (View: 14, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:02:06) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:02:36) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 145ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:02:36) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:02:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.0ms)
+Completed in 74ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:02:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:03:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (4.9ms)
+Completed in 80ms (View: 18, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:03:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:04:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.0ms)
+Completed in 75ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:04:35) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:04:48) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.2ms)
+Completed in 147ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:04:48) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:05:14) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.6ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.4ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (77.6ms)
+Completed in 146ms (View: 86, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:05:15) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:05:42) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.4ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 74ms (View: 14, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:05:42) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:07:26) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.8ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (4.9ms)
+Completed in 76ms (View: 13, DB: 9) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:07:26) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:07:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 149ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:07:54) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:08:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.3ms)
+Completed in 147ms (View: 14, DB: 9) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:08:11) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:10:48) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 74ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:10:48) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-01-02 02:10:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+  [4;36;1mGoogleCalendar Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Load (0.3ms)[0m   [0mSELECT * FROM `experiments` [0m
+Rendering template within layouts/external
+Rendering home/index
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+Rendered helpers/_experiment (7.2ms)
+Rendered helpers/_header (5.3ms)
+Completed in 93ms (View: 52, DB: 4) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:10:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-01-02 02:11:21) [GET]
+  Parameters: {"action"=>"index", "controller"=>"home"}
+  [4;35;1mGoogleCalendar Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `google_calendars`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` [0m
+Rendering template within layouts/external
+Rendering home/index
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+Rendered helpers/_experiment (5.4ms)
+Rendered helpers/_header (5.2ms)
+Completed in 128ms (View: 16, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:11:22) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#index (for 127.0.0.1 at 2010-01-02 02:11:49) [GET]
+  Parameters: {"action"=>"index", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mExperiment Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `experiments`[0m
+  [4;35;1mExperiment Load (0.4ms)[0m   [0mSELECT * FROM `experiments` WHERE (`experiments`.`user_id` = 1) [0m
+Rendering template within layouts/application
+Rendering experiments/index
+Rendered helpers/_header (5.1ms)
+Completed in 72ms (View: 13, DB: 8) | 200 OK [http://localhost/experiments]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:11:50) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 02:11:58) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mGoogleCalendar Load (0.2ms)[0m   [0mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM `locations` ORDER BY building[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+Rendered experiments/_form_experiment (5.4ms)
+Rendered helpers/_header (5.9ms)
+Completed in 78ms (View: 14, DB: 9) | 200 OK [http://localhost/experiments/321060967/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:11:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#edit (for 127.0.0.1 at 2010-01-02 02:12:41) [GET]
+  Parameters: {"action"=>"edit", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mGoogleCalendar Load (0.2ms)[0m   [0mSELECT * FROM `google_calendars` ORDER BY name[0m
+  [4;36;1mLocation Load (0.2ms)[0m   [0;1mSELECT * FROM `locations` ORDER BY building[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/edit
+Rendered experiments/_form_experiment (5.1ms)
+Rendered helpers/_header (6.1ms)
+Completed in 154ms (View: 14, DB: 9) | 200 OK [http://localhost/experiments/321060967/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:12:41) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#show (for 127.0.0.1 at 2010-01-02 02:13:14) [GET]
+  Parameters: {"action"=>"show", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `privileges` ON `roles`.id = `privileges`.role_id WHERE ((`privileges`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering experiments/show
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mSubject Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSlot Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM `slots` WHERE (`slots`.experiment_id = 1) [0m
+Rendered helpers/_header (5.7ms)
+Completed in 168ms (View: 29, DB: 14) | 200 OK [http://localhost/experiments/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:13:15) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:13:19) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (1.8ms)
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (4.9ms)
+Completed in 89ms (View: 43, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:13:19) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:14:08) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (0.6ms)
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (5.1ms)
+Completed in 63ms (View: 15, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:14:08) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:14:15) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (0.6ms)
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (4.9ms)
+Completed in 59ms (View: 14, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:14:15) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:14:47) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (0.6ms)
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (4.9ms)
+Completed in 62ms (View: 14, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:14:47) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:17:37) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (2.0ms)
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (5.1ms)
+Completed in 69ms (View: 20, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:17:37) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:18:11) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.4ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (2.1ms)
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (5.1ms)
+Completed in 142ms (View: 25, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:18:11) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:19:16) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (0.6ms)
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (5.7ms)
+Completed in 60ms (View: 15, DB: 6) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:19:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:20:06) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (0.7ms)
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (4.9ms)
+Completed in 64ms (View: 15, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:20:06) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ExperimentsController#participate (for 127.0.0.1 at 2010-01-02 02:20:20) [GET]
+  Parameters: {"action"=>"participate", "id"=>"321060967", "controller"=>"experiments"}
+  [4;36;1mUser Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+Rendering template within layouts/external
+Rendering experiments/participate
+Rendered helpers/_experiment (0.6ms)
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+Rendered helpers/_header (5.1ms)
+Completed in 63ms (View: 15, DB: 7) | 200 OK [http://localhost/experiments/participate/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:20:20) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:20:26) [GET]
+
+ActionController::RoutingError (No route matches "/subject/new/321060967" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SubjectsController#new (for 127.0.0.1 at 2010-01-02 02:20:48) [GET]
+  Parameters: {"action"=>"new", "id"=>"321060967", "controller"=>"subjects"}
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mGoogleCalendar Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `google_calendars`[0m
+  [4;35;1mExperiment Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `experiments`[0m
+  [4;36;1mExperiment Load (0.3ms)[0m   [0;1mSELECT * FROM `experiments` WHERE (`experiments`.`hashed_id` = '321060967') LIMIT 1[0m
+  [4;35;1mSubject Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `subjects`[0m
+  [4;36;1mSlot Load (0.4ms)[0m   [0;1mSELECT * FROM `slots` WHERE (subject_id is not NULL AND cancelled = 0 and experiment_id = 1) [0m
+  [4;35;1mSlot Load (0.2ms)[0m   [0mSELECT * FROM `slots` WHERE (`slots`.`subject_id` IS NULL) [0m
+Rendering template within layouts/external
+Rendering subjects/new
+Rendered helpers/_header (5.4ms)
+Completed in 157ms (View: 20, DB: 11) | 200 OK [http://localhost/subjects/new/321060967]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-02 02:20:48) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/yui-reset-font.css" with {:method=>:get}):
+  -e:2:in `load'
+  -e:2
+
+Rendering rescues/layout (not_found)

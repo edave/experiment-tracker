@@ -9,27 +9,53 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091223231236) do
+ActiveRecord::Schema.define(:version => 20100101235716) do
 
   create_table "experiments", :force => true do |t|
-    t.string   "name",            :limit => 256
+    t.string   "name",               :limit => 256
     t.binary   "desc"
-    t.integer  "hashed_id",                      :default => 0
+    t.integer  "hashed_id",                         :default => 0
     t.integer  "time_length"
-    t.integer  "user_id",                        :default => 0
-    t.integer  "location_id",                    :default => 0
-    t.integer  "slot_close_time",                :default => 0
-    t.integer  "num_subjects",                   :default => 0
-    t.integer  "compensation",                   :default => 0
-    t.boolean  "open",                           :default => false
+    t.integer  "user_id",                           :default => 0
+    t.integer  "location_id",                       :default => 0
+    t.integer  "slot_close_time",                   :default => 0
+    t.integer  "num_subjects",                      :default => 0
+    t.integer  "compensation",                      :default => 0
+    t.boolean  "open",                              :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version",                   :default => 0
+    t.integer  "lock_version",                      :default => 0
+    t.integer  "google_calendar_id"
   end
 
   add_index "experiments", ["hashed_id"], :name => "index_experiments_on_hashed_id"
   add_index "experiments", ["open"], :name => "index_experiments_on_open"
   add_index "experiments", ["user_id"], :name => "index_experiments_on_user_id"
+
+  create_table "google_calendars", :force => true do |t|
+    t.string   "encrypted_login"
+    t.string   "encrypted_password"
+    t.string   "calendar_id"
+    t.string   "name"
+    t.integer  "hashed_id",          :default => 0
+    t.integer  "lock_version",       :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "google_calendars", ["hashed_id"], :name => "index_google_calendars_on_hashed_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "building"
+    t.string   "room"
+    t.string   "directions"
+    t.integer  "hashed_id",    :default => 0
+    t.integer  "lock_version", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["hashed_id"], :name => "index_locations_on_hashed_id"
 
   create_table "privileges", :force => true do |t|
     t.integer  "hashed_id",           :default => 0

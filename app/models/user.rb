@@ -23,12 +23,11 @@ class User < ActiveRecord::Base
   before_create :make_activation_code
   
   before_destroy :verify_destroy 
-  # after_create :logout
   
   
   has_many :privileges
   has_many :roles, :through => :privileges
-  has_many :payments
+  has_many :experiments
 
   #Whitelist attributes which can be mass-assigned
   attr_accessible :login, :email, :password, :password_confirmation, :supplied_password, :eula, :name, :phone

@@ -41,6 +41,8 @@ class ExperimentsController < ApplicationController
   # GET /experiments/new.xml
   def new
     @experiment = Experiment.new
+    @calendars = self.calendars_select_array()
+    @locations = self.locations_select_array()
     self.use_markdown_editor = true
     
     respond_to do |format|
@@ -52,6 +54,8 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1/edit
   def edit
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    @calendars = self.calendars_select_array()
+    @locations = self.locations_select_array()
     self.use_markdown_editor = true
     unless @experiment.owned_by?(current_user)
       redirect_to :controller=>'experiments', :action=>'list'
@@ -64,12 +68,20 @@ class ExperimentsController < ApplicationController
   def create
     @experiment = Experiment.new(params[:experiment])
     @experiment.user = current_user
+    location = Location.find_by_hashed_id(params[:experiment][:location_id])
+    @experiment.location = location
+    calendar = GoogleCalendar.find_by_hashed_id(params[:experiment][:calendar_id])
+    @experiment.calendar = calendar
     respond_to do |format|
       if @experiment.save
         flash[:notice] = 'Experiment was successfully created.'
         format.html { redirect_to(:controller => :experiments, :action => :show, :id => @experiment.hashed_id) }
         format.xml  { render :xml => @experiment, :status => :created, :location => @experiment }
       else
+        @calendars = self.calendars_select_array()
+    @locations = self.locations_select_array()
+    self.use_markdown_editor = true
+    
         format.html { render :action => "new" }
         format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
       end
@@ -87,6 +99,10 @@ class ExperimentsController < ApplicationController
         format.html { redirect_to(@experiment) }
         format.xml  { head :ok }
       else
+            @calendars = self.calendars_select_array()
+    @locations = self.locations_select_array()
+    self.use_markdown_editor = true
+    
         format.html { render :action => "edit" }
         format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
       end
@@ -103,5 +119,14 @@ class ExperimentsController < ApplicationController
       format.html { redirect_to(experiments_url) }
       format.xml  { head :ok }
     end
+  end
+  
+   
+  def calendars_select_array
+   return GoogleCalendar.find(:all, :order => "name")
+  end
+ 
+  def locations_select_array
+   return Location.find(:all, :order => "building")
   end
 end

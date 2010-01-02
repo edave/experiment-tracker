@@ -1,9 +1,13 @@
 class Experiment < ActiveRecord::Base
     has_hashed_id
     belongs_to :user
+    belongs_to :google_calendar
+    belongs_to :location
     has_many :slots
     validates_presence_of     :name
     validates_presence_of     :desc
+    validates_presence_of     :user
+    validates_presence_of     :location
     validates_numericality_of :time_length, :only_integer => true, :greater_than => 0
     validates_numericality_of :num_subjects, :only_integer => true, :greater_than => 0
     validates_numericality_of :compensation, :only_integer => true, :greater_than => 0
