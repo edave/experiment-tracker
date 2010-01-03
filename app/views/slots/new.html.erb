@@ -1,16 +1,4 @@
 <h1>New slot</h1>
+<%= render :partial => 'form', :locals => {:slot => @slot, :experiment => @experiment} %>
 
-<% form_for(@slot) do |f| %>
-  <%= f.error_messages %>
-	<%= f.calendar_date_select :time, :embedded => true %>
-	<br/>
-	<br/>
-	<b>Experiment:</b><br/>
-	<%= f.select(:experiment_id, Experiment.all.collect {|p| [ p.name, p.id ] }) %>
-
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', slots_path %>
+<%= link_to 'Back', :controller => :slots, :action => :index, :experiment => @experiment.hashed_id %>

@@ -1,6 +1,9 @@
+require 'gcal4ruby'
 class GoogleCalendar < ActiveRecord::Base
   has_hashed_id
   has_many :experiments
+  
+  attr_accessible :login, :password, :name
   
   attr_encrypted :login, :key => ENCRYPTED_ATTR_PASSKEY
   attr_encrypted :password, :key => ENCRYPTED_ATTR_PASSKEY
@@ -8,16 +11,17 @@ class GoogleCalendar < ActiveRecord::Base
   validates_presence_of :login
   validates_presence_of :password
   validates_presence_of :name
-  validates_confirmation_of :password
-  validates_uniqueness_of :login
   
   validate :confirm_login
   validate :confirm_calendar
   
   before_save :find_calendar_id
   
-  def confirm_login
-    return (self.get_service() != nil)  
+  def self.calendars(login, password)
+    service = self.get_service()
+    unless service == nil
+      return GCal4Ruby::Calendar.find(service, :all)
+    end
   end
   
   def find_calendar_id
@@ -25,53 +29,79 @@ class GoogleCalendar < ActiveRecord::Base
     if service
     new_calendar = GCal4Ruby::Calendar.find(service, self.name, {:scope => :first})
     self.calendar_id = new_calendar.id
+    self.name = new_calendar.title
     end
+  end
+  
+  def calendar_html
+    my_calendar = self.calendar
+    html = "Error: calendar not found"
+    unless my_calendar == nil
+      html = my_calendar.to_iframe({:showCalendar => false, :showTimezone => false, :showTitle => false})
+      logger.info("Cal: #{html}")
+    end
+    return html
+  end
+  
+  def confirm_login
+    if self.get_service == nil
+      errors.add(:login, " or password is not correct")
+      return false
+    end
+    return true
   end
   
   def confirm_calendar
     service = self.get_service()
-    if service
-       new_calendar = GCal4Ruby::Calendar.find(service, self.name, {:scope => :first})
-    if new_calendar != nil
-      return true
+    if service != nil and !name.blank?
+      new_calendar = GCal4Ruby::Calendar.find(service, name, {:scope => :first})
+      unless new_calendar == nil
+        return true
+      end
     end
-    end
+    errors.add(:name, ": could not find this calendar")
+      
     return false
-  end
-  
-  def get_service
-    begin
-      service = GCal4Ruby::Service.new
-      authenticated = service.authenticate(self.login, self.password)   
-      return service if authenticated
-    rescue AuthenticationFailed
-      return nil
-    end
-    
-    return nil
   end
   
   def calendar
     service = self.get_service()
-    if service
-    my_calendar = GCal4Ruby::Calendar.get(service, self.calendar_id)
-    return my_calendar
+    if service != nil
+      my_calendar = GCal4Ruby::Calendar.find(service, self.calendar_id, :first)
+      return my_calendar
     end
   end
   
   def add_scheduled_slot(experiment, slot, subject)
     start_time = slot.time
-    endtime = start_time + experiment.time.minutes
+    endtime = start_time + experiment.time_length.minutes
     event = GCal4Ruby::Event.new(calendar)
     event.title = experiment.name + ' - ' + subject.name
     event.content = "An experiment for " + experiment.name \
                   + " was automatically scheduled for this time by the Experiment Signup Tool\n"  \
                   + "Subject: " + subject.name \
                   + "\n\nExperiment Contact " + experiment.user.name + ", " + experiment.user.email
-    event.where = experiment.location.to_h
+    event.where = experiment.location.human_location
     event.start = start_time
     event.end = endtime
     event.save
+  end 
+  
+  def get_service()
+    return GoogleCalendar.get_service(self.login, self.password)
   end
   
+  def self.get_service(login, password)
+    begin
+      service = GCal4Ruby::Service.new
+      authenticated = service.authenticate(login, password) 
+      return service 
+    rescue GCal4Ruby::AuthenticationFailed
+    
+    rescue GCal4Ruby::HTTPPostFailed
+    
+    end
+    
+    return nil
+  end
 end

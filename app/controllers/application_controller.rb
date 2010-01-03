@@ -14,8 +14,7 @@ class ApplicationController < ActionController::Base
   before_filter :login_from_cookie
   before_filter :set_current_user
   
-  
-  helper_method :signed_in_as_admin?
+  layout 'application'
   
   def signed_in_as_admin?
     signed_in? && current_user.admin?
@@ -51,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
   
   
- helper_method :development_env?, :production_env?, :use_markdown_editor=, :use_markdown_editor?
+ helper_method  :signed_in_as_admin?, :controller_page_title, :development_env?, :production_env?, :use_markdown_editor=, :use_markdown_editor?
 
 private
  # This method is run a priori so models can know which user is

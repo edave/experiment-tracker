@@ -20,7 +20,7 @@
 	<td><% unless slot.subject.nil? %>
 		<%= slot.subject.name %>
 		<% else %>
-		<b style="color:#22EE22">OPEN</b>
+		<span class="open">OPEN</span>
 		<% end %>
 	</td>
     <td><%= link_to 'Show', slot %></td>
@@ -36,4 +36,5 @@
 
 <br />
 
-<%= link_to 'New slot', new_slot_path %>
+<%= link_to "Add a slot", :controller => :slots, :action => :new, :id=>experiment.hashed_id%>
+	

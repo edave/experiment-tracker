@@ -4,6 +4,7 @@ class SlotNotifier < ActionMailer::Base
     setup_email(slot)
     layout 'default'
     css 'default'
+    
     @subject    += 'Reminder'
   end
   
@@ -14,6 +15,14 @@ class SlotNotifier < ActionMailer::Base
     
     @subject    += 'Experiment Cancelled'
   end
+  
+  def confirmation(slot)
+    setup_email(slot)
+    layout 'default'
+    css 'default'
+    
+    @subject    += ' Confirmation'
+  end
  
   protected
     def setup_email(slot)
@@ -23,6 +32,7 @@ class SlotNotifier < ActionMailer::Base
       @sent_on     = Time.now
       @body[:participant] = slot.subject
       @body[:slot] = slot
+      @body[:experiment] = slot.experiment
       content_type "text/html"
 
       layout 'default'

@@ -1,12 +1,4 @@
 class SubjectNotifier < ActionMailer::Base
-  
-  def confirmation(subject)
-    setup_email(subject)
-    layout 'default'
-    css 'default'
-    @subject    += ' confirmation'
-  end
-
  
   protected
     def setup_email(subject)

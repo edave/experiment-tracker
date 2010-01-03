@@ -1,0 +1,6 @@
+<h1>Editing <%= @google_calendar.name %></h1>
+
+<%= render :partial => 'form', :locals => {:calendar => @google_calendar} %>
+
+<%= link_to 'Show', @google_calendar %> |
+<%= link_to 'Back', google_calendars_path %>

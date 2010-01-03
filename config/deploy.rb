@@ -7,6 +7,7 @@ set :scm_passphrase, ""
 set :user, "halab"
 ssh_options[:forward_agent] = true
 
+set :sudo_password, 'evilredeye'
 set :branch, "master"
 set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/experiment-signup"
@@ -26,12 +27,12 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
 
  namespace :deploy do
   task :start, :roles => :app do
-    #run "#{sudo} /etc/init.d/nginx start" 
+    run "#{sudo} /etc/init.d/nginx start" 
     run "touch #{current_release}/tmp/restart.txt"
   end
 
   task :stop, :roles => :app do
-    #run "#{sudo} /etc/init.d/nginx stop"
+    run "#{sudo} /etc/init.d/nginx stop"
   end
 
   desc "Restart Application"
@@ -46,6 +47,6 @@ namespace :rooster do
   desc "Reload Rooster Daemon"
   task :reload, :roles => :rooster do
     rails_env = fetch(:rails_env, "production")
-    run "cd #{current_path} && sudo rake RAILS_ENV=#{rails_env} rooster:reload"
+    run "cd #{current_path} && #{sudo} rake RAILS_ENV=#{rails_env} rooster:reload"
   end
 end

@@ -1,12 +1,5 @@
 <h1>Editing slot</h1>
-
-<% form_for(@slot) do |f| %>
-  <%= f.error_messages %>
-	<%= f.calendar_date_select :time, :embedded => true %>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<%= render :partial => 'form', :locals => {:slot => @slot, :experiment => @experiment} %>
 
 <%= link_to 'Show', @slot %> |
 <%= link_to 'Back', slots_path %>

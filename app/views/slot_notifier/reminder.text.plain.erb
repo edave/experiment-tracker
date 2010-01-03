@@ -10,6 +10,6 @@ Location: <%= @experiment.location.human_location %> - <%= @experiment.location.
 <%= @experiment.location.directions %>
 
 Experiment Contact
-Please contact <%= @experiment.user.name %> at <%= @experiment.user.email %> or <%= @experiment.user.phone %> if you have any questions.
+Please contact <%= @experiment.user.name %> at <%= @experiment.user.email %> or <%= number_to_phone(@experiment.user.phone) %> if you have any questions.
 
 

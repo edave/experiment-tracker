@@ -33,13 +33,16 @@ module ActionMailer
       # you can pass in another layout path as 3rd arguments
       def render_layout_template(template, method_name, layout_path = File.join('layouts', 'mailers'))
         extension_parts = method_name.to_s.split('.')[1..-1]
+         #Rails.logger.info("Extension Parts: #{extension_parts}")
+        
+        #orig_extension = method_name.to_s.split('.')[1..-1]
         while !extension_parts.blank?
           file_name = File.join(layout_path, ([@layout.to_s] + extension_parts).join('.'))
           return render_layout(file_name, template) if template_exists?(file_name)
           extension_parts.shift
         end
         # nothing found, complain
-        raise "Layout '#{@layout}' not found"
+        raise "Layout '#{@layout}' not found, path: #{layout_path}, Method: #{method_name}" # \n full:#{file_name}, #{orig_extension}"
       end
       
       def render_layout(file_name, template)
@@ -48,7 +51,8 @@ module ActionMailer
       
       # check if a the given view exists within the app/views folder
       def template_exists?(file_name)
-        full_path = File.join(RAILS_ROOT, '**', 'views', file_name)
+        full_path = Rails.root.join('**', 'views', file_name)
+        Rails.logger.info("Full Path: #{full_path}")
         files = Dir.glob(full_path)
         !files.blank?
       end

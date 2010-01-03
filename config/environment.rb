@@ -33,6 +33,7 @@ Rails::Initializer.run do |config|
   # For Rooster
   config.gem 'daemons', :version => '>=1.0.10'
   config.gem 'eventmachine', :version => '>=0.12.10'
+  config.gem 'chronic', :version => '>=0.2.3', :lib => 'chronic'
   
   # For encrypting model attributes
   config.gem 'attr_encrypted', :version => '~> 1.0.8', 
@@ -78,3 +79,5 @@ Rails::Initializer.run do |config|
       } 
   
 end
+
+#Rooster::Runner.error_handler = lambda { |e| HoptoadNotifier.notify(e) }

@@ -6,7 +6,6 @@ class ExperimentsController < ApplicationController
   # GET /experiments.xml
   def index
     @experiments = Experiment.find_all_by_user_id(current_user.id)
-    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @experiments }
@@ -18,9 +17,11 @@ class ExperimentsController < ApplicationController
   def show
     @experiment = Experiment.find_by_hashed_id(params[:id])
     unless @experiment.owned_by?(current_user)
-      redirect_to :controller=>'experiments', :action=>'list'
+      access_denied
       return 
     end
+    page_title(@experiment.name)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @experiment }
@@ -29,17 +30,23 @@ class ExperimentsController < ApplicationController
   
   def filled
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_title(@experiment.name + " is full")
+    
     render :layout => 'external'
   end
   
   def participate
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_title(@experiment.name)
+    
     render :layout => 'external'
   end
 
   # GET /experiments/new
   # GET /experiments/new.xml
   def new
+    page_title("New Experiment")
+    
     @experiment = Experiment.new
     @calendars = self.calendars_select_array()
     @locations = self.locations_select_array()
@@ -54,6 +61,8 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1/edit
   def edit
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_title(["Editing",@experiment.name])
+    
     @calendars = self.calendars_select_array()
     @locations = self.locations_select_array()
     self.use_markdown_editor = true
@@ -68,10 +77,10 @@ class ExperimentsController < ApplicationController
   def create
     @experiment = Experiment.new(params[:experiment])
     @experiment.user = current_user
-    location = Location.find_by_hashed_id(params[:experiment][:location_id])
+    location = Location.find_by_hashed_id(params[:location_id])
     @experiment.location = location
-    calendar = GoogleCalendar.find_by_hashed_id(params[:experiment][:calendar_id])
-    @experiment.calendar = calendar
+    calendar = GoogleCalendar.find_by_hashed_id(params[:calendar_id])
+    @experiment.google_calendar = calendar
     respond_to do |format|
       if @experiment.save
         flash[:notice] = 'Experiment was successfully created.'
@@ -92,7 +101,10 @@ class ExperimentsController < ApplicationController
   # PUT /experiments/1.xml
   def update
     @experiment = Experiment.find_by_hashed_id(params[:id])
-
+    location = Location.find_by_hashed_id(params[:location_id])
+    @experiment.location = location
+    calendar = GoogleCalendar.find_by_hashed_id(params[:calendar_id])
+    @experiment.google_calendar = calendar
     respond_to do |format|
       if @experiment.can_modify?(current_user) and @experiment.update_attributes(params[:experiment])
         flash[:notice] = 'Experiment was successfully updated.'

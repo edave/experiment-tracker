@@ -1,0 +1,19 @@
+<h1>Listing google_calendars</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @google_calendars.each do |google_calendar| %>
+  <tr>
+  	<td><%= google_calendar.name %></td>
+    <td><%= link_to 'Show', google_calendar %></td>
+    <td><%= link_to 'Edit', edit_google_calendar_path(google_calendar) %></td>
+    <td><%= link_to 'Destroy', google_calendar, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New google_calendar', new_google_calendar_path %>

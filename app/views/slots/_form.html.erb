@@ -1,0 +1,21 @@
+<div class="form">
+<% form_for(slot) do |f| %>
+  <%= f.error_messages %>
+	<%= f.calendar_date_select :time, :embedded => true %>
+	<input type="hidden" name="experiment_id" value="<%= experiment.hashed_id %>" />
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+</div>
+<div class="current_slots">
+<div class="title"><%= experiment.name %> Slots</div>
+<% for existing_slot in experiment.slots do%>
+	<div class="slot"><%= existing_slot.human_time %> - <% unless existing_slot.subject.nil? %>
+		<span class="closed">TAKEN</span>
+		<% else %>
+		<span class="open">OPEN</span>
+		<% end %></div>
+<% end %>
+</div>
+<br class="clear" />

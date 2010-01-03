@@ -1,19 +1,20 @@
 <h1><%= @experiment.name %></h1>
-<div class="attribute"><span class="title">Compensation:</span> $<%= @experiment.compensation %></div>
-<div class="attribute"><span class="title">Time per slot:</span> <%= @experiment.human_time_length %></div>
-<div class="attribute"><span class="title">Max # of participants: <%= @experiment.num_subjects %></span>
-<div class="attribute"><span class="title">Contact:</span> <%= @experiment.user.email %></div>
-<div class="attribute"><span class="title">Location:</span><br />
-Bldg. <br />
-Room <br />
-</div>
-<div class="title">Description:</div>
-<div class="desc"><%= markdown(@experiment.desc) %></div>
-<div><%= link_to 'Preview signup page', :action=>:participate, :id => @experiment.hashed_id %></div>
-<div><%= link_to 'Preview confirmation page', :action=>:participate, :id => @experiment.hashed_id %></div>
+<div class="detail"><span class="title">Compensation:</span> $<%= @experiment.compensation %></div>
+<div class="detail"><span class="title">Time per slot:</span> <%= @experiment.human_time_length %></div>
+<div class="detail"><span class="title">Max # of participants: <%= @experiment.num_subjects %></span>
+<div class="detail"><span class="title">Contact:</span> <%= @experiment.user.email %></div>
+<div class="detail"><span class="title">Location:</span> <%= @experiment.location.human_location if @experiment.location != nil %></div>
+<div class="detail"><span class="title">Calendar:</span> <%= @experiment.google_calendar.name if @experiment.google_calendar != nil %></div>
+<div class="title">Description</div>
+<div class="desc" style="padding:10px; border: 1px dashed #cacaca"><%= markdown(@experiment.desc) %></div>
+<br/>
+<div><%= link_to 'Preview signup page', :action=>:participate, :id => @experiment.hashed_id %></div><br />
+<div><%= link_to 'Preview confirmation page', :controller => :subjects, :action=>:dummy_confirmation, :id => @experiment.hashed_id %></div>
 <div class="slots">
 	<% unless @experiment.slots.empty? %>
-	<%= render :partial => '/slots/slot_table', :locals => {:slots => @experiment.slots} %>
+	<br />
+	<h3>Slots</h3>
+	<%= render :partial => '/slots/slot_table', :locals => {:slots => @experiment.slots, :experiment => @experiment} %>
 	<% else %>
 	<h3>No Slots</h3>
 	<%= link_to "Add a slot", :controller => :slots, :action => :new, :id=>@experiment.hashed_id%>

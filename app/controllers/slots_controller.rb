@@ -5,9 +5,9 @@ class SlotsController < ApplicationController
   # GET /slots
   # GET /slots.xml
   def index
-    @experiment = Experiment.find_by_hashed_id(params[id])
-    @slots = Slot.find(:conditions => {:experiment_id => @experiment.id}, :order => "time")
-    page_title(@experiment.name, "Time Slots")
+    @experiment = Experiment.find_by_hashed_id(params[:experiment])
+    @slots = Slot.find(:all, :conditions => {:experiment_id => @experiment.id}, :order => "time")
+    page_title([@experiment.name, "Time Slots"])
     @filled_slots = Slot.find_by_occupied(@experiment).length
     respond_to do |format|
       format.html # index.html.erb
@@ -37,7 +37,7 @@ class SlotsController < ApplicationController
   def new
     page_title("New Time Slot")
     @slot = Slot.new
-
+    @experiment = Experiment.find_by_hashed_id(params[:id], :include => [:slots])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @slot }
@@ -76,8 +76,10 @@ class SlotsController < ApplicationController
   # POST /slots.xml
   def create
     @slot = Slot.new(params[:slot])
+    @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
+    @slot.experiment = @experiment
     respond_to do |format|
-      if @slot.save
+      if @experiment.can_modify?(current_user) and @slot.save
         flash[:notice] = 'Slot was successfully created.'
         format.html { redirect_to(@slot.experiment) }
         format.xml  { render :xml => @slot, :status => :created, :location => @slot }
@@ -100,6 +102,7 @@ class SlotsController < ApplicationController
         format.html { redirect_to(@slot) }
         format.xml  { head :ok }
       else
+        
         format.html { render :action => "edit" }
         format.xml  { render :xml => @slot.errors, :status => :unprocessable_entity }
       end

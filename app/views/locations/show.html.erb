@@ -1,0 +1,11 @@
+<h1><%= @location.human_location %></h1>
+<br/>
+<h3>Directions</h3>
+<p><%= @location.directions %></p>
+<br />
+<iframe src ="<%= @location.url %>" width="90%" height="450">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+<br class="clear" />
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

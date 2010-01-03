@@ -8,6 +8,6 @@
 <p><%= @experiment.location.directions %></p>
 
 <b>Experiment Contact</b>
-<p>Please contact <%= @experiment.user.name %> at <a href="mailto:<%= @experiment.user.email %>"><%= @experiment.user.email %></a> or <%= @experiment.user.phone %> if you have any questions.</p>
+<p>Please contact <%= @experiment.user.name %> at <a href="mailto:<%= @experiment.user.email %>"><%= @experiment.user.email %></a> or <%= number_to_phone(@experiment.user.phone) %> if you have any questions.</p>
 
 

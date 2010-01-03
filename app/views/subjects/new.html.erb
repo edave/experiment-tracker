@@ -28,6 +28,7 @@
 		<label for="slot-<%= slot.hashed_id %>" ><%= slot.human_time %></label><br />
 	<% end %>
 	<input type="hidden" name="experiment_id" id="experiment_id" value="<%= @experiment.hashed_id%>" />
+ <br />
   <p>
     <%= f.submit 'Sign up!' %>
   </p>

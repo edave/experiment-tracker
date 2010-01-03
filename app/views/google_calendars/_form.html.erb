@@ -1,0 +1,13 @@
+<% form_for(calendar) do |f| %>
+  <%= f.error_messages %>
+  <h3>Name</h3>
+	<%= f.text_field :name, :size => 40 %>
+ <h3>Google Login</h3>
+ <%= f.text_field :login, :size => 40 %>
+ <h3>Password</h3>
+ <%= f.password_field :password, :size => 40 %>
+ 
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

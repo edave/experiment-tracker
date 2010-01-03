@@ -1,7 +1,0 @@
-
-
-Processing SlotsController#index (for 127.0.0.1 at 2009-12-13 17:29:01) [GET]
-  Parameters: {"action"=>"index", "controller"=>"slots"}
-Rendering template within layouts/application
-Rendering slots/index
-Completed in 102ms (View: 84, DB: 7) | 200 OK [http://localhost/slots]

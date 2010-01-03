@@ -30,12 +30,12 @@ class SubjectsController < ApplicationController
   def new
     @experiment = Experiment.find_by_hashed_id(params[:id])
     page_title([@experiment.name, "Sign up"])
-    if Slot.find_by_occupied(@experiment).length > 15
+    if Slot.find_by_occupied(@experiment).length >= @experiment.num_subjects
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
     end
     @subject = Subject.new
-    @slots = Slot.find(:all, :conditions => {:subject_id => nil})
+    @slots = Slot.find_by_available(@experiment)
     @slot_id = params[:slot_id]
     respond_to do |format|
       format.html # new.html.erb
@@ -58,6 +58,21 @@ class SubjectsController < ApplicationController
       page_title([@experiment.name, "Confirmation"])
      end
   end
+  
+  def dummy_confirmation
+    @experiment = Experiment.find_by_hashed_id(params[:id])
+    unless @experiment != nil and @experiment.owned_by?(current_user)
+      access_denied
+      return
+    end
+    page_title([@experiment.name, "Example Confirmation"])
+    @subject = Subject.new(:name => "Test Subject", :email => "test@example.com")
+    @slot = Slot.new(:experiment => @experiment, :time => Time.zone.now)
+     
+    respond_to do |format|
+      format.html {render :action => :confirmation}
+    end
+  end
 
   # POST /subjects
   # POST /subjects.xml
@@ -77,6 +92,7 @@ class SubjectsController < ApplicationController
           @slot.transaction do
             @subject.save
             @slot.subject = @subject
+            SlotNotifier.deliver_confirmation(@slot)
             @slot.save
         
         #flash[:notice] = 'Subject was successfully created.'

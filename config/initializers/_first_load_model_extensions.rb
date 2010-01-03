@@ -5,15 +5,15 @@
 
 require 'attr_encrypted'
 
-require 'lib/hashed_id'
+require "#{Rails.root}/lib/hashed_id"
 
-require 'lib/custom_validations'
+require "#{Rails.root}/lib/custom_validations"
 
-require 'lib/deactivated'
+require "#{Rails.root}/lib/deactivated"
 
-require 'lib/eula'
+require "#{Rails.root}/lib/eula"
 
-require 'lib/random_strings'
+require "#{Rails.root}/lib/random_strings"
 
 class ActiveRecord::Base
   # Give all models access to the current manager & user, both 

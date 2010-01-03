@@ -1,0 +1,9 @@
+<h1><%= @google_calendar.name %></h1>
+<div class="details"><b>Login:</b> <%= @google_calendar.login %></div>
+<div class="details"><b>Password:</b> *****</div>
+<div class="details"><b>Calendar ID:</b><%= @google_calendar.calendar_id %></div>
+<div class="calendar">
+<%= @google_calendar.calendar_html %>
+</div>
+<%= link_to 'Edit', edit_google_calendar_path(@google_calendar) %> |
+<%= link_to 'Back', google_calendars_path %>
