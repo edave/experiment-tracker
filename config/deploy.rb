@@ -7,7 +7,6 @@ set :scm_passphrase, ""
 set :user, "halab"
 ssh_options[:forward_agent] = true
 
-set :sudo_password, 'evilredeye'
 set :branch, "master"
 set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/experiment-signup"
@@ -28,7 +27,7 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
  namespace :deploy do
   task :start, :roles => :app do
     run "#{sudo} /etc/init.d/nginx start" 
-    run "touch #{current_release}/tmp/restart.txt"
+    run "#{sudo} touch #{current_release}/tmp/restart.txt"
   end
 
   task :stop, :roles => :app do
@@ -38,7 +37,7 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
   desc "Restart Application"
   task :restart, :roles => :app do
     run "#{sudo} /etc/init.d/nginx restart" 
-    run "touch #{current_release}/tmp/restart.txt"
+    run "#{sudo} touch #{current_release}/tmp/restart.txt"
   end
 
 end
