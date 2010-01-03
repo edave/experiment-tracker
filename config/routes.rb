@@ -1,9 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :locations
-
-  map.resources :google_calendars
-
-
   map.root :controller => 'home'
 
   
@@ -13,6 +8,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :experiments
   
+  map.resources :privileges
+
+  map.resources :locations
+
+  map.resources :google_calendars
   
   map.resources :preview, :member => {:markdown => :post}
 
@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
                                         :submit_reset_password => :put, :list => :get},  :requirements => { :protocol => 'https' }
   map.resources :users, :member => {:change_password => :post,  :edit => :get},  :requirements => { :protocol => 'https' }
 
-  map.signup '/signup', :controller => 'user', :action => 'new',  :requirements => { :protocol => 'https' }
+  map.signup '/signup', :controller => 'users', :action => 'new',  :requirements => { :protocol => 'https' }
   map.login  '/signin', :controller => 'sessions', :action => 'new', :requirements => { :protocol => 'https' }
   map.logout '/signout', :controller => 'sessions', :action => 'destroy'
 

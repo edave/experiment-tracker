@@ -27,6 +27,14 @@ a:hover {
 color:#222;
 }
 
+div.column-left{
+	float:left;
+}
+div.column-right{
+	float:right;
+}
+
+
 input.slot{
 	margin-top: 10px;
 }
@@ -98,11 +106,16 @@ div#pwd-helper div{
     -moz-box-shadow: 0 0 10px #999;
     box-shadow: 0 0 10px #999;
 }
-div#pwd-helper div.validation-success{
+
+div.validation-success{
 	border: 2px solid #90D888;
+	background-color: #D2F8CD;
+	padding: 4px;
 }
-div#pwd-helper div.validation-error{
+div.validation-error{
 	border: 2px solid #ED7064;
+	background-color: #FADFDD;
+	padding:4px;
 }
 
 div.experiment div.details{
