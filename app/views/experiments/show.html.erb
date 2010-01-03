@@ -5,6 +5,7 @@
 <div class="detail"><span class="title">Contact:</span> <%= @experiment.user.email %></div>
 <div class="detail"><span class="title">Location:</span> <%= @experiment.location.human_location if @experiment.location != nil %></div>
 <div class="detail"><span class="title">Calendar:</span> <%= @experiment.google_calendar.name if @experiment.google_calendar != nil %></div>
+<div class="detail"><span class="title">Open?</span> <% if @experiment.open %><span class="open">YES</span>, participants can signup<% else %><span class="closed">NO</span>, participants cannot see or signup.<% end %></div>
 <div class="title">Description</div>
 <div class="desc" style="padding:10px; border: 1px dashed #cacaca"><%= markdown(@experiment.desc) %></div>
 <br/>

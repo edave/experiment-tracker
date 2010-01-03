@@ -21,6 +21,7 @@
 </select>
  <h3>Time for each experiment slot (minutes)</h3>
  <%= f.text_field :time_length, :size => 2 %>
+ <h3><label for="experiment_open">Open to public?</label> <%= f.check_box :open %></h3>
 	<h3>Description:</h3>
 	<%= f.text_area :desc, :size => 30, :class=>'markItUp' %>
 	

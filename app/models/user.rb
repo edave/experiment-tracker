@@ -164,7 +164,7 @@ class User < ActiveRecord::Base
   
   def generate_recover_in_process_code
     if can_reset_password?
-      self.recover_in_process_code = String.random_hash(login)
+      self.recover_in_process_code = CGI::escape(String.random_hash(login))
       @recover_in_process_code_generated = true
       self.recover_code = nil
       self.recover_requested = false
@@ -406,7 +406,7 @@ class User < ActiveRecord::Base
     # Generates the activation code by creating a random string of letters 20 chars long
     # Test
     def make_activation_code
-      self.activation_code = CGI::escape(String.random(20))
+      self.activation_code =  CGI::escape(String.random_hash(login))
     end 
     
     # Performs quality checks upon password

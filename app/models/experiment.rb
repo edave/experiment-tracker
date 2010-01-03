@@ -11,7 +11,10 @@ class Experiment < ActiveRecord::Base
     validates_numericality_of :time_length, :only_integer => true, :greater_than => 0
     validates_numericality_of :num_subjects, :only_integer => true, :greater_than => 0
     validates_numericality_of :compensation, :only_integer => true, :greater_than => 0
-    
+  
+    def open?
+      self.read_attribute(:open)
+    end
     
     def occupied_slots(day)
       return Slot.find_by_experiment(self.id).find_by_occupied.find_by_day(day)
@@ -40,6 +43,7 @@ class Experiment < ActiveRecord::Base
   end
   
   def can_modify?(user)
-    return (user.id == self.user_id) || user.admin?
+    return false if user == :false || user == nil
+    return (user.id == self.user_id) || user.has_role?(:admin)
   end
 end

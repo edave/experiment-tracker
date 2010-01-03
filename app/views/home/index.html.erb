@@ -2,3 +2,7 @@
 <% for experiment in @experiments do %>
 <%= render :partial => "helpers/experiment", :locals => {:experiment => experiment, :show_signup_link => true, :show_title => true } %>
 <% end %>
+<% if @experiments.empty? %>
+<h2>No experiments available</h2>
+<p>None of our experiments are currently accepting participants, check back later!</p>
+<% end %>

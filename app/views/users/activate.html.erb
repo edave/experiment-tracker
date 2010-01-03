@@ -1,1 +1,7 @@
+<% if @user %>
 <h1>Your email has been confirmed!</h1>
+<p>You're ready to go! Go ahead and sign in</p>
+<% else %>
+<h1>Activation code not found</h1>
+<p>You have not been activated, please check the URL and the email you received</p>
+<% end %>

@@ -11,5 +11,6 @@ test:
   app_name: "Experiment Tool Test"
 production:
  host: "halab-experiments.mit.edu"
+ sender_email_address: "no-reply@halab-experiments.mit.edu"
  use_ssl: true
  app_name: "Experiment Tool"

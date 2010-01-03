@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   authorize_role :admin, {:only => [:list, :show, :destroy]}
   
   def ssl_required?
-    BigliettoConfig.use_ssl
+     return false #BigliettoConfig.use_ssl
   end
   
   # new tenant:
@@ -111,8 +111,6 @@ class UsersController < ApplicationController
     @user = User.find_by_activation_code(params[:id])
     if @user
       @user.activate
-    else
-    
     end
   end
 # Disabled for now (along with its tests) - we'll revisit this later

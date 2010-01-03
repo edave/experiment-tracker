@@ -29,6 +29,10 @@ class SubjectsController < ApplicationController
   # GET /subjects/new.xml
   def new
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    unless !@experiment.open? and @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     page_title([@experiment.name, "Sign up"])
     if Slot.find_by_occupied(@experiment).length >= @experiment.num_subjects
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
@@ -78,6 +82,10 @@ class SubjectsController < ApplicationController
   # POST /subjects.xml
   def create
      @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
+    unless !@experiment.open? and @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     if Slot.find_by_occupied(@experiment).length >= @experiment.num_subjects
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
@@ -115,7 +123,7 @@ class SubjectsController < ApplicationController
   # PUT /subjects/1.xml
   def update
     @subject = Subject.find_by_hashed_id(params[:id])
-
+    
     respond_to do |format|
       if @subject.update_attributes(params[:subject])
         flash[:notice] = 'Subject was successfully updated.'
