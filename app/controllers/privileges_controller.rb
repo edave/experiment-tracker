@@ -32,7 +32,7 @@ class PrivilegesController < ApplicationController
     redirect_to :action => "list"
   end
   
-  def list
+  def index
     page_title("Privileges")
     @privileges = Privilege.find(:all, :include => [:user, :role], :order => "roles.name")
   end
