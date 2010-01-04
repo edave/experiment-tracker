@@ -26,17 +26,17 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
 
  namespace :deploy do
   task :start, :roles => :app do
-    run "#{sudo} /etc/init.d/nginx start" 
+    #run "#{sudo} /etc/init.d/nginx start" 
     run "#{sudo} touch #{current_release}/tmp/restart.txt"
   end
 
   task :stop, :roles => :app do
-    run "#{sudo} /etc/init.d/nginx stop"
+    #run "#{sudo} /etc/init.d/nginx stop"
   end
 
   desc "Restart Application"
   task :restart, :roles => :app do
-    run "#{sudo} /etc/init.d/nginx restart" 
+    #run "#{sudo} /etc/init.d/nginx restart" 
     run "#{sudo} touch #{current_release}/tmp/restart.txt"
   end
 
@@ -44,7 +44,7 @@ end
 
 namespace :rooster do
   desc "Reload Rooster Daemon"
-  task :reload, :roles => :rooster do
+  task :reload, :roles => :app do
     rails_env = fetch(:rails_env, "production")
     run "cd #{current_path} && #{sudo} rake RAILS_ENV=#{rails_env} rooster:reload"
   end

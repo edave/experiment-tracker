@@ -2,17 +2,17 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'home'
 
   
-  map.resources :subjects
+  map.resources :subjects, :requirements => { :protocol => 'https' }
 
   map.resources :slots, :member => {:cancel => :get}
 
-  map.resources :experiments
+  map.resources :experiments, :requirements => { :protocol => 'https' }
   
-  map.resources :privileges
+  map.resources :privileges, :requirements => { :protocol => 'https' }
 
   map.resources :locations
 
-  map.resources :google_calendars
+  map.resources :google_calendars, :requirements => { :protocol => 'https' }
   
   map.resources :preview, :member => {:markdown => :post}
 
