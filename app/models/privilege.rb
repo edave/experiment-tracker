@@ -36,6 +36,7 @@ class Privilege < ActiveRecord::Base
   
   #Do we want to allow users to assign/destroy roles to themselves? 
   def can_assign_privilege
+    return true
     return true if !changed?
     if current_user = User.find(self.current_user_id)
     if current_user.roles.empty?
