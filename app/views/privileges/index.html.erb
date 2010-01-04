@@ -4,17 +4,17 @@
 <table>
     <thead>
         <tr>
-            <%= render :partial => "table_header", :locals => {:name => "ID", :key_name => "id", :flip => false }%>
-            <%= render :partial => "table_header", :locals => {:name => "Username", :key_name => "user.login", :flip => false }%>
-		    <%= render :partial => "table_header", :locals => {:name => "Role", :key_name => "role.name", :flip => false }%>
-		    <%= render :partial => "table_header", :locals => {:name => "Created", :key_name => "created_at", :flip => false }%>
-		    <%= render :partial => "table_header", :locals => {:name => "Updated", :key_name => "updated_at", :flip => false }%>
-            <%= render :partial => "table_header", :locals => {:name => "Modified by", :key_name => "modified_by_user.login", :flip => false }%>
+            <%= render :partial => "helpers/table_header", :locals => {:name => "ID", :key_name => "id", :flip => false }%>
+            <%= render :partial => "helpers/table_header", :locals => {:name => "Username", :key_name => "user.login", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:name => "Role", :key_name => "role.name", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:name => "Created", :key_name => "created_at", :flip => false }%>
+		    <%= render :partial => "helpers/table_header", :locals => {:name => "Updated", :key_name => "updated_at", :flip => false }%>
+            <%= render :partial => "helpers/table_header", :locals => {:name => "Modified by", :key_name => "modified_by_user.login", :flip => false }%>
 
         </td>    
     </thead>
 <% @privileges.each do |privilege| %>
-    <tr <% unless mark_every(2) %>class="odd"<% end %>>
+    <tr >
         <td><a href="/privilege/show/<%= privilege.id %>" ><%= privilege.id%></a></td>
         <td><%= privilege.user.login %></td>
         <td><%= privilege.role.name %></td>
