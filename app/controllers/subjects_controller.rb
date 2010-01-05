@@ -29,7 +29,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new.xml
   def new
     @experiment = Experiment.find_by_hashed_id(params[:id])
-    unless !@experiment.open? and @experiment.can_modify?(current_user)
+    unless @experiment.open? or @experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -56,8 +56,8 @@ class SubjectsController < ApplicationController
   
   def confirmation
      @subject = Subject.find_by_hashed_id(params[:id])
-     unless @subject.nil?
-      @slot = @subject.slot
+     @slot = Slot.find_by_hashed_id(params[:slot_id])
+     unless @subject.nil? or @slot.nil?
       @experiment = @slot.experiment
       page_title([@experiment.name, "Confirmation"])
      end
@@ -65,7 +65,7 @@ class SubjectsController < ApplicationController
   
   def dummy_confirmation
     @experiment = Experiment.find_by_hashed_id(params[:id])
-    unless @experiment != nil and @experiment.owned_by?(current_user)
+    unless @experiment != nil and @experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -82,7 +82,7 @@ class SubjectsController < ApplicationController
   # POST /subjects.xml
   def create
      @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
-    unless !@experiment.open? and @experiment.can_modify?(current_user)
+    unless @experiment.open? or @experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -91,27 +91,29 @@ class SubjectsController < ApplicationController
       return
     end
     @subject = Subject.new(params[:subject])
-    @slots = Slot.find(:all, :conditions => {:subject_id => nil})
+    @slots = Slot.find_by_available(@experiment)
     @slot_id = params[:slot_id]
     @slot = Slot.find_by_hashed_id(@slot_id)
     respond_to do |format|
-      if @subject.valid? and !@slot.nil? and @slot.subject.nil?
+      if @subject.valid? and !@slot.nil? and @slot.subjects.count < @experiment.num_subjects_per_slot
         @subject.transaction do
           @slot.transaction do
+            @subject.slots << @slot
             @subject.save
-            @slot.subject = @subject
-            SlotNotifier.deliver_confirmation(@slot)
-            @slot.save
         
+        SlotNotifier.deliver_confirmation(@slot, @subject)
+            
         #flash[:notice] = 'Subject was successfully created.'
-        format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id) }
-        format.xml  { render :xml => @subject, :status => :created, :location => @subject }
+        format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id, :slot_id => @slot.hashed_id) }
       end
       end
       else
         
         if @slot == nil
           @subject.errors.add(:time_slot, "Please select a time slot to participate in the experiment")
+        end
+        if @slot.subjects.count < @experiment.num_subjects_per_slot
+          @subject.errors.add(:time_slot, "The time you selected is now full, please select another")
         end
         format.html { render :action => "new" }
         format.xml  { render :xml => @subject.errors, :status => :unprocessable_entity }

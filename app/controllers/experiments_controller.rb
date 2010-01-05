@@ -37,7 +37,7 @@ class ExperimentsController < ApplicationController
   
   def participate
     @experiment = Experiment.find_by_hashed_id(params[:id])
-    unless !@experiment.open? and @experiment.can_modify?(current_user)
+    unless @experiment.open? or @experiment.can_modify?(current_user)
       access_denied
       return
     end

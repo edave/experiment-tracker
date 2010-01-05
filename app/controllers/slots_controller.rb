@@ -118,7 +118,7 @@ class SlotsController < ApplicationController
       @slot.destroy
     end
     respond_to do |format|
-      format.html { redirect_to(slots_url) }
+      format.html { redirect_to(@experiment) }
       format.xml  { head :ok }
     end
   end

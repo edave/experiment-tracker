@@ -17,8 +17,10 @@
 <% slots.each do |slot| %>
   <tr>
   	<td><% if slot.cancelled %><s><%= slot.human_time %></s><% else %><%= slot.human_time %><%end%></td>
-	<td><% unless slot.subject.nil? %>
-		<%= slot.subject.name %>
+	<td><% unless slot.subjects.empty? %>
+		<% slot.subjects.each do |subject| %>
+		<%= subject.name %><br />
+		<% end %>
 		<% else %>
 		<span class="open">OPEN</span>
 		<% end %>

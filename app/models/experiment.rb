@@ -11,6 +11,7 @@ class Experiment < ActiveRecord::Base
     validates_numericality_of :time_length, :only_integer => true, :greater_than => 0
     validates_numericality_of :num_subjects, :only_integer => true, :greater_than => 0
     validates_numericality_of :compensation, :only_integer => true, :greater_than => 0
+    validates_numericality_of :num_subjects_per_slot, :only_integer => true, :greater_than => 0
   
     def open?
       self.read_attribute(:open)

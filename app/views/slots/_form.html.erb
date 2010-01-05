@@ -11,7 +11,7 @@
 <div class="current_slots">
 <div class="title"><%= experiment.name %> Slots</div>
 <% for existing_slot in experiment.slots do%>
-	<div class="slot"><%= existing_slot.human_time %> - <% unless existing_slot.subject.nil? %>
+	<div class="slot"><%= existing_slot.human_time %> - <% unless existing_slot.subjects.empty? %>
 		<span class="closed">TAKEN</span>
 		<% else %>
 		<span class="open">OPEN</span>

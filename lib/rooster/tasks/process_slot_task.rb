@@ -8,15 +8,17 @@ class ProcessSlotTask < Rooster::Task
         log "#{self.name} starting at #{Time.now.to_s(:db)}"
         ActiveRecord::Base.connection.reconnect!
         
-        slots = Slot.find(:all, :conditions => ["scheduled_in_background = ? and subject_id > 0", false])
-        for slot in slots do
+        subjects = Subject.find(:all, :conditions => ["scheduled_in_background = ?", false])
+        for subject in subjects do
           #SlotNotifier.deliver_confirmation(slot)
+          for slot in subject.slots
           calendar = slot.experiment.google_calendar
           if calendar != nil?
-            calendar.add_scheduled_slot(slot.experiment, slot, slot.subject)
+            calendar.add_scheduled_slot(slot.experiment, slot, subject)
           end
-          slot.scheduled_in_background = true
-          slot.save
+          subject.scheduled_in_background = true
+          subject.save
+          end
         end
         
       ensure

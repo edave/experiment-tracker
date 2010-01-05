@@ -1,7 +1,9 @@
 <h1><%= @experiment.name %></h1>
 <div class="detail"><span class="title">Compensation:</span> $<%= @experiment.compensation %></div>
 <div class="detail"><span class="title">Time per slot:</span> <%= @experiment.human_time_length %></div>
-<div class="detail"><span class="title">Max # of participants: <%= @experiment.num_subjects %></span>
+<div class="detail"><span class="title">Max # of participants: </span><%= @experiment.num_subjects %></div>
+<div class="detail"><span class="title">Max # of participants per slot: </span><%= @experiment.num_subjects_per_slot %></div>
+
 <div class="detail"><span class="title">Contact:</span> <%= @experiment.user.email %></div>
 <div class="detail"><span class="title">Location:</span> <%= @experiment.location.human_location if @experiment.location != nil %></div>
 <div class="detail"><span class="title">Calendar:</span> <%= @experiment.google_calendar.name if @experiment.google_calendar != nil %></div>

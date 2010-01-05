@@ -9,23 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100101235716) do
+ActiveRecord::Schema.define(:version => 20100104202633) do
 
   create_table "experiments", :force => true do |t|
-    t.string   "name",               :limit => 256
+    t.string   "name",                  :limit => 256
     t.binary   "desc"
-    t.integer  "hashed_id",                         :default => 0
+    t.integer  "hashed_id",                            :default => 0
     t.integer  "time_length"
-    t.integer  "user_id",                           :default => 0
-    t.integer  "location_id",                       :default => 0
-    t.integer  "slot_close_time",                   :default => 0
-    t.integer  "num_subjects",                      :default => 0
-    t.integer  "compensation",                      :default => 0
-    t.boolean  "open",                              :default => false
+    t.integer  "user_id",                              :default => 0
+    t.integer  "location_id",                          :default => 0
+    t.integer  "slot_close_time",                      :default => 0
+    t.integer  "num_subjects",                         :default => 0
+    t.integer  "compensation",                         :default => 0
+    t.boolean  "open",                                 :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version",                      :default => 0
+    t.integer  "lock_version",                         :default => 0
     t.integer  "google_calendar_id"
+    t.integer  "num_subjects_per_slot",                :default => 1
   end
 
   add_index "experiments", ["hashed_id"], :name => "index_experiments_on_hashed_id"
@@ -84,29 +85,37 @@ ActiveRecord::Schema.define(:version => 20100101235716) do
   add_index "roles", ["hashed_id"], :name => "index_roles_on_hashed_id"
 
   create_table "slots", :force => true do |t|
-    t.integer  "subject_id"
     t.integer  "experiment_id"
     t.datetime "time"
-    t.integer  "hashed_id",               :default => 0
-    t.boolean  "cancelled",               :default => false
-    t.boolean  "scheduled_in_background", :default => false
+    t.integer  "hashed_id",      :default => 0
+    t.boolean  "cancelled",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version",            :default => 0
+    t.integer  "lock_version",   :default => 0
+    t.integer  "subjects_count", :default => 0
   end
 
   add_index "slots", ["experiment_id"], :name => "index_slots_on_experiment_id"
   add_index "slots", ["hashed_id"], :name => "index_slots_on_hashed_id"
-  add_index "slots", ["subject_id"], :name => "index_slots_on_subject_id"
+  add_index "slots", ["time"], :name => "index_slots_on_time"
+
+  create_table "slots_subjects", :id => false, :force => true do |t|
+    t.integer "subject_id"
+    t.integer "slot_id"
+  end
+
+  add_index "slots_subjects", ["slot_id"], :name => "index_slots_subjects_on_slot_id"
+  add_index "slots_subjects", ["subject_id"], :name => "index_slots_subjects_on_subject_id"
 
   create_table "subjects", :force => true do |t|
     t.string   "encrypted_email"
     t.string   "encrypted_name"
     t.string   "encrypted_phone_number"
-    t.integer  "hashed_id",              :default => 0
+    t.integer  "hashed_id",               :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lock_version",           :default => 0
+    t.integer  "lock_version",            :default => 0
+    t.boolean  "scheduled_in_background", :default => false
   end
 
   add_index "subjects", ["hashed_id"], :name => "index_subjects_on_hashed_id"
