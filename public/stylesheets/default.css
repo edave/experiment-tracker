@@ -34,11 +34,6 @@ div.column-right{
 	float:right;
 }
 
-
-input.slot{
-	margin-top: 10px;
-}
-
 div.header{
 	margin-left: 6px;
 }
@@ -149,12 +144,24 @@ div.form{
 }
 
 /* Slots */
+div.date-selector{
+	margin-top:4px;
+}
+
+div.date-selector p {
+margin:3px 6px 3px;
+}
+
 span.open{
 	font-weight: bold;
 	color: #69AA81;
 }
 span.closed{
 	color: #1C1C1C;
+}
+
+span.expired{
+	color: #555;
 }
 
 .clear  {

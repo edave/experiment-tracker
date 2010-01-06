@@ -23,10 +23,18 @@
 	Select a time (the experiment will take approximately <%= @experiment.human_time_length %>)<br />
 		<small><%= error_message_on :subject, :time_slot,
                :prepend_text => "Time slot " %></small>
-	<% for slot in @slots %>
-	<input class="slot" type="radio" name="slot_id" id="slot-<%= slot.hashed_id %>" value="<%= slot.hashed_id%>" <% if params[:slot_id].to_i == slot.hashed_id %>checked<%end%> >
-		<label for="slot-<%= slot.hashed_id %>" ><%= slot.human_time %></label><br />
+	<% date = @slots[0].time.to_date %>
+	<div class="date-selector"><span class="title"><%= date.strftime("%b%e (%a)") %></span>
+	<%  for slot in @slots %>
+	<% if slot.time.to_date != date
+		  date = slot.time.to_date %>
+	</div>
+	<div class="date-selector"><span class="title"><%= date.strftime("%b%e (%a)") %></span>
 	<% end %>
+	<p><input class="slot" type="radio" name="slot_id" id="slot-<%= slot.hashed_id %>" value="<%= slot.hashed_id%>" <% if params[:slot_id].to_i == slot.hashed_id %>checked<%end%> >
+		<label for="slot-<%= slot.hashed_id %>" ><%= slot.human_time %></label></p>
+	<% end %>
+	</div>
 	<input type="hidden" name="experiment_id" id="experiment_id" value="<%= @experiment.hashed_id%>" />
  <br />
   <p>

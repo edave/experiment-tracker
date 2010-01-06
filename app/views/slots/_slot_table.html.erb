@@ -20,11 +20,15 @@
 <tbody>
 <% slots.each do |slot| %>
   <tr>
-  	<td><% if slot.cancelled %><s><%= slot.human_time %></s><% else %><%= slot.human_time %><%end%></td>
-	<td><% unless slot.subjects.empty? %>
-		<span class="title"><%= slot.subjects.count %></span> subjects
+  	<td><% if slot.cancelled %><s><%= slot.human_datetime %></s><% else %><%= slot.human_datetime %><%end%></td>
+	<td><% if slot.expired? and slot.empty? %>
+			<span class="expired">EXPIRED</span>
 		<% else %>
-		<span class="open">OPEN</span>
+			<% unless slot.empty? %>
+			<span class="title"><%= slot.subjects.count %></span> subjects
+			<% else %>
+			<span class="open">OPEN</span>
+			<% end %>
 		<% end %>
 	</td>
     <td><%= link_to 'Show', slot %></td>
