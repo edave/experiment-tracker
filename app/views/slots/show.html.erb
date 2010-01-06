@@ -1,9 +1,11 @@
 <%= calendar_date_select :slot, :time %>
-<% unless @slot.subject.nil? %>
-<h2>Subject</h2>
-<%= @slot.subject.name %><br/>
-<a href="mailto:<%= @slot.subject.email %>" ><%= @slot.subject.email %></a><br />
-<a href="callto:+1<%= @slot.subject.phone_number %>"><%= number_to_phone(@slot.subject.phone_number) %></a>
+<% unless !@slot.occupied? %>
+<h2>Subjects</h2>
+<% @slot.subjects.each do |subject| %>
+<%= subject.name %><br/>
+<a href="mailto:<%= subject.email %>" ><%= subject.email %></a><br />
+<a href="callto:+1<%= subject.phone_number %>"><%= number_to_phone(subject.phone_number) %></a><br /><br />
+<% end %>
 <% end %>
 <%= link_to 'Edit', edit_slot_path(@slot) %> |
 <%= link_to 'Back', slots_path %>

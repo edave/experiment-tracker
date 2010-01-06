@@ -5,7 +5,8 @@ class Subject < ActiveRecord::Base
   attr_encrypted :email, :key => ENCRYPTED_ATTR_PASSKEY
   attr_encrypted :phone_number, :key => ENCRYPTED_ATTR_PASSKEY
   
-  has_and_belongs_to_many :slots, :order => :time
+  has_many :appointments
+  has_many :slots, :through => :appointments, :order => :time
   
   after_save :update_slots_counter_cache
   

@@ -97,13 +97,13 @@ class SubjectsController < ApplicationController
     @slot_id = params[:slot_id]
     @slot = Slot.find_by_hashed_id(@slot_id)
     respond_to do |format|
-      if @subject.valid? and !@slot.nil? and @slot.subjects.count < @experiment.num_subjects_per_slot
+      if @subject.valid? and !@slot.nil? and !@slot.filled?
         @subject.transaction do
-          @slot.transaction do
-            @subject.slots << @slot
-            @subject.save
-        
-        SlotNotifier.deliver_confirmation(@slot, @subject)
+          @appointment = Appointment.new(:slot => @slot, :subject => @subject)
+          @appointment.transaction do
+            @subject.save!
+            @appointment.save!
+            SlotNotifier.deliver_confirmation(@slot, @subject)
             
         #flash[:notice] = 'Subject was successfully created.'
         format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id, :slot_id => @slot.hashed_id) }
@@ -114,7 +114,7 @@ class SubjectsController < ApplicationController
         if @slot == nil
           @subject.errors.add(:time_slot, "Please select a time slot to participate in the experiment")
         end
-        if @slot.subjects.count < @experiment.num_subjects_per_slot
+        if @slot.filled?
           @subject.errors.add(:time_slot, "The time you selected is now full, please select another")
         end
         format.html { render :action => "new" }
