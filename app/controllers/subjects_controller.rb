@@ -1,6 +1,7 @@
 class SubjectsController < ApplicationController
   before_filter :login_required, {:except => [:new, :update, :create, :confirmation]}
   authorize_role [:admin, :experimenter], {:except => [:new, :update, :create, :confirmation]}
+  authorize_role :admin, {:only => [:index, :destroy]}
   
   layout 'external'
   
@@ -28,13 +29,14 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   # GET /subjects/new.xml
   def new
-    @experiment = Experiment.find_by_hashed_id(params[:id])
+    @experiment = Experiment.find_by_hashed_id(params[:id], :include => :slots)
     unless @experiment.open? or @experiment.can_modify?(current_user)
       access_denied
       return
     end
     page_title([@experiment.name, "Sign up"])
-    if Slot.find_by_occupied(@experiment).length >= @experiment.num_subjects
+  
+    if @experiment.filled?
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
     end
@@ -86,7 +88,7 @@ class SubjectsController < ApplicationController
       access_denied
       return
     end
-    if Slot.find_by_occupied(@experiment).length >= @experiment.num_subjects
+    if @experiment.filled?
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
     end
@@ -142,7 +144,7 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1.xml
   def destroy
     @subject = Subject.find_by_hashed_id(params[:id])
-    #@subject.destroy
+    @subject.destroy
 
     respond_to do |format|
       format.html { redirect_to(subjects_url) }

@@ -4,11 +4,15 @@
          :locals => {:slots => @slots_in_experiment}
 -%>
 <% num_filled = 0 
+   num_subjects = 0
    for slot in slots
-	num_filled += 1 if slot.occupied?
+	num_filled += 1 if slot.filled?
+    num_subjects += slot.subjects.count
    end
 %>
-<%= num_filled %> of <%= slots.length %> filled<br />
+<%= slots.length %> slots<br />
+<%= num_subjects %> participants<br />
+<%= num_filled %> completely filled<br />
 <table>
 <thead>
 	
@@ -18,9 +22,7 @@
   <tr>
   	<td><% if slot.cancelled %><s><%= slot.human_time %></s><% else %><%= slot.human_time %><%end%></td>
 	<td><% unless slot.subjects.empty? %>
-		<% slot.subjects.each do |subject| %>
-		<%= subject.name %><br />
-		<% end %>
+		<span class="title"><%= slot.subjects.count %></span> subjects
 		<% else %>
 		<span class="open">OPEN</span>
 		<% end %>

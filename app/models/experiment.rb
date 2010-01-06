@@ -20,6 +20,14 @@ class Experiment < ActiveRecord::Base
     def occupied_slots(day)
       return Slot.find_by_experiment(self.id).find_by_occupied.find_by_day(day)
   end
+
+  def filled?
+    subject_count = 0
+    self.slots.each do |slot|
+      subject_count += slot.subjects_count
+    end
+    return subject_count >= self.num_subjects
+  end
   
    def owned_by?(user)
       return user.id == self.user_id

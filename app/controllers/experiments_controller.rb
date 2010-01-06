@@ -15,7 +15,7 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1
   # GET /experiments/1.xml
   def show
-    @experiment = Experiment.find_by_hashed_id(params[:id])
+    @experiment = Experiment.find_by_hashed_id(params[:id], :include => :slots)
     unless !@experiment.nil? or @experiment.can_modify?(current_user)
       access_denied
       return 
