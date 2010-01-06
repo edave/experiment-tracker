@@ -16,7 +16,15 @@ class Slot < ActiveRecord::Base
   named_scope :find_by_full, lambda { |e| {:conditions => {:appointments_count => e.num_subjects_per_slot, :cancelled => false, :experiment_id => e.id}, :order => 'time'} }
   named_scope :find_by_experiment, lambda { |e| { :conditions => {:experiment_id => e}, :include => :experiment}}
   
-  validate :limit_subjects
+  validate :limit_appointments
+  
+  def open?
+    return (!self.expired? and !self.filled?)
+  end
+  
+  def expired?
+    return Time.zone.now+experiment.slot_close_time.minutes > self.time
+  end
   
   def occupied?
     return !self.appointments.empty?
@@ -26,7 +34,11 @@ class Slot < ActiveRecord::Base
     return self.appointments.count >= self.experiment.num_subjects_per_slot
   end
   
-  def limit_subjects
+  def empty?
+    return self.appointments.empty?
+  end
+  
+  def limit_appointments
     unless self.appointments.count <= self.experiment.num_subjects_per_slot
       errors.add("slot", " is filled to capacity")
       return false
@@ -34,12 +46,13 @@ class Slot < ActiveRecord::Base
     return true
   end
   
-  def human_time
+  def human_datetime
     return "---" if time.nil? 
     return time.strftime("%b %e (%a) @ %I:%M %p")
   end
   
-  def update_count
-    update_attribute(:subjects_count, self.subjects.count)
+  def human_time
+    return "---" if time.nil? 
+    return time.strftime("%I:%M %p")
   end
 end

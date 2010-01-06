@@ -8,8 +8,6 @@ class Subject < ActiveRecord::Base
   has_many :appointments
   has_many :slots, :through => :appointments, :order => :time
   
-  after_save :update_slots_counter_cache
-  
   before_validation :clean_phone_number
   
   validates_presence_of :name
@@ -22,14 +20,5 @@ class Subject < ActiveRecord::Base
      self.phone_number = self.phone_number.gsub(/[^\d]/,'')
     end
   end
-  
-  def update_slots_counter_cache
-    unless self.slots.empty?
-      self.slots.each do |slot| 
-      slot.update_count() 
-      slot.save!
-      end
-    end
-   end
   
 end
