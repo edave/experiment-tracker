@@ -1,11 +1,16 @@
 class SlotsController < ApplicationController
   before_filter :login_required
   authorize_role [:admin, :experimenter]
+  authorize_role :admin, {:only => [:cancel]}
   
   # GET /slots
   # GET /slots.xml
   def index
     @experiment = Experiment.find_by_hashed_id(params[:experiment])
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     @slots = Slot.find(:all, :conditions => {:experiment_id => @experiment.id}, :order => "time")
     page_title([@experiment.name, "Time Slots"])
     @filled_slots = Slot.find_by_occupied(@experiment).length
@@ -21,6 +26,10 @@ class SlotsController < ApplicationController
     
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     if @experiment.can_modify?(current_user)
     page_title([@experiment.name, "Slot", @slot.human_time])
     respond_to do |format|
@@ -47,6 +56,10 @@ class SlotsController < ApplicationController
   def cancel
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     page_title([@experiment.name, "Slot Cancelled", @slot.human_time])
     if @experiment.can_modify?(current_user)
     @slot.cancelled = true
@@ -65,6 +78,10 @@ class SlotsController < ApplicationController
     
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     if @experiment.owned_by?(current_user)
     page_title([@experiment.name, "Edit Slot", @slot.human_time])
     else
@@ -77,6 +94,10 @@ class SlotsController < ApplicationController
   def create
     @slot = Slot.new(params[:slot])
     @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     @slot.experiment = @experiment
     respond_to do |format|
       if @experiment.can_modify?(current_user) and @slot.save
@@ -95,7 +116,10 @@ class SlotsController < ApplicationController
   def update
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
-    
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     respond_to do |format|
       if @experiment.can_modify?(current_user) and @slot.update_attributes(params[:slot])
         flash[:notice] = 'Slot was successfully updated.'
@@ -114,6 +138,10 @@ class SlotsController < ApplicationController
   def destroy
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     if @experiment.can_modify?(current_user)
       @slot.destroy
     end

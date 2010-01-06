@@ -4,8 +4,6 @@ class PrivilegesController < ApplicationController
   
   before_filter :login_required
   authorize_role [:admin]
-  authorize_role :admin, {:only => [:new, :list, :show, :create, :destroy]}
-  #ssl_required
   
   def create
      begin

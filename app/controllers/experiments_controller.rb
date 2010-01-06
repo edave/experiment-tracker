@@ -16,7 +16,7 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1.xml
   def show
     @experiment = Experiment.find_by_hashed_id(params[:id])
-    unless @experiment.owned_by?(current_user)
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
       access_denied
       return 
     end
@@ -67,13 +67,14 @@ class ExperimentsController < ApplicationController
     @experiment = Experiment.find_by_hashed_id(params[:id])
     page_title(["Editing",@experiment.name])
     
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     @calendars = self.calendars_select_array()
     @locations = self.locations_select_array()
     self.use_markdown_editor = true
-    unless @experiment.owned_by?(current_user)
-      redirect_to :controller=>'experiments', :action=>'list'
-      return
-    end
+   
   end
 
   # POST /experiments
@@ -105,20 +106,23 @@ class ExperimentsController < ApplicationController
   # PUT /experiments/1.xml
   def update
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     location = Location.find_by_hashed_id(params[:location_id])
     @experiment.location = location
     calendar = GoogleCalendar.find_by_hashed_id(params[:calendar_id])
     @experiment.google_calendar = calendar
     respond_to do |format|
-      if @experiment.can_modify?(current_user) and @experiment.update_attributes(params[:experiment])
+      if @experiment.update_attributes(params[:experiment])
         flash[:notice] = 'Experiment was successfully updated.'
         format.html { redirect_to(@experiment) }
         format.xml  { head :ok }
       else
-            @calendars = self.calendars_select_array()
-    @locations = self.locations_select_array()
-    self.use_markdown_editor = true
-    
+      @calendars = self.calendars_select_array()
+      @locations = self.locations_select_array()
+      self.use_markdown_editor = true
         format.html { render :action => "edit" }
         format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
       end
@@ -129,6 +133,10 @@ class ExperimentsController < ApplicationController
   # DELETE /experiments/1.xml
   def destroy
     @experiment = Experiment.find_by_hashed_id(params[:id])
+        unless !@experiment.nil? or @experiment.can_modify?(current_user)
+          access_denied
+          return
+        end
     @experiment.destroy
 
     respond_to do |format|
