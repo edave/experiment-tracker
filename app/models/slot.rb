@@ -6,6 +6,7 @@ class Slot < ActiveRecord::Base
   has_many :subjects, :through => :appointments
   
   validates_presence_of :experiment
+  validates_presence_of :time
   attr_readonly :experiment
   
   #before_save :update_count
@@ -23,6 +24,7 @@ class Slot < ActiveRecord::Base
   end
   
   def expired?
+    return nil if self.time.nil?
     return Time.zone.now+experiment.slot_close_time.minutes > self.time
   end
   

@@ -1,3 +1,4 @@
-<h1>Open slots</h1>
+<h1>Slots for <%= @experiment.name %></h1>
+
 <%= render :partial => '/slots/slot_table', :locals => {:slots => @experiment.slots, :experiment => @experiment} %>
 	

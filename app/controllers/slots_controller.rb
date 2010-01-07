@@ -7,13 +7,12 @@ class SlotsController < ApplicationController
   # GET /slots.xml
   def index
     @experiment = Experiment.find_by_hashed_id(params[:experiment])
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
     @slots = Slot.find(:all, :conditions => {:experiment_id => @experiment.id}, :order => "time")
     page_title([@experiment.name, "Time Slots"])
-    @filled_slots = Slot.find_by_occupied(@experiment).length
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @slots }
