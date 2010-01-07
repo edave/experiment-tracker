@@ -2,4 +2,4 @@
 <%= render :partial => 'form', :locals => {:slot => @slot, :experiment => @experiment} %>
 
 <%= link_to 'Show', @slot %> |
-<%= link_to 'Back', slots_path %>
+<%= link_to 'Back', @slot.experiment %>
