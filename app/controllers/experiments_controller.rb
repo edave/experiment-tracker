@@ -16,9 +16,9 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1.xml
   def show
     @experiment = Experiment.find_by_hashed_id(params[:id], :include => :slots)
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
-      return 
+      return
     end
     page_title(@experiment.name)
     
@@ -67,7 +67,7 @@ class ExperimentsController < ApplicationController
     @experiment = Experiment.find_by_hashed_id(params[:id])
     page_title(["Editing",@experiment.name])
     
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -106,7 +106,7 @@ class ExperimentsController < ApplicationController
   # PUT /experiments/1.xml
   def update
     @experiment = Experiment.find_by_hashed_id(params[:id])
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -133,10 +133,10 @@ class ExperimentsController < ApplicationController
   # DELETE /experiments/1.xml
   def destroy
     @experiment = Experiment.find_by_hashed_id(params[:id])
-        unless !@experiment.nil? or @experiment.can_modify?(current_user)
-          access_denied
-          return
-        end
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
+      access_denied
+      return
+    end
     @experiment.destroy
 
     respond_to do |format|

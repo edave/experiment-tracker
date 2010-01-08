@@ -2,7 +2,7 @@ class Slot < ActiveRecord::Base
     has_hashed_id
   
   belongs_to :experiment
-  has_many :appointments
+  has_many :appointments, :dependent => :destroy
   has_many :subjects, :through => :appointments
   
   validates_presence_of :experiment

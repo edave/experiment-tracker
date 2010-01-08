@@ -1,4 +1,4 @@
-class ProcessAppointmentTask < Rooster::Task
+aclass ProcessAppointmentTask < Rooster::Task
   
   @tags = ['ProcessAppt'] # CUSTOMIZE:  add additional tags here
   

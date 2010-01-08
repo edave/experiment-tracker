@@ -25,7 +25,7 @@ class SlotsController < ApplicationController
     
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -55,7 +55,7 @@ class SlotsController < ApplicationController
   def cancel
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -77,7 +77,7 @@ class SlotsController < ApplicationController
     
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -93,7 +93,7 @@ class SlotsController < ApplicationController
   def create
     @slot = Slot.new(params[:slot])
     @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -115,7 +115,7 @@ class SlotsController < ApplicationController
   def update
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
@@ -137,7 +137,7 @@ class SlotsController < ApplicationController
   def destroy
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
     @experiment = @slot.experiment
-    unless !@experiment.nil? or @experiment.can_modify?(current_user)
+    if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
