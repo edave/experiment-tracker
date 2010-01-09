@@ -1,4 +1,4 @@
-aclass ProcessAppointmentTask < Rooster::Task
+class ProcessAppointmentTask < Rooster::Task
   
   @tags = ['ProcessAppt'] # CUSTOMIZE:  add additional tags here
   
@@ -23,6 +23,7 @@ aclass ProcessAppointmentTask < Rooster::Task
       ensure
         log "#{self.name} completed at #{Time.now.to_s(:db)}"
         ActiveRecord::Base.connection_pool.release_connection
-      end
+    end
+    end
   end
 end
