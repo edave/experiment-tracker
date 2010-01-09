@@ -27,10 +27,12 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
  namespace :deploy do
   task :start, :roles => :app do
     #run "#{sudo} /etc/init.d/nginx start" 
+    "#{sudo} rake RAILS_ENV=#{rails_env} rooster:launch"
     run "#{sudo} touch #{current_release}/tmp/restart.txt"
   end
 
   task :stop, :roles => :app do
+    "#{sudo} rake RAILS_ENV=#{rails_env} rooster:exit"
     #run "#{sudo} /etc/init.d/nginx stop"
   end
 

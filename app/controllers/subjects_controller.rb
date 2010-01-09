@@ -113,8 +113,7 @@ class SubjectsController < ApplicationController
         
         if @slot == nil
           @subject.errors.add(:time_slot, "Please select a time slot to participate in the experiment")
-        end
-        if @slot.filled?
+        elsif @slot.filled?
           @subject.errors.add(:time_slot, "The time you selected is now full, please select another")
         end
         format.html { render :action => "new" }
