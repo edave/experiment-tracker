@@ -92,32 +92,41 @@ class SubjectsController < ApplicationController
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
     end
-    @subject = Subject.new(params[:subject])
+    existing_subject = Subject.find_by_email(params[:subject][:email])
+    if existing_subject
+      @subject = existing_subject
+    else
+      @subject = Subject.new(params[:subject])
+    end
     @slots = Slot.find_by_available(@experiment)
     @slot_id = params[:slot_id]
     @slot = Slot.find_by_hashed_id(@slot_id)
     respond_to do |format|
+      begin
       if @subject.valid? and !@slot.nil? and !@slot.filled?
         @subject.transaction do
           @appointment = Appointment.new(:slot => @slot, :subject => @subject)
           @appointment.transaction do
             @subject.save!
             @appointment.save!
-            SlotNotifier.deliver_confirmation(@slot, @subject)
-            
-        #flash[:notice] = 'Subject was successfully created.'
-        format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id, :slot_id => @slot.hashed_id) }
-      end
-      end
+             #flash[:notice] = 'Subject was successfully created.'
+          format.html { redirect_to(:action => :confirmation, :id=>@subject.hashed_id, :slot_id => @slot.hashed_id) }
+          end
+       end
       else
-        
+        @subject = Subject.new(params[:subject]) #hack to hide existing subject's info
         if @slot == nil
           @subject.errors.add(:time_slot, "Please select a time slot to participate in the experiment")
         elsif @slot.filled?
           @subject.errors.add(:time_slot, "The time you selected is now full, please select another")
         end
         format.html { render :action => "new" }
-        format.xml  { render :xml => @subject.errors, :status => :unprocessable_entity }
+      end
+    rescue ActiveRecord::RecordInvalid
+        if !@appointment != nil and !@appointment.valid?
+           @subject.errors.add(:appointment, " could not be scheduled, did you already sign up for this?")
+        end
+        format.html { render :action => "new" }
       end
     end
   end

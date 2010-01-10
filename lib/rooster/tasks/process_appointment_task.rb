@@ -16,6 +16,7 @@ class ProcessAppointmentTask < Rooster::Task
           if calendar != nil?
             calendar.add_scheduled_slot(slot.experiment, slot, appointment.subject)
           end
+          AppointmentNotifier.deliver_confirmation(appointment)
           appointment.scheduled_in_background = true
           appointment.save
         end

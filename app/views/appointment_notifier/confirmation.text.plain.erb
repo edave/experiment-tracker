@@ -1,7 +1,7 @@
 <%= @participant.name %>, you are confirmed for <%= @slot.human_time %>
 
 Time:
-You are signed up for an experiment at <%= @slot.human_time %>
+You are signed up for an experiment at <%= @slot.human_datetime %>
 The experiment will last approximately <%= @experiment.human_time_length %> and you will be compensated $<%= @experiment.compensation %> for your participation.
 
 Location: <%= @experiment.location.human_location %> - <%= @experiment.location.url %>
