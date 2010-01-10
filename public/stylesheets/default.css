@@ -133,9 +133,13 @@ div.current_slots{
 }
 
 div.title, span.title{
-	font-size: 1.8em;
+	font-size: 1.2em;
 	font-weight: bold;
 	color:#292B2D;
+}
+
+div.title{
+	font-size: 1.8em;
 }
 
 div.form{

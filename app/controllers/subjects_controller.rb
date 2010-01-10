@@ -35,13 +35,13 @@ class SubjectsController < ApplicationController
       return
     end
     page_title([@experiment.name, "Sign up"])
-  
-    if @experiment.filled?
+  @slots = Slot.find_by_available(@experiment)
+    
+    if @experiment.filled? or @slots.empty?
       redirect_to :controller=>'experiments', :action=>'filled', :id=>@experiment.hashed_id
       return
     end
     @subject = Subject.new
-    @slots = Slot.find_by_available(@experiment)
     @slot_id = params[:slot_id]
     respond_to do |format|
       format.html # new.html.erb

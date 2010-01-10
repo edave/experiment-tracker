@@ -27,11 +27,13 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
  namespace :deploy do
   task :start, :roles => :app do
     #run "#{sudo} /etc/init.d/nginx start" 
-    "cd  #{current_release} && #{sudo} rake RAILS_ENV=#{rails_env} rooster:exit"
+    rails_env = fetch(:rails_env, "production")
+    "cd  #{current_release} && #{sudo} rake RAILS_ENV=#{rails_env} rooster:reload"
     run "#{sudo} touch #{current_release}/tmp/restart.txt"
   end
 
   task :stop, :roles => :app do
+    rails_env = fetch(:rails_env, "production")
     "cd  #{current_release} && #{sudo} rake RAILS_ENV=#{rails_env} rooster:exit"
     #run "#{sudo} /etc/init.d/nginx stop"
   end
@@ -39,6 +41,8 @@ role :db,  "halab-experiments.mit.edu", :primary => true # This is where Rails m
   desc "Restart Application"
   task :restart, :roles => :app do
     #run "#{sudo} /etc/init.d/nginx restart" 
+    rails_env = fetch(:rails_env, "production")
+    "cd  #{current_release} && #{sudo} rake RAILS_ENV=#{rails_env} rooster:reload"
     run "#{sudo} touch #{current_release}/tmp/restart.txt"
   end
 
