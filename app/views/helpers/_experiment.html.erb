@@ -11,6 +11,7 @@
 	<% if show_title %>
 	<div class="title"><%= experiment.name %></div>
 	<% end %>
+	<div class="details" style="font-weight: bold"><%= experiment.user.name %></div>
 	<div class="details"><%= markdown(experiment.desc) %></div>
 	<div class="details"><b>Length:</b> approximately <%= experiment.human_time_length %></div>
 	<div class="details"><b>Compensation:</b> $<%= experiment.compensation%> for participating</div>
