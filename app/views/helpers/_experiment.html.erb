@@ -11,11 +11,13 @@
 	<% if show_title %>
 	<div class="title"><%= experiment.name %></div>
 	<% end %>
-	<div class="details" style="font-weight: bold"><%= experiment.user.name %></div>
+	<div class="details" style="font-weight: bold"><%= mail_to(@experiment.user.email, experiment.user.name, {:encode => 'javascript', :replace_at => ' at ', :replace_dot => ' dot '}) %></div>
 	<div class="details"><%= markdown(experiment.desc) %></div>
 	<div class="details"><b>Length:</b> approximately <%= experiment.human_time_length %></div>
 	<div class="details"><b>Compensation:</b> $<%= experiment.compensation%> for participating</div>
 	<div class="details"><b>Location:</b> This experiment is conducted on the MIT campus, you will receive instructions for the experiment location after signing up.</div>
+	<div class="details">If you have any questions, contact <%= mail_to(@experiment.user.email, experiment.user.name, {:encode => 'javascript', :replace_at => ' at ', :replace_dot => ' dot '}) %></div>
+
 	<% if show_signup_link %>
 	<%= link_to '<div class="details signup">Sign up here</div>', :controller => :subjects, :action => :new, :id => experiment.hashed_id %>
 	<% end %>

@@ -113,6 +113,10 @@ div.validation-error{
 	padding:4px;
 }
 
+div.experiment{
+	margin-bottom:20px;
+}
+
 div.experiment div.details{
 	margin-bottom: 8px;
 }
