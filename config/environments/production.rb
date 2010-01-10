@@ -11,7 +11,8 @@ config.action_view.cache_template_loading            = true
 
 
 HOST = "halab-experiments.mit.edu"
-
+ActionMailer::Base.default_url_options[:host] = "halab-experiments.mit.edu"
+Rooster::Runner.error_handler = lambda { |e| HoptoadNotifier.notify(e) }
 # See everything in the log (default is :info)
 # config.log_level = :debug
 

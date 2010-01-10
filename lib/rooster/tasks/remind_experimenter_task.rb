@@ -6,7 +6,7 @@ class RemindExperimenterTask < Rooster::Task
     s.every "1d", :first_at => Chronic.parse("9:30pm"), :tags => @tags do  # CUSTOMIZE:  reference http://github.com/jmettraux/rufus-scheduler/tree/master
       begin
         log "#{self.name} starting at #{Time.now.to_s(:db)}"
-        ActiveRecord::Base.connection.reconnect!
+        #ActiveRecord::Base.connection.reconnect!
         #experiments = Experiment.find(:all)
         #day = Date.tomorrow
         #for experiment in experiments
@@ -15,7 +15,7 @@ class RemindExperimenterTask < Rooster::Task
         #  end
         #end
         #log "#{self.name} completed at #{Time.now.to_s(:db)}"
-        ActiveRecord::Base.connection_pool.release_connection
+        #ActiveRecord::Base.connection_pool.release_connection
       end
     end
   end

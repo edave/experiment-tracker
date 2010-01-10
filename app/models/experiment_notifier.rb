@@ -1,5 +1,5 @@
 class ExperimentNotifier < ActionMailer::Base
-  
+  layout 'mailers/default'
   def schedule(experiment)
     setup_email(experiment)
     day = Date.tomorrow
@@ -12,13 +12,12 @@ class ExperimentNotifier < ActionMailer::Base
     def setup_email(experiment)
       @recipients  = "#{experiment.user.email}"
       @from        = "noreply@halab-experiments.mit.edu"
-      @subject     = "HALab Study :: "
+      @subject     = experiment.name + ' :: '
       @sent_on     = Time.now
       @body[:experiment] = experiment
       
       content_type "text/html"
 
-      layout 'default'
-      css 'default'
+      css 'email'
     end
 end

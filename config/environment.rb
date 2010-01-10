@@ -23,9 +23,10 @@ Rails::Initializer.run do |config|
   # Date selecter UI
   config.gem "calendar_date_select"
   
-  # Both are for awesome_emailer plugin
-  config.gem 'hpricot', :version => '=0.6.161'
-  config.gem 'csspool', :version => '=0.2.6'
+  # For mail_style (css in emails)
+  config.gem 'nokogiri', :version => '>=1.4.1'
+  config.gem 'css_parser', :version => '>=1.0.0'
+  config.gem 'mail_style', :version => '>= 0.1.2'
   
   # For google calendar
   config.gem 'gcal4ruby'
@@ -79,5 +80,3 @@ Rails::Initializer.run do |config|
       } 
   
 end
-
-#Rooster::Runner.error_handler = lambda { |e| HoptoadNotifier.notify(e) }

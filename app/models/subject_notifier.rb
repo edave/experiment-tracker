@@ -4,7 +4,7 @@ class SubjectNotifier < ActionMailer::Base
     def setup_email(subject)
       @recipients  = "#{subject.email}"
       @from        = "noreply@halab-experiments.mit.edu"
-      @subject     = "HALab Study :: "
+      @subject     = 'HALab Experiments :: '
       @sent_on     = Time.now
       @body[:participant] = subject
       @body[:slot] = subject.slot

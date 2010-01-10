@@ -2,6 +2,11 @@
 
 <ol>
 <% for slot in @slots %>
-<li><b><%= slot.human_time %>:</b> <%= slot.subject.name %></li>
+<li><b><%= slot.human_datetime %></b></li>
+	<ol>
+	<% for appointment in @slots.appointments%>
+	<li><%= appointment.subject.name %></li>
+	<% end %>
+	</ol>
 <% end %>
 </ol>

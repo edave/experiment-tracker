@@ -23,10 +23,6 @@ td{padding:4px}
 
 p{margin:6px}
 
-a:hover {
-color:#222;
-}
-
 div.column-left{
 	float:left;
 }
@@ -88,10 +84,6 @@ div.content{
 	text-decoration:none;
 }
 
-#footer a:hover {
-	color:#fff;
-}
-
 div#pwd-helper{
 	width:240px;
 }
@@ -125,10 +117,6 @@ div.experiment div.signup{
 	font-size:1.35em;
 	font-weight:bold;
 	color: #244882;
-}
-div.experiment div.signup:hover{
-	color: #0B2044;
-	text-decoration: underline;
 }
 
 div.current_slots{

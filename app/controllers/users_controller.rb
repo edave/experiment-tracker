@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   #Chaining in an array is an OR- so approve managers or tenants
   authorize_role [:admin, :experimenter], {:except => [:new, :help, :create, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
-  authorize_role :admin, {:only => [:list, :show, :destroy]}
+  authorize_role :admin, {:only => [:list, :destroy]}
   
   def ssl_required?
      return false #BigliettoConfig.use_ssl
@@ -65,8 +65,7 @@ class UsersController < ApplicationController
     @user = User.find_by_hashed_id(params[:id])
     page_title(["Users", "#{@user.login} (#{@user.hashed_id})"])
     user_id = @user.id if @user
-    if logged_in? && self.user_admin?
-      @user = User.find_by_id(user_id)
+    if logged_in? && (user_id == current_user_id || self.user_admin?)
       #flash[:notice] = "You're showing!"
     else
       flash[:notice] = "Action not allowed"
