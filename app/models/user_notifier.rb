@@ -25,7 +25,7 @@ class UserNotifier < ActionMailer::Base
   def reset(user)
     setup_email(user)
     css 'email'
-    @body[:url] = url_for :host =>  BigliettoConfig.host, :controller => 'user', :action => "reset_password", :recover_code => user.generate_recover_code, :email => user.email, :only_path => false, :protocol => 'https'
+    @body[:url] = url_for :host =>  BigliettoConfig.host, :controller => 'users', :action => "reset_password", :recover_code => user.generate_recover_code, :email => user.email, :only_path => false, :protocol => 'https'
     @subject += 'Change your account password'
   end
   

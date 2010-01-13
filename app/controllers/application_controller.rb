@@ -49,6 +49,7 @@ class ApplicationController < ActionController::Base
     return @use_markdown_editor
   end
   
+  $DEVELOPER_FLASH = Hash.new()
   
  helper_method  :signed_in_as_admin?, :controller_page_title, :development_env?, :production_env?, :use_markdown_editor=, :use_markdown_editor?
 
