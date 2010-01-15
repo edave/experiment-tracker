@@ -5,11 +5,7 @@ class UsersController < ApplicationController
   
   #Chaining in an array is an OR- so approve managers or tenants
   authorize_role [:admin, :experimenter], {:except => [:new, :help, :create, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
-  authorize_role :admin, {:only => [:list, :destroy]}
-  
-  def ssl_required?
-     return false #BigliettoConfig.use_ssl
-  end
+  authorize_role :admin, {:only => [:index, :destroy]}
   
   # new tenant:
   def new
@@ -74,10 +70,13 @@ class UsersController < ApplicationController
     end
   end
   
-  def list
+  def index
     page_title("Users")
     if self.logged_in? and self.user_admin?
       @users = User.find(:all)
+    else
+      access_denied
+      return
     end
   end
 

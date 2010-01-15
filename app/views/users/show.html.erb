@@ -15,7 +15,7 @@
     <% if @user.failure > 0 %>
     <h2>Recent Failures: <%= @user.failure%></h2>
     <p>Last login failure @ <b><%= @user.last_failed_at %></b> using IP <b><%= @user.last_failed_ip %></b></p>
-    <p><a href="/user/unfreeze/<%= @user.hashed_id %>">Unfreeze Account</a></p>
+    <p><a href="/users/unfreeze/<%= @user.hashed_id %>">Unfreeze Account</a></p>
     <% else %>
     <h2>No Recent Login Failures</h2>
     <p>This user has had no unsuccessful login attempts since their last successful login</p>

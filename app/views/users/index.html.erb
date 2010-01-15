@@ -1,0 +1,9 @@
+<table>
+	<thead>
+	</thead>
+	<tbody>
+<% for user in @users do %>
+	<tr><td><%= user.login %></td><td><%= link_to "Show", user %></td></tr>
+<% end %>
+</tbody>
+</table>
