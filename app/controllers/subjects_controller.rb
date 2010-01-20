@@ -62,7 +62,9 @@ class SubjectsController < ApplicationController
      unless @subject.nil? or @slot.nil?
       @experiment = @slot.experiment
       page_title([@experiment.name, "Confirmation"])
-     end
+    else
+      page_title("Confirmation not found")
+    end
   end
   
   def dummy_confirmation

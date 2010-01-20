@@ -1,3 +1,4 @@
+<% if @experiment != nil %>
 <h1>Signup Confirmation</h1>
 <h2><%= @subject.name %>, you are confirmed for <%= @slot.human_time %></h2>
 
@@ -12,3 +13,8 @@
 
 <b>Experiment Contact</b>
 <p>Please contact <%= @experiment.user.name %> at <a href="mailto:<%= @experiment.user.email %>"><%= @experiment.user.email %></a> or <%= number_to_phone(@experiment.user.phone) %> if you have any questions.</p>
+<% else %>
+<h1>Confirmation not found</h1>
+<p>We're sorry, but we could not find your confirmation.</p>
+<p>This could be because the experiment was cancelled, or we did not record your information.</p><i></i>
+<% end %>

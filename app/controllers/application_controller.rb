@@ -49,6 +49,14 @@ class ApplicationController < ActionController::Base
     return @use_markdown_editor
   end
   
+  def render_optional_error_file(status_code)
+    if status_code == :not_found
+      render_404
+    else
+      super
+    end
+  end
+    
   $DEVELOPER_FLASH = Hash.new()
   
  helper_method  :signed_in_as_admin?, :controller_page_title, :development_env?, :production_env?, :use_markdown_editor=, :use_markdown_editor?
@@ -58,5 +66,16 @@ private
  # is interacting with them.
  def set_current_user
   ActiveRecord::Base.current_user_id = self.current_user_id
-end
+ end
+
+  def render_404
+  page_title("404 Error")
+  respond_to do |type| 
+    type.html { render :template => "home/error_404", :layout => 'application', :status => 404 } 
+    type.all  { render :nothing => true, :status => 404 } 
+  end
+    true  # so we can do "render_404 and return"
+  end
+
+
 end

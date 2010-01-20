@@ -23,6 +23,17 @@ td{padding:4px}
 
 p{margin:6px}
 
+strong{font-weight:bold}
+li{
+	list-style-position:inside;}
+ul li{
+	list-style-type:disc;
+}
+
+ol li{
+	list-style-type:decimal;
+}
+
 a:hover {
 color:#222;
 }

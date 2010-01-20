@@ -1,14 +1,23 @@
 class ExperimentsController < ApplicationController
   before_filter :login_required, {:except => [:filled, :participate]}
   authorize_role [:admin, :experimenter], {:except => [:filled, :participate]}
-  
+  authorize_role :admin, {:only => [:admin]}
   # GET /experiments
   # GET /experiments.xml
   def index
     @experiments = Experiment.find_all_by_user_id(current_user.id)
+    page_title("Experiments")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @experiments }
+    end
+  end
+  
+  def admin
+    @experiments = Experiment.find(:all)
+    page_title(["Admin", "Experiments"])
+    respond_to do |format|
+      format.html {render :action => "index" }
     end
   end
 

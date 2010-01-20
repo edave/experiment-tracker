@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :slots, :member => {:cancel => :get}
 
-  map.resources :experiments, :requirements => { :protocol => 'https' }
+  map.resources :experiments, :collection => {:admin => :get }, :requirements => { :protocol => 'https' }
   
   map.resources :privileges, :requirements => { :protocol => 'https' }
 
