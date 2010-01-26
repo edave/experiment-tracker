@@ -9,7 +9,6 @@ class Slot < ActiveRecord::Base
   validates_presence_of :time
   attr_readonly :experiment
   
-  #before_save :update_count
   
   named_scope :find_by_day, lambda { |d| {:conditions  => { :time  => d.beginning_of_day_in_zone..(d+1.day).beginning_of_day_in_zone }, :order=>"time" } }
   named_scope :find_by_occupied, lambda { |e| {:conditions => {:appointments_count => 1..e.num_subjects_per_slot, :cancelled => false, :experiment_id => e.id}, :order => 'time'} }

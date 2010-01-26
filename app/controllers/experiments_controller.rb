@@ -14,10 +14,10 @@ class ExperimentsController < ApplicationController
   end
   
   def admin
-    @experiments = Experiment.find(:all)
+    @experiments = Experiment.find(:all, {:order=>'id'})
     page_title(["Admin", "Experiments"])
     respond_to do |format|
-      format.html {render :action => "index" }
+      format.html
     end
   end
 

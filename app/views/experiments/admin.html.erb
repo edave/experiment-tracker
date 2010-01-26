@@ -1,19 +1,27 @@
-<h1>Listing experiments</h1>
+<h1>Listing all experiments</h1>
 
 <table>
-  <tr>
-  </tr>
+  <th>
+  	<tr>
+  	<td>ID</td>
+	<td>Hash ID</td>
+	<td>Name</td>
+	<td>Owner</td>
+	<td></td>
+	<td></td>
+	<td></td>
+  	</tr>
+  </th>
 
 <% @experiments.each do |experiment| %>
   <tr>
+  	<td><%= experiment.id %></td>
+	<td><%= experiment.hashed_id %></td>
   	<td><%= experiment.name %></td>
+	<td><%= experiment.user.name %></td>
     <td><%= link_to 'Show', experiment %></td>
     <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
     <td><%= link_to 'Destroy', experiment, :confirm => "Destroy #{experiment.name}\nAre you sure?", :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New experiment', new_experiment_path %>

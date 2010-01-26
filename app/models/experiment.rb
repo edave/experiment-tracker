@@ -3,7 +3,7 @@ class Experiment < ActiveRecord::Base
     belongs_to :user
     belongs_to :google_calendar
     belongs_to :location
-    has_many :slots, :order => :time
+    has_many :slots, :order => :time, :dependent => :destroy
     validates_presence_of     :name
     validates_presence_of     :desc
     validates_presence_of     :user
