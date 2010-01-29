@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
           
           redirect_back_or_default('/')
         else
-          redirect_to('/')
+          redirect_to(:controller => :experiments, :action => :index)
         end
         return
       
