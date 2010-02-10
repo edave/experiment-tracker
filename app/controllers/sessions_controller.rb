@@ -6,8 +6,9 @@ class SessionsController < ApplicationController
   # before_filter :login_from_cookie
   filter_parameter_logging :password, :login, :hashedpassword, :temp_salt, :auth_token
   layout "external"
-  #ssl_required :new, :create
- 
+  
+  caches_page :new
+
   # Essentially the "login" screen
   def new
     page_title("Signin")

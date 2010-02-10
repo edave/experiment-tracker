@@ -2,6 +2,10 @@ class ExperimentsController < ApplicationController
   before_filter :login_required, {:except => [:filled, :participate]}
   authorize_role [:admin, :experimenter], {:except => [:filled, :participate]}
   authorize_role :admin, {:only => [:admin]}
+  
+  cache_sweeper :experiment_sweeper, :only => [ :index, :show, :participate ]
+
+  
   # GET /experiments
   # GET /experiments.xml
   def index

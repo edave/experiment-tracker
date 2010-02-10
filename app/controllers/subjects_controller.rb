@@ -5,6 +5,9 @@ class SubjectsController < ApplicationController
   
   layout 'external'
   
+  caches_action :new
+  cache_sweeper :experiment_sweeper, :only => [ :new ]
+
   # GET /subjects
   # GET /subjects.xml
   def index

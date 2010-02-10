@@ -37,7 +37,8 @@ Rails::Initializer.run do |config|
   config.gem 'chronic', :version => '>=0.2.3', :lib => 'chronic'
   
   # For encrypting model attributes
-  config.gem 'attr_encrypted', :version => '~> 1.0.8', 
+  config.gem 'encryptor', :version => '1.0.1', :lib => 'encryptor'
+  config.gem 'attr_encrypted', :version => '=1.0.8', 
   :lib => 'attr_encrypted', :source => 'http://gems.github.com'
   
   # For background tasks
@@ -46,6 +47,9 @@ Rails::Initializer.run do |config|
   # For Markdown text processing
   config.gem 'bluecloth', :version => '~> 2.0.5', :lib => 'bluecloth'
   
+  # For Hoptoadapp error monitoring
+  #config.gem 'hoptoadapp', :version => '>= '
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -65,6 +69,8 @@ Rails::Initializer.run do |config|
   config.active_record.colorize_logging = true
   #config.active_record.default_timezone = :local
   
+  config.action_controller.page_cache_directory = RAILS_ROOT+"/public/cache/"
+
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
