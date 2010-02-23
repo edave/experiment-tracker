@@ -28,6 +28,7 @@ class GoogleCalendar < ActiveRecord::Base
     service = self.get_service()
     if service
     new_calendar = GCal4Ruby::Calendar.find(service, self.name, {:scope => :first})
+    return nil if new_calendar == nil or new_calendar.empty?
     self.calendar_id = new_calendar.id
     self.name = new_calendar.title
     end
@@ -55,11 +56,11 @@ class GoogleCalendar < ActiveRecord::Base
     service = self.get_service()
     if service != nil and !name.blank?
       new_calendar = GCal4Ruby::Calendar.find(service, name, {:scope => :first})
-      unless new_calendar == nil
+      unless new_calendar == nil || new_calendar.empty?
         return true
       end
     end
-    errors.add(:name, ": could not find this calendar")
+    errors.add(:name, " could not find a calendar with this name")
       
     return false
   end

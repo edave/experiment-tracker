@@ -37,8 +37,8 @@ Rails::Initializer.run do |config|
   config.gem 'chronic', :version => '>=0.2.3', :lib => 'chronic'
   
   # For encrypting model attributes
-  config.gem 'encryptor', :version => '1.0.1', :lib => 'encryptor'
-  config.gem 'attr_encrypted', :version => '=1.0.8', 
+  config.gem 'encryptor', :version => '~>1.1.1', :lib => 'encryptor'
+  config.gem 'attr_encrypted', :version => '~>1.1.0', 
   :lib => 'attr_encrypted', :source => 'http://gems.github.com'
   
   # For background tasks

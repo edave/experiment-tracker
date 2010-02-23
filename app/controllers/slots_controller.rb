@@ -57,6 +57,10 @@ class SlotsController < ApplicationController
 
   def cancel
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    if @slot.nil?
+      render_404
+      return
+    end
     @experiment = @slot.experiment
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
@@ -77,8 +81,11 @@ class SlotsController < ApplicationController
 
   # GET /slots/1/edit
   def edit
-    
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    if @slot.nil?
+      render_404
+      return
+    end
     @experiment = @slot.experiment
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
@@ -117,6 +124,10 @@ class SlotsController < ApplicationController
   # PUT /slots/1.xml
   def update
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    if @slot.nil?
+      render_404
+      return
+    end
     @experiment = @slot.experiment
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
@@ -139,6 +150,10 @@ class SlotsController < ApplicationController
   # DELETE /slots/1.xml
   def destroy
     @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    if @slot.nil?
+      render_404
+      return
+    end
     @experiment = @slot.experiment
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied

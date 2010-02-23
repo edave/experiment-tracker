@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_filter :login_required, {:except => [:new, :help, :create, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
   filter_parameter_logging :password, :confirmation_password, :login, :email, :activation_code, :salt, :name, :phone
   
-  #Chaining in an array is an OR- so approve managers or tenants
-  authorize_role [:admin, :experimenter], {:except => [:new, :help, :create, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
-  authorize_role :admin, {:only => [:index, :destroy]}
+  #Chaining in an array is an OR
+  authorize_role [:admin, :experimenter], {:except => [:help, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
+  authorize_role :admin, {:only => [:new, :index, :destroy, :create]}
   
   # new tenant:
   def new
