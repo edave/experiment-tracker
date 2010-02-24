@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   #Whitelist attributes which can be mass-assigned
   attr_accessible :login, :email, :password, :password_confirmation, :supplied_password, :eula, :name, :phone
-  attr_readonly :login, :group_id
+  attr_readonly :login
  
   validates_presence_of     :login
   validates_presence_of     :name

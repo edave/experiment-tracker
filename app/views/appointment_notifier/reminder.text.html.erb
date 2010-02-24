@@ -4,7 +4,7 @@ This is a reminder that you are signed up for an experiment with the Humans and 
 
 <h2>Time: <%= @slot.human_datetime %></h2>
 
-<p>The experiment will last approximately <%= @experiment.human_time_length %> and you will be compensated $<%= @experiment.compensation %> for your participation.</p>
+<p>The experiment will last approximately <%= @experiment.human_time_length %><% if @experiment.compensation > 0 %> and you will be compensated $<%= @experiment.compensation %><%else%>, no compensation is provided<%end%> for your participation.</p>
 
 <h2>Location: <a href="<%= @experiment.location.url %>"><%= @experiment.location.human_location %></a></h2>
 <p><%= @experiment.location.directions %></p>

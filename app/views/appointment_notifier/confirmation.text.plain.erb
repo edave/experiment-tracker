@@ -2,7 +2,7 @@
 
 Time:
 You are signed up for an experiment at <%= @slot.human_datetime %>
-The experiment will last approximately <%= @experiment.human_time_length %> and you will be compensated $<%= @experiment.compensation %> for your participation.
+The experiment will last approximately <%= @experiment.human_time_length %><% if @experiment.compensation > 0 %> and you will be compensated $<%= @experiment.compensation %><%else%>, no compensation is provided<%end%> for your participation.
 
 Location: <%= @experiment.location.human_location %> - <%= @experiment.location.url %>
 <%= @experiment.location.directions %>
