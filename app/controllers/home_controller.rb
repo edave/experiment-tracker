@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   
   def index
-    @experiments = Experiment.find(:all, :conditions=>{:open => true})
+    @groups = Group.find(:all)
   end
   
 end

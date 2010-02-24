@@ -1,8 +1,13 @@
-<p>Welcome to the Humans & Automation Lab site for signing up to participate in experiments</p>
-<% for experiment in @experiments do %>
-<%= render :partial => "helpers/experiment", :locals => {:experiment => experiment, :show_signup_link => true, :show_title => true } %>
-<% end %>
-<% if @experiments.empty? %>
-<h2>No experiments available</h2>
-<p>None of our experiments are currently accepting participants, check back later!</p>
+<% @groups.each do |group| %>
+<% experiments = group.open_experiments %>
+<h2><img src="/<%= group.logo_file_name%>" style="vertical-align:middle" /><%= group.name %></h2>
+	<% for experiment in experiments do %>
+		<%= render :partial => "helpers/experiment", :locals => {:experiment => experiment, :show_signup_link => true, :show_title => true } %>
+	<% end %>
+	<% if experiments.empty? %>
+		<h3>No experiments available</h3>
+		<p>None of our experiments are currently accepting participants, check back later!</p>
+	<% end %>
+<br />
+<br />
 <% end %>
