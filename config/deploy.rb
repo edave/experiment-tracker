@@ -55,3 +55,10 @@ namespace :rooster do
     run "cd #{current_path} && #{sudo} rake RAILS_ENV=#{rails_env} rooster:reload"
   end
 end
+
+
+Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
+  $: << File.join(vendored_notifier, 'lib')
+end
+
+require 'hoptoad_notifier/capistrano'

@@ -48,7 +48,7 @@ Rails::Initializer.run do |config|
   config.gem 'bluecloth', :version => '~> 2.0.5', :lib => 'bluecloth'
   
   # For Hoptoadapp error monitoring
-  #config.gem 'hoptoadapp', :version => '>= '
+  config.gem 'hoptoad_notifier', :version => '>=2.2.0'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
