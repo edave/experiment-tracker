@@ -1,0 +1,10 @@
+<% form_for(group) do |f| %>
+  <%= f.error_messages %>
+  <h3>Name</h3>
+	<%= f.text_field :name, :size => 25 %>
+  <h3>Logo</h3>
+  	<%= f.text_field :logo_file_name, :size => 25 %>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

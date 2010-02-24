@@ -27,11 +27,14 @@ class User < ActiveRecord::Base
   
   has_many :privileges
   has_many :roles, :through => :privileges
+  
+  # Custom habtms
   has_many :experiments
+  belongs_to :group
 
   #Whitelist attributes which can be mass-assigned
   attr_accessible :login, :email, :password, :password_confirmation, :supplied_password, :eula, :name, :phone
-  attr_readonly :login
+  attr_readonly :login, :group_id
  
   validates_presence_of     :login
   validates_presence_of     :name

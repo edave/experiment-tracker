@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
       @my_page_title += value
     end
   end
+  
+  def page_group(value)
+    @my_group = value
+  end
  
  def development_env?
    ENV['RAILS_ENV'] == 'development'

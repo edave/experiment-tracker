@@ -1,0 +1,17 @@
+<h2><%= @group.name %></h2>
+<p>
+	<b>Logo: </b> <%= @group.logo_file_name %>
+	<br /><br />
+	<img src="/<%= @group.logo_file_name %>" />
+</p>
+<h4>Members</h4>
+<div>
+	<ul>
+	<% @group.users.each do |user| %>
+	<li><%= user.name %> (<%= user.login %>)</li>
+	<% end %>
+	</ul>
+</div>
+<br />
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

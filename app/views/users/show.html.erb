@@ -23,6 +23,9 @@
 </div>
 <br />
 <div class="box">
+	<h2>Group: <%= @user.group.name %></h2>
+</div>
+<div class="box">
     <h2>Roles</h2>
     <% @user.privileges.each do |privilege| %>
     <b><%= privilege.role.name %></b> &raquo; last updated on <%= privilege.updated_at %>, last modified by <%= privilege.modified_by_user.login %>

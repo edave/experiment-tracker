@@ -1,7 +1,7 @@
 class SubjectsController < ApplicationController
   before_filter :login_required, {:except => [:new, :update, :create, :confirmation]}
   #authorize_role [:admin, :experimenter], {:except => [:new, :update, :create, :confirmation]}
-  #authorize_role :admin, {:only => [:index, :destroy]}
+  authorize_role :admin, {:only => [:index, :destroy]}
   
   layout 'external'
   
@@ -33,6 +33,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/new.xml
   def new
     @experiment = Experiment.find_by_hashed_id(params[:id], :include => :slots)
+    page_group(@experiment.user.group)
+    
     unless @experiment.open? or @experiment.can_modify?(current_user)
       access_denied
       return
@@ -64,6 +66,8 @@ class SubjectsController < ApplicationController
      @slot = Slot.find_by_hashed_id(params[:slot_id])
      unless @subject.nil? or @slot.nil?
       @experiment = @slot.experiment
+      page_group(@experiment.user.group)
+    
       page_title([@experiment.name, "Confirmation"])
     else
       page_title("Confirmation not found")
@@ -72,6 +76,8 @@ class SubjectsController < ApplicationController
   
   def dummy_confirmation
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_group(@experiment.user.group)
+    
     unless @experiment != nil and @experiment.can_modify?(current_user)
       access_denied
       return
@@ -89,6 +95,8 @@ class SubjectsController < ApplicationController
   # POST /subjects.xml
   def create
      @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
+     page_group(@experiment.user.group)
+    
     unless @experiment.open? or @experiment.can_modify?(current_user)
       access_denied
       return

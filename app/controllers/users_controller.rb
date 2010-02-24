@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def new
     page_title('Signup')
     @user = User.new()
+    @groups = Group.find(:all)
     #unless allow_user_signup || ( logged_in? && user_admin? )
     #   redirect_back_or_default("/")
     #end
@@ -82,6 +83,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    group = Group.find_by_hashed_id(params[:group_id])
+    @user.group_id = group.id unless group.nil?
     User.transaction do
         Privilege.transaction do
         @user.save!

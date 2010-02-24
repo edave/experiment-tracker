@@ -10,6 +10,7 @@ class ExperimentsController < ApplicationController
   # GET /experiments.xml
   def index
     @experiments = Experiment.find_all_by_user_id(current_user.id)
+    page_group(current_user.group)
     page_title("Experiments")
     respond_to do |format|
       format.html # index.html.erb
@@ -29,6 +30,8 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1.xml
   def show
     @experiment = Experiment.find_by_hashed_id(params[:id], :include => :slots)
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -43,6 +46,8 @@ class ExperimentsController < ApplicationController
   
   def filled
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_group(@experiment.user.group)
+    
     page_title(@experiment.name + " is full")
     
     render :layout => 'external'
@@ -50,6 +55,8 @@ class ExperimentsController < ApplicationController
   
   def participate
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_group(@experiment.user.group)
+    
     unless @experiment.open? or @experiment.can_modify?(current_user)
       access_denied
       return
@@ -65,6 +72,8 @@ class ExperimentsController < ApplicationController
     page_title("New Experiment")
     
     @experiment = Experiment.new
+    page_group(current_user.group)
+    
     @calendars = self.calendars_select_array()
     @locations = self.locations_select_array()
     self.use_markdown_editor = true
@@ -78,6 +87,8 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1/edit
   def edit
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_group(@experiment.user.group)
+    
     page_title(["Editing",@experiment.name])
     
     if @experiment.nil? or !@experiment.can_modify?(current_user)
@@ -94,7 +105,10 @@ class ExperimentsController < ApplicationController
   # POST /experiments.xml
   def create
     @experiment = Experiment.new(params[:experiment])
+    
     @experiment.user = current_user
+    page_group(@experiment.user.group)
+    
     location = Location.find_by_hashed_id(params[:location_id])
     @experiment.location = location
     calendar = GoogleCalendar.find_by_hashed_id(params[:calendar_id])
@@ -119,6 +133,8 @@ class ExperimentsController < ApplicationController
   # PUT /experiments/1.xml
   def update
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -146,6 +162,8 @@ class ExperimentsController < ApplicationController
   # DELETE /experiments/1.xml
   def destroy
     @experiment = Experiment.find_by_hashed_id(params[:id])
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return

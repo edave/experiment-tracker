@@ -1,0 +1,6 @@
+<h1>Editing <%= @group.human_location %></h1>
+
+<%= render :partial => 'form', :locals => {:group => @group} %>
+
+<%= link_to 'Show', @group %> |
+<%= link_to 'Back', groups_path %>

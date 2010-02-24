@@ -13,7 +13,7 @@ class ProcessAppointmentTask < Rooster::Task
           #SlotNotifier.deliver_confirmation(slot)
           slot = appointment.slot
           calendar = slot.experiment.google_calendar
-          if calendar != nil?
+          if calendar != nil
             calendar.add_scheduled_slot(slot.experiment, slot, appointment.subject)
           end
           AppointmentNotifier.deliver_confirmation(appointment)

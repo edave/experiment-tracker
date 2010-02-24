@@ -10,7 +10,7 @@ class Experiment < ActiveRecord::Base
     validates_presence_of     :location
     validates_numericality_of :time_length, :only_integer => true, :greater_than => 0
     validates_numericality_of :num_subjects, :only_integer => true, :greater_than => 0
-    validates_numericality_of :compensation, :only_integer => true, :greater_than => 0
+    validates_numericality_of :compensation, :only_integer => true, :greater_than => -1
     validates_numericality_of :num_subjects_per_slot, :only_integer => true, :greater_than => 0
   
     def open?

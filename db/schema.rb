@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100106022630) do
+ActiveRecord::Schema.define(:version => 20100223232238) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "subject_id"
@@ -56,6 +56,23 @@ ActiveRecord::Schema.define(:version => 20100106022630) do
   end
 
   add_index "google_calendars", ["hashed_id"], :name => "index_google_calendars_on_hashed_id"
+
+  create_table "groups", :force => true do |t|
+    t.integer  "owner_id",        :default => 0
+    t.string   "name"
+    t.string   "url"
+    t.string   "logo_file_name"
+    t.string   "logo_file_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.integer  "hashed_id",       :default => 0
+    t.integer  "lock_version",    :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["hashed_id"], :name => "index_groups_on_hashed_id"
+  add_index "groups", ["owner_id"], :name => "index_groups_on_owner_id"
 
   create_table "locations", :force => true do |t|
     t.string   "building"
@@ -159,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20100106022630) do
     t.integer  "lock_version",                             :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id",                                 :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -7,6 +7,8 @@ class SlotsController < ApplicationController
   # GET /slots.xml
   def index
     @experiment = Experiment.find_by_hashed_id(params[:experiment])
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -28,6 +30,8 @@ class SlotsController < ApplicationController
       return
     end
     @experiment = @slot.experiment
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -49,6 +53,8 @@ class SlotsController < ApplicationController
     page_title("New Time Slot")
     @slot = Slot.new
     @experiment = Experiment.find_by_hashed_id(params[:id], :include => [:slots])
+    page_group(@experiment.user.group)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @slot }
@@ -62,6 +68,8 @@ class SlotsController < ApplicationController
       return
     end
     @experiment = @slot.experiment
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -87,6 +95,8 @@ class SlotsController < ApplicationController
       return
     end
     @experiment = @slot.experiment
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -103,6 +113,8 @@ class SlotsController < ApplicationController
   def create
     @slot = Slot.new(params[:slot])
     @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -129,6 +141,8 @@ class SlotsController < ApplicationController
       return
     end
     @experiment = @slot.experiment
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
@@ -155,6 +169,8 @@ class SlotsController < ApplicationController
       return
     end
     @experiment = @slot.experiment
+    page_group(@experiment.user.group)
+    
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return

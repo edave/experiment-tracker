@@ -32,6 +32,7 @@ class AppointmentNotifier < ActionMailer::Base
       @body[:participant] = subject
       @body[:slot] = slot
       @body[:experiment] = slot.experiment
+      @body[:logo_path] = slot.experiment.user.group.logo_file_name
       content_type "text/html"
 
       css 'email'
