@@ -80,7 +80,7 @@ class GoogleCalendar < ActiveRecord::Base
     event.title = experiment.name + ' - ' + subject.name
     event.content = "An experiment for " + experiment.name \
                   + " was automatically scheduled for this time by the Experiment Signup Tool\n"  \
-                  + "Subject: " + subject.name + \ 
+                  + "Subject: " + subject.name \
                   + "\n\nExperiment Contact " + experiment.user.name + ", " + experiment.user.email
     event.where = experiment.location.human_location
     event.start_time = start_time
