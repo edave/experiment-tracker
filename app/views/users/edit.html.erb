@@ -9,7 +9,7 @@
     :message => "We had a problem with some of what you entered." %>
     <p>
         <form class="box" id="user_edit" method="post" action="/user/update/<%= @user.hashed_id if @user %>">
-            <%= request_forgery_protection_tag %>
+            <%= forgery_protection_tag %>
             <small>
                 <%= error_message_on "user", "supplied_password", :prepend_text => "Current Password " %>
             </small>
