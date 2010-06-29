@@ -1,5 +1,6 @@
 <% @groups.each do |group| %>
 <% experiments = group.open_experiments %>
+<% break if experiments.empty? %>
 <h2><img src="/<%= group.logo_file_name%>" style="vertical-align:middle" /><%= group.name %></h2>
 	<% for experiment in experiments do %>
 		<%= render :partial => "helpers/experiment", :locals => {:experiment => experiment, :show_signup_link => true, :show_title => true } %>

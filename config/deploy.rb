@@ -4,7 +4,7 @@ set :repository,  "git@github.com:edave/experiment-tracker.git"
 
 set :scm, :git
 set :scm_passphrase, ""
-set :user, "halab"
+set :user, "rails"
 ssh_options[:forward_agent] = true
 
 set :branch, "master"
