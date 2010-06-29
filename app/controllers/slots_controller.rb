@@ -104,7 +104,7 @@ class SlotsController < ApplicationController
     if @experiment.owned_by?(current_user)
     page_title([@experiment.name, "Edit Slot", @slot.human_time])
     else
-    redirect_to(:controller => :slots, :action => :index, :id=> @experiment.hashed_id)
+    redirect_to(:controller => :slots, :action => :index, :experiment=> @experiment.hashed_id)
     end
   end
 
