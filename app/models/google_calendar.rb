@@ -68,7 +68,7 @@ class GoogleCalendar < ActiveRecord::Base
   def calendar
     service = self.get_service()
     if service != nil
-      my_calendar = GCal4Ruby::Calendar.find(service, self.calendar_id, :first)
+      my_calendar = GCal4Ruby::Calendar.find(service, {:id=>self.calendar_id})
       return my_calendar
     end
   end
