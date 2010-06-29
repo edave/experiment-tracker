@@ -26,12 +26,12 @@
 	<% show_slot_nums = false 
 	   show_slot_nums = true if @experiment.num_subjects_per_slot > 1
 	   date = @slots[0].time.to_date %>
-	<div class="date-selector"><span class="title"><%= date.strftime("%b%e (%a)") %></span>
+	<div class="date-selector"><span class="title"><%= date.strftime("%b %e (%a)") %></span>
 	<%  for slot in @slots %>
 	<% if slot.time.to_date != date
 		  date = slot.time.to_date %>
 	</div>
-	<div class="date-selector"><span class="title"><%= date.strftime("%b%e (%a)") %></span>
+	<div class="date-selector"><span class="title"><%= date.strftime("%b %e (%a)") %></span>
 	<% end %>
 	<p><input class="slot" type="radio" name="slot_id" id="slot-<%= slot.hashed_id %>" value="<%= slot.hashed_id%>" <% if params[:slot_id].to_i == slot.hashed_id %>checked<%end%> >
 		<% slot_openings = @experiment.num_subjects_per_slot - slot.appointments.count %>
