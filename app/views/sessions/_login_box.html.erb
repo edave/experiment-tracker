@@ -2,7 +2,7 @@
 <div class="validation-error"><%= flash[:warning] %></div>
 <% end %>
 	<p><form class="box" id="session" method="post" action="/sessions">
-	<%= request_forgery_protection_tag %>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
 		
     <label for="login">Username:</label><br />
     <input autocomplete=off name="login" type="text" value="" /><br /><br />

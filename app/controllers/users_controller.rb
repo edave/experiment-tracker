@@ -151,7 +151,7 @@ class UsersController < ApplicationController
       UserNotifier.deliver(email)
     else
       flash[:error] = "The login and/or email address you gave could not be found, please try again."
-      redirect_to :controller=> 'user', :action=>'reset'
+      redirect_to :controller=> 'users', :action=>'reset'
       return
     end
     render :layout => 'external'
