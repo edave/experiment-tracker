@@ -1,11 +1,11 @@
 <% if @experiment != nil %>
 <h1>Signup Confirmation</h1>
-<h2><%= @subject.name %>, you are confirmed for <%= @slot.human_time %></h2>
+<h2><%= @subject.name %>, you are confirmed for <%= @slot.human_datetime %></h2>
 
 <p>An email has been sent to <%= @subject.email %> with a copy of this information.</p>
 
 <h2>Time</h2>
-<p>You are signed up for an experiment at <b><%= @slot.human_time %></b></p>
+<p>You are signed up for an experiment at <b><%= @slot.human_datetime %></b></p>
 <p>The experiment will last approximately <%= @experiment.human_time_length %><% if @experiment.compensation > 0 %> and you will be compensated $<%= @experiment.compensation %><%else%>, no compensation is provided<%end%> for your participation.</p>
 
 <h2>Location: <a href="<%= @experiment.location.url %>"><%= @experiment.location.human_location %></a></h2>
