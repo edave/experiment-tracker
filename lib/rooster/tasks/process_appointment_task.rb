@@ -19,11 +19,11 @@ class ProcessAppointmentTask < Rooster::Task
           end
           AppointmentNotifier.deliver_confirmation(appointment)
           #if slot.experiment.send_appointment_notifications? 
-          #  AppointmentNotifier.deliver_experimenter_confirmation(appointment)
+          #  AppointmentNotifier.deliver_notice(appointment)
           #end
           appointment.scheduled_in_background = true
           appointment.save
-          appointments_schedule += 1
+          appointments_scheduled += 1
         end
         
       ensure

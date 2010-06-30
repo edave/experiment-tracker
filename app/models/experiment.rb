@@ -17,8 +17,22 @@ class Experiment < ActiveRecord::Base
       self.read_attribute(:open)
     end
     
+    def occupied?
+      occupied = Array.new
+      slots = Slot.find_by_experiment(self.id).find_by_day(Date.tomorrow)
+      slots.each do |slot|
+        occupied << slot if slot.occupied?
+      end
+      return occupied
+    end
+    
     def occupied_slots(day)
-      return Slot.find_by_experiment(self.id).find_by_occupied.find_by_day(day)
+      occupied = Array.new
+      slots = Slot.find_by_experiment(self.id).find_by_day(day)
+      slots.each do |slot|
+        occupied << slot if slot.occupied?
+      end
+      return occupied
   end
 
   def filled?

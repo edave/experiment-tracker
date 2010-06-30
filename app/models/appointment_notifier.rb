@@ -7,6 +7,13 @@ class AppointmentNotifier < ActionMailer::Base
     @subject    += 'Reminder'
   end
   
+  def notice(appointment)
+    setup_email(appointment)
+    css 'email'
+    @recipients = "#{appointment.slot.experiment.user.email}"
+    @subject    += 'Signup Notice'
+  end
+  
   def cancelled(appointment)
     setup_email(appointment)
     css 'email'

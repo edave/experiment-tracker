@@ -4,7 +4,7 @@ class ExperimentNotifier < ActionMailer::Base
     setup_email(experiment)
     day = Date.tomorrow
     @subject    += "#{experiment.name} - #{day.strftime("%m/%e")} Schedule"
-    @body[:slots] = experiment.occupied_slots(day)
+    @body[:slots] = experiment.occupied?(day)
     @body[:schedule_date] = day.strftime("%m/%e")
   end
  
