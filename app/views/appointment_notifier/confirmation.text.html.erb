@@ -1,6 +1,8 @@
-<h2>Experiment Signup Notice</h2>
-<p><b>Experiment:</b> <a href="<%= url_for(@experiment, :protocol => 'https', :only_path => false) %>" ><%= @experiment.name %></a></p>
-<p><b>Participant:</b> <%= @participant.name %></p>
-<p><b>Slot:</b> <a href="<%= url_for(@slot, :protocol => 'https', :only_path => false) %>" ><%= @slot.human_datetime %></a></p>
-<p><b>Location:</b> <a href="<%= @experiment.location.url %>"><%= @experiment.location.human_location %></a></p>
+<h2><%= @participant.name %>, you are confirmed for <%= @slot.human_datetime %></h2>
 
+<h2>Time</h2>
+<p>You are signed up for an experiment at <b><%= @slot.human_datetime %></b></p>
+<p>The experiment will last approximately <%= @experiment.human_time_length %><% if @experiment.compensation > 0 %> and you will be compensated $<%= @experiment.compensation %><%else%>, no compensation is provided<%end%> for your participation.</p>
+
+<b>Experiment Contact</b>
+<p>Please contact <%= @experiment.user.name %> at <a href="mailto:<%= @experiment.user.email %>"><%= @experiment.user.email %></a> or <%= number_to_phone(@experiment.user.phone) %> if you have any questions.</p>

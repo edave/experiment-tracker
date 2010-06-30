@@ -10,7 +10,7 @@ class RemindExperimenterTask < Rooster::Task
        #  ActiveRecord::Base.connection.reconnect!
       #   experiments = Experiment.find(:all)
         #day = Date.tomorrow
-        #processed = 0
+        processed = 0
         #experiments.each do |experiment|
         #  log "Experiment: #{experiment.name}"
         #  
