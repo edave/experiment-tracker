@@ -10,7 +10,6 @@
 ENV["RAILS_ENV"] ||= "development"
 require 'rubygems'
 require 'daemons'
-
 ROOT = File.expand_path(File.dirname(__FILE__) + '/../../')
 pid_dir = File.join(ROOT, "log")
 

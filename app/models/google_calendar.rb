@@ -27,8 +27,12 @@ class GoogleCalendar < ActiveRecord::Base
   def find_calendar_id
     service = self.get_service()
     if service
-    new_calendar = GCal4Ruby::Calendar.find(service, self.name, {:scope => :first})
-    return nil if new_calendar == nil or new_calendar.empty?
+    new_calendar = GCal4Ruby::Calendar.find(service, name, {'max-results' => '10'})
+    if new_calendar == nil or new_calendar.empty?
+      errors.add(:name, "Calendar could not be found")
+      return false
+    end
+    new_calendar = new_calendar.first
     self.calendar_id = new_calendar.id
     self.name = new_calendar.title
     end
@@ -38,8 +42,8 @@ class GoogleCalendar < ActiveRecord::Base
     my_calendar = self.calendar
     html = "Error: calendar not found"
     unless my_calendar == nil
-      html = my_calendar.to_iframe({:showCalendar => false, :showTimezone => false, :showTitle => false})
-      logger.info("Cal: #{html}")
+      html = my_calendar.to_iframe({:showCalendars => '0', :showTz => '0', :showTitle => '0'})
+      #logger.info("Cal: #{html}")
     end
     return html
   end
@@ -69,6 +73,8 @@ class GoogleCalendar < ActiveRecord::Base
     service = self.get_service()
     if service != nil
       my_calendar = GCal4Ruby::Calendar.find(service, {:id=>self.calendar_id})
+      return nil if my_calendar.class == Array.class and my_calendar.empty?
+      
       return my_calendar
     end
   end
@@ -76,7 +82,7 @@ class GoogleCalendar < ActiveRecord::Base
   def add_scheduled_slot(experiment, slot, subject)
     start_time = slot.time
     endtime = start_time + experiment.time_length.minutes
-    event = GCal4Ruby::Event.new(calendar)
+    event = GCal4Ruby::Event.new(get_service, {:calendar => self.calendar})
     event.title = experiment.name + ' - ' + subject.name
     event.content = "An experiment for " + experiment.name \
                   + " was automatically scheduled for this time by the Experiment Signup Tool\n"  \
@@ -97,10 +103,8 @@ class GoogleCalendar < ActiveRecord::Base
       service = GCal4Ruby::Service.new
       authenticated = service.authenticate(login, password) 
       return service 
-    rescue GCal4Ruby::AuthenticationFailed
-    
-    rescue GCal4Ruby::HTTPPostFailed
-    
+    rescue 
+      
     end
     
     return nil

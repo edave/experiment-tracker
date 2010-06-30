@@ -1,7 +1,8 @@
 class RemindParticipantsTask < Rooster::Task
   
   @tags = ['RemindParticipants'] # CUSTOMIZE:  add additional tags here
-  
+    Rooster::Runner.logger = Logger.new(File.join(Rails.root, "log", "rooster.log"))
+    
   define_schedule do |s|
      s.every "1d", :first_at => Chronic.parse("9:30pm"), :tags => @tags do  # CUSTOMIZE:  reference http://github.com/jmettraux/rufus-scheduler/tree/master
       begin
