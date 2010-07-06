@@ -21,25 +21,25 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
    
   # Date selecter UI
-  config.gem "calendar_date_select"
+  config.gem "calendar_date_select", :version => '>=1.16.1'
   
   # For mail_style (css in emails)
   config.gem 'nokogiri', :version => '>=1.4.1'
   config.gem 'css_parser', :version => '>=1.0.0'
-  config.gem 'mail_style', :version => '>= 0.1.2'
+  config.gem 'mail_style', :version => '>= 0.1.6'
   
   # For google calendar
   config.gem 'gcal4ruby'
   
   # For Rooster
-  config.gem 'daemons', :version => '>=1.0.10'
+  config.gem 'daemons', :version => '=1.0.10'
   config.gem 'eventmachine', :version => '>=0.12.10'
   config.gem 'chronic', :version => '>=0.2.3', :lib => 'chronic'
   
   # For encrypting model attributes
   config.gem 'encryptor', :version => '~>1.1.1', :lib => 'encryptor'
-  config.gem 'attr_encrypted', :version => '~>1.1.0', 
-  :lib => 'attr_encrypted', :source => 'http://gems.github.com'
+  config.gem 'attr_encrypted', :version => '>=1.1.2', 
+  :lib => 'attr_encrypted'
   
   # For background tasks
   config.gem 'rufus-scheduler', :lib => "rufus/scheduler"

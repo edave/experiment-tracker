@@ -11,7 +11,6 @@ class ProcessAppointmentTask < Rooster::Task
         appointments_scheduled = 0
         appointments = Appointment.find(:all, :conditions => ["scheduled_in_background = ?", false], :include => :slot)
         for appointment in appointments do
-          #SlotNotifier.deliver_confirmation(slot)
           slot = appointment.slot
           calendar = slot.experiment.google_calendar
           if calendar != nil
@@ -19,7 +18,7 @@ class ProcessAppointmentTask < Rooster::Task
           end
           AppointmentNotifier.deliver_confirmation(appointment)
           #if slot.experiment.send_appointment_notifications? 
-          #  AppointmentNotifier.deliver_notice(appointment)
+          AppointmentNotifier.deliver_notice(appointment)
           #end
           appointment.scheduled_in_background = true
           appointment.save
