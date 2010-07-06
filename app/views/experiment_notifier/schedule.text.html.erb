@@ -1,10 +1,10 @@
-<h2><%= @slots.length %> experiments scheduled for <% @schedule_date %></h2>
+<h2><a href="<%= url_for(:controller => :experiments, :action => :show, :id => @experiment.hashed_id, :protocol => 'https', :only_path => false) %>" ><%= @slots.length %> experiments</a> scheduled for <%= @schedule_date %></h2>
 
 <ol>
 <% for slot in @slots %>
-<li><b><%= slot.human_datetime %></b></li>
+<li><b><%= slot.human_time %>:</b> <%= slot.appointments.length%> participants</li>
 	<ol>
-	<% for appointment in @slots.appointments%>
+	<% for appointment in slot.appointments%>
 	<li><%= appointment.subject.name %></li>
 	<% end %>
 	</ol>

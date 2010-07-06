@@ -4,14 +4,21 @@ class RemindParticipantsTask < Rooster::Task
     Rooster::Runner.logger = Logger.new(File.join(Rails.root, "log", "rooster.log"))
     
   define_schedule do |s|
-     s.every "1d", :first_at => Chronic.parse("9:30pm"), :tags => @tags do  # CUSTOMIZE:  reference http://github.com/jmettraux/rufus-scheduler/tree/master
+      s.every "1d", :first_at => Chronic.parse("9:30pm"), :tags => @tags do  # CUSTOMIZE:  reference http://github.com/jmettraux/rufus-scheduler/tree/master
       begin
         log "#{self.name} starting at #{Time.now.to_s(:db)}"
         ActiveRecord::Base.connection.reconnect!
         experiments = Experiment.find(:all)
+        day = Date.tomorrow
         for experiment in experiments
-            slots = Slot.find_by_occupied(experiment).find_by_day(Date.tomorrow)
+            log "Experiment: #{experiment.name}"
+            if experiment.is_occupied(day)
+              ExperimentNotifier.deliver_schedule(experiment, day)
+            end
+            slots = experiment.occupied_slots(day)
             for slot in slots
+              log "Slot: #{slot.human_datetime}"
+              
              slot.appointments.each do |appointment|
               AppointmentNotifier.deliver_reminder(appointment)
              end

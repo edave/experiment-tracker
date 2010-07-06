@@ -49,7 +49,7 @@ class Slot < ActiveRecord::Base
   
   def human_datetime
     return "---" if time.nil? 
-    return time.strftime("%b %e (%a) @ %I:%M %p")
+    return time.strftime("%B %e (%a) @ %I:%M %p")
   end
   
   def human_time
