@@ -56,4 +56,5 @@ class Slot < ActiveRecord::Base
     return "---" if time.nil? 
     return time.strftime("%I:%M %p")
   end
+  
 end

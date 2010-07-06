@@ -12,7 +12,7 @@ class RemindExperimenterTask < Rooster::Task
         day = Date.tomorrow
         processed = 0
         experiments.each do |experiment|
-        log "Experiment: #{experiment.name}"
+        #log "Experiment: #{experiment.name}"
         
         if experiment.occupied?.length > 0
             ExperimentNotifier.deliver_schedule(experiment)

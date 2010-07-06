@@ -1,9 +1,9 @@
 <% if @experiment != nil %>
-<h1>Signup Confirmation</h1>
+<h1>Signup Confirmation <%= add_to_google_calendar(@experiment, @slot) %></h1>
+<br style="clear:both" \>
 <h2><%= @subject.name %>, you are confirmed for <%= @slot.human_datetime %></h2>
 
 <p>An email has been sent to <%= @subject.email %> with a copy of this information.</p>
-
 <h2>Time</h2>
 <p>You are signed up for an experiment at <b><%= @slot.human_datetime %></b></p>
 <p>The experiment will last approximately <%= @experiment.human_time_length %><% if @experiment.compensation > 0 %> and you will be compensated $<%= @experiment.compensation %><%else%>, no compensation is provided<%end%> for your participation.</p>
@@ -12,7 +12,7 @@
 <p><%= @experiment.location.directions %></p>
 
 <b>Experiment Contact</b>
-<p>Please contact <%= @experiment.user.name %> at <a href="mailto:<%= @experiment.user.email %>"><%= @experiment.user.email %></a> or <%= number_to_phone(@experiment.user.phone) %> if you have any questions.</p>
+<p>Please contact <%= @experiment.user.name %> at <%= mail_to(@experiment.user.email, @experiment.user.name, {:encode => 'javascript', :replace_at => ' {at} ', :replace_dot => ' [dot] '}) %> or <%= number_to_phone(@experiment.user.phone) %> if you have any questions.</p>
 <% else %>
 <h1>Confirmation not found</h1>
 <p>We're sorry, but we could not find your confirmation.</p>
