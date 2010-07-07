@@ -5,7 +5,7 @@ class SubjectsController < ApplicationController
   
   layout 'external'
   
-  caches_action :new
+  #caches_action :new
   cache_sweeper :experiment_sweeper, :only => [ :new ]
 
   # GET /subjects
