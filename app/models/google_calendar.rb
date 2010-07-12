@@ -71,11 +71,15 @@ class GoogleCalendar < ActiveRecord::Base
   
   def calendar
     service = self.get_service()
+    begin
     if service != nil
       my_calendar = GCal4Ruby::Calendar.find(service, {:id=>self.calendar_id})
       return nil if my_calendar.class == Array.class and my_calendar.empty?
       
       return my_calendar
+    end
+    rescue GData4Ruby::HTTPRequestFailed
+      return nil
     end
   end
   
