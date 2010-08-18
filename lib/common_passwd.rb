@@ -8,7 +8,7 @@ class CommonPasswd  < ApplicationController
   # because we think they're be vulnerable to easy guessing/dictionary attacks
   # In theory, after loading, it should be O(1) to check this list 
   def initialize()
-   pp RAILS_ROOT
+   pp Rails.root
   end
   
   def import_file(import_file, yaml_file)

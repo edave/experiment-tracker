@@ -1,10 +1,11 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead 
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your 
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
@@ -86,32 +87,6 @@ ActiveRecord::Schema.define(:version => 20100223232238) do
 
   add_index "locations", ["hashed_id"], :name => "index_locations_on_hashed_id"
 
-  create_table "privileges", :force => true do |t|
-    t.integer  "hashed_id",           :default => 0
-    t.integer  "role_id",             :default => 0
-    t.integer  "user_id",             :default => 0
-    t.integer  "lock_version",        :default => 0
-    t.integer  "modified_by_user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "privileges", ["hashed_id"], :name => "index_privileges_on_hashed_id"
-  add_index "privileges", ["role_id"], :name => "index_privileges_on_role_id"
-  add_index "privileges", ["user_id"], :name => "index_privileges_on_user_id"
-
-  create_table "roles", :force => true do |t|
-    t.integer  "hashed_id",    :default => 0
-    t.string   "name"
-    t.string   "slug"
-    t.string   "description"
-    t.integer  "lock_version", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "roles", ["hashed_id"], :name => "index_roles_on_hashed_id"
-
   create_table "slots", :force => true do |t|
     t.integer  "experiment_id"
     t.datetime "time"
@@ -150,38 +125,38 @@ ActiveRecord::Schema.define(:version => 20100223232238) do
   add_index "subjects", ["hashed_id"], :name => "index_subjects_on_hashed_id"
 
   create_table "users", :force => true do |t|
-    t.integer  "hashed_id",                                :default => 0
-    t.string   "login",                     :limit => 40
-    t.string   "name",                      :limit => 100
-    t.string   "phone",                     :limit => 20
-    t.string   "email",                     :limit => 256
-    t.string   "crypted_password",          :limit => 64
-    t.string   "salt",                      :limit => 64
+    t.integer  "hashed_id",                           :default => 0
+    t.string   "name",                 :limit => 100
+    t.string   "phone",                :limit => 20
+    t.string   "user_name",            :limit => 40
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "reset_password_token"
     t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
-    t.datetime "last_authenticated_at"
-    t.string   "last_authenticated_ip"
-    t.string   "activation_code",           :limit => 64
-    t.datetime "activated_at"
-    t.boolean  "recover_requested",                        :default => false
-    t.datetime "recover_requested_at"
-    t.string   "recover_code",              :limit => 64
-    t.string   "recover_in_process_code",   :limit => 64
-    t.integer  "failure",                                  :default => 0
-    t.datetime "last_failed_at"
-    t.string   "last_failed_ip"
-    t.integer  "eula_version",                             :default => 0
-    t.boolean  "frozen_in_db",                             :default => false
-    t.datetime "deactivated_at"
-    t.integer  "lock_version",                             :default => 0
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.integer  "failed_attempts",                     :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "group_id",                                 :default => 0
+    t.integer  "group_id",                            :default => 0
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["hashed_id"], :name => "index_users_on_hashed_id"
-  add_index "users", ["login"], :name => "index_users_on_login"
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["hashed_id"], :name => "index_users_on_hashed_id", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+  add_index "users", ["user_name"], :name => "index_users_on_user_name", :unique => true
 
 end

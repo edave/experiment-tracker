@@ -1,21 +1,19 @@
 class ExperimentNotifier < ActionMailer::Base
+  default :from => "noreply@halab-experiments.mit.edu"
   layout 'mailers/default'
   def schedule(experiment, day = Date.tomorrow)
+    @subject    = "#{experiment.name} Upcoming Schedule"
+    @slots = experiment.occupied_slots(day)
+    @schedule_date = day.strftime("%B %e (%a)")
     setup_email(experiment)
-    @subject    += "#{experiment.name} Upcoming Schedule"
-    @body[:slots] = experiment.occupied_slots(day)
-    @body[:schedule_date] = day.strftime("%B %e (%a)")
   end
  
   protected
     def setup_email(experiment)
-      @recipients  = "#{experiment.user.email}"
-      @from        = "noreply@halab-experiments.mit.edu"
-      @subject     = experiment.name + ' :: '
-      @sent_on     = Time.now
-      @body[:experiment] = experiment
+      @experiment = experiment
       
-      content_type "text/html"
+      mail(:to => "#{experiment.user.email}",
+           :subject => experiment.name + ' :: ' + @subject)
 
       css 'email'
     end

@@ -19,6 +19,8 @@
 	<div class="details">If you have any questions, contact <%= mail_to(experiment.user.email, experiment.user.name, {:encode => 'javascript', :replace_at => ' at ', :replace_dot => ' dot '}) %></div>
 
 	<% if show_signup_link %>
-	<%= link_to '<div class="details signup">Sign up here</div>', :controller => :subjects, :action => :new, :id => experiment.hashed_id %>
+	<%= link_to(:controller => :subjects, :action => :new, :id => experiment.hashed_id) do %>
+	<div class="details signup">Sign up here</div>
+	<% end %>
 	<% end %>
 </div>

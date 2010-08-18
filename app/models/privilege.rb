@@ -1,11 +1,10 @@
-class Privilege < ActiveRecord::Base
+class Privilege < ObfuscatedRecord
   # A Privilege represents the ability by a User to act in a certain Role within the system
   # This ties into the Authorization system, where we determine what actions a user is allowed to 
   # perform.
   # A User may only have 1 Privilege linking them to a Role, and there are strict conditions on how
   # this Privilege may be created or destroyed.
   
-  has_hashed_id
   
   belongs_to :user
   belongs_to :role

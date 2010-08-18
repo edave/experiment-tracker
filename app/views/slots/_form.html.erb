@@ -1,5 +1,5 @@
 <div class="form">
-<% form_for(slot) do |f| %>
+<%= form_for(slot) do |f| %>
   <%= f.error_messages %>
 	<%= f.calendar_date_select :time, :embedded => true %>
 	<input type="hidden" name="experiment_id" value="<%= experiment.hashed_id %>" />

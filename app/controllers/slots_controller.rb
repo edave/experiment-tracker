@@ -1,19 +1,19 @@
 class SlotsController < ApplicationController
-  before_filter :login_required
-  authorize_role [:admin, :experimenter]
-  authorize_role :admin, {:only => [:cancel]}
+  #before_filter :login_required
+  #authorize_role [:admin, :experimenter]
+  #authorize_role :admin, {:only => [:cancel]}
   
   # GET /slots
   # GET /slots.xml
   def index
-    @experiment = Experiment.find_by_hashed_id(params[:experiment])
+    @experiment = Experiment.obfuscated(params[:experiment])
     page_group(@experiment.user.group)
     
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
-    @slots = Slot.find(:all, :conditions => {:experiment_id => @experiment.id}, :order => "time")
+    @slots = Slot.where(:experiment_id => @experiment.id).order("time")
     page_title([@experiment.name, "Time Slots"])
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +24,7 @@ class SlotsController < ApplicationController
   # GET /slots/1
   # GET /slots/1.xml
   def show    
-    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @slot = Slot.obfuscated(params[:id]).includes(:experiment)
     if @slot == nil
       render_404
       return
@@ -52,7 +52,7 @@ class SlotsController < ApplicationController
   def new
     page_title("New Time Slot")
     @slot = Slot.new
-    @experiment = Experiment.find_by_hashed_id(params[:id], :include => [:slots])
+    @experiment = Experiment.obfuscated(params[:id]).includes(:slots)
     page_group(@experiment.user.group)
     
     respond_to do |format|
@@ -62,7 +62,7 @@ class SlotsController < ApplicationController
   end
 
   def cancel
-    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @slot = Slot.obfuscated(params[:id]).includes(:experiment)
     if @slot.nil?
       render_404
       return
@@ -89,7 +89,7 @@ class SlotsController < ApplicationController
 
   # GET /slots/1/edit
   def edit
-    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @slot = Slot.obfuscated(params[:id]).includes(:experiment)
     if @slot.nil?
       render_404
       return
@@ -112,7 +112,7 @@ class SlotsController < ApplicationController
   # POST /slots.xml
   def create
     @slot = Slot.new(params[:slot])
-    @experiment = Experiment.find_by_hashed_id(params[:experiment_id])
+    @experiment = Experiment.obfuscated(params[:experiment_id])
     page_group(@experiment.user.group)
     
     if @experiment.nil? or !@experiment.can_modify?(current_user)
@@ -135,7 +135,7 @@ class SlotsController < ApplicationController
   # PUT /slots/1
   # PUT /slots/1.xml
   def update
-    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @slot = Slot.obfuscated(params[:id]).includes(:experiment)
     if @slot.nil?
       render_404
       return
@@ -163,7 +163,7 @@ class SlotsController < ApplicationController
   # DELETE /slots/1
   # DELETE /slots/1.xml
   def destroy
-    @slot = Slot.find_by_hashed_id(params[:id], :include => :experiment)
+    @slot = Slot.obfuscated(params[:id]).includes(:experiment)
     if @slot.nil?
       render_404
       return

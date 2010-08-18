@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   
   def index
-    @groups = Group.find(:all)
+    @groups = Group.all
   end
   
 end

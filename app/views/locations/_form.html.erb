@@ -1,4 +1,4 @@
-<% form_for(location) do |f| %>
+<%= form_for(location) do |f| %>
   <%= f.error_messages %>
   <h3>Building & Room</h3>
 	<%= f.text_field :building, :size => 2 %>-<%= f.text_field :room, :size => 4 %>

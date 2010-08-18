@@ -1,5 +1,4 @@
-class Experiment < ActiveRecord::Base
-    has_hashed_id
+class Experiment < ObfuscatedRecord
     belongs_to :user
     belongs_to :google_calendar
     belongs_to :location

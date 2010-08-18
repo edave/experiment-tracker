@@ -3,15 +3,13 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  #protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :email, :name
   
-  include AuthenticatedSystem
-  include AuthorizedSystem
   
   # If you want "remember me" functionality, add this before_filter to Application Controller
-  before_filter :login_from_cookie
+  #before_filter :login_from_cookie
   before_filter :set_current_user
   
   layout 'application'
@@ -38,11 +36,11 @@ class ApplicationController < ActionController::Base
   end
  
  def development_env?
-   ENV['RAILS_ENV'] == 'development'
+   Rails.env.development?
  end
  
  def production_env?
-   ENV['RAILS_ENV'] == 'production'
+   Rails.env.production?
  end
  
    def use_markdown_editor=(value)
@@ -69,7 +67,9 @@ private
  # This method is run a priori so models can know which user is
  # is interacting with them.
  def set_current_user
-  ActiveRecord::Base.current_user_id = self.current_user_id
+   unless current_user == nil
+  ActiveRecord::Base.current_user_id = current_user.id
+  end
  end
 
   def render_404

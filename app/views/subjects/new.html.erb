@@ -2,7 +2,7 @@
 <br />
 <h2>Contact Information</h2>
 <small style="margin-top:10px">Your email is used solely to contact you about the experiment and is not shared with anyone.</small>
-<% form_for(@subject, :html => {:autocomplete=>"off"}) do |f| %>
+<%= form_for(@subject, :html => {:autocomplete=>"off"}) do |f| %>
   <%= f.error_messages %>
 	<h3>Name<span style="color:red">*</span></h3>
 		<small><%= error_message_on :subject, :name,

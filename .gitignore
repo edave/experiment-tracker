@@ -1,2 +1,8 @@
 log/*.log
 log/rooster_daemon.*
+bin-debug
+.settings
+.metadata
+.loadpath
+.DS_Store
+/.project

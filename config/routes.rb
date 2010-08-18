@@ -1,72 +1,36 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :groups
+ExperimentTracker::Application.routes.draw do
+  devise_for :users
 
-  map.root :controller => 'home'
+  root :to => "home#index"
 
+  resources :groups
+  resources :subjects
+  resources :slots do
   
-  map.resources :subjects, :requirements => { :protocol => 'https' }
-
-  map.resources :slots, :member => {:cancel => :get}
-
-  map.resources :experiments, :collection => {:admin => :get }, :requirements => { :protocol => 'https' }
+    member do
+  get :cancel
+  end
   
-  map.resources :privileges, :requirements => { :protocol => 'https' }
+  end
 
-  map.resources :locations
-
-  map.resources :google_calendars, :requirements => { :protocol => 'https' }
+  resources :experiments do
+    collection do
+  get :admin
+  end
   
-  map.resources :preview, :member => {:markdown => :post}
-
-  map.resources :sessions, :collection => {:denied => :get }
-
-  map.resources :users, :collection => {:reset => :get, :send_reset => :put, :reset_password => :get, :help => :get,
-                                        :submit_reset_password => :put, :list => :get},  :requirements => { :protocol => 'https' }
-  map.resources :users, :member => {:change_password => :post,  :edit => :get},  :requirements => { :protocol => 'https' }
-
-  map.signup '/signup', :controller => 'users', :action => 'new',  :requirements => { :protocol => 'https' }
-  map.login  '/signin', :controller => 'sessions', :action => 'new', :requirements => { :protocol => 'https' }
-  map.logout '/signout', :controller => 'sessions', :action => 'destroy'
-
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
   
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
+  end
 
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
+  resources :privileges
+  resources :locations
+  resources :google_calendars
+  resources :preview do
+  
+    member do
+  post :markdown
+  end
+  
+  end 
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+ match '/:controller(/:action(/:id))'
 end

@@ -1,6 +1,6 @@
 require 'gcal4ruby'
-class GoogleCalendar < ActiveRecord::Base
-  has_hashed_id
+class GoogleCalendar < ObfuscatedRecord
+  
   has_many :experiments
   
   attr_accessible :login, :password, :name

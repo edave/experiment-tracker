@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
   # Controller for handling Users
-  before_filter :login_required, {:except => [:new, :help, :create, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
+  #before_filter :login_required, {:except => [:new, :help, :create, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
   filter_parameter_logging :password, :confirmation_password, :login, :email, :activation_code, :salt, :name, :phone
   
   #Chaining in an array is an OR
-  authorize_role [:admin, :experimenter], {:except => [:help, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
-  authorize_role :admin, {:only => [:new, :index, :destroy, :create]}
+  #authorize_role [:admin, :experimenter], {:except => [:help, :reset, :send_reset, :reset_password, :submit_reset_password, :activate]}
+  #authorize_role :admin, {:only => [:new, :index, :destroy, :create]}
   
-  # new tenant:
   def new
     page_title('Signup')
     @user = User.new()
-    @groups = Group.find(:all)
+    @groups = Group.all
     #unless allow_user_signup || ( logged_in? && user_admin? )
     #   redirect_back_or_default("/")
     #end
@@ -19,7 +18,7 @@ class UsersController < ApplicationController
  
 
   def update
-    @user = User.find_by_hashed_id(params[:id])
+    @user = User.obfuscated(params[:id])
     user_id = @user.id if @user
     begin
     if logged_in? && (self.current_user.id.to_i == user_id.to_i || self.user_admin?)
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
   
   def edit
     page_title('Edit your information')
-    @user = User.find_by_hashed_id(params[:id])
+    @user = User.obfuscated(params[:id])
     user_id = @user.id if @user
     if  logged_in? && (self.current_user_id == user_id.to_i  || self.user_admin? )
       @cu = self.current_user
@@ -59,7 +58,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by_hashed_id(params[:id])
+    @user = User.obfuscated(params[:id])
     page_title(["Users", "#{@user.login} (#{@user.hashed_id})"])
     user_id = @user.id if @user
     if logged_in? && (user_id == current_user_id || self.user_admin?)
@@ -74,7 +73,7 @@ class UsersController < ApplicationController
   def index
     page_title("Users")
     if self.logged_in? and self.user_admin?
-      @users = User.find(:all)
+      @users = User.all
     else
       access_denied
       return
@@ -83,7 +82,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    group = Group.find_by_hashed_id(params[:group_id])
+    group = Group.obfuscated(params[:group_id])
     @user.group_id = group.id unless group.nil?
     User.transaction do
         Privilege.transaction do
@@ -95,7 +94,7 @@ class UsersController < ApplicationController
         @privilege = Privilege.new()
         @privilege.user = @user
         
-        @privilege.role = Role.find_by_slug("experimenter")
+        @privilege.role = Role.where(:slug => "experimenter")
        
         ActiveRecord::Base.current_user_id = current_user_id
         @privilege.save!

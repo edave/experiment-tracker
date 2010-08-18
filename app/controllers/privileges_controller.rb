@@ -2,14 +2,14 @@ class PrivilegesController < ApplicationController
   # Controller for managing privileges. Does adhere to the standard
   # rails MVC paradigm, so no refactoring is needed.
   
-  before_filter :login_required
-  authorize_role [:admin]
+  #before_filter :login_required
+  #authorize_role [:admin]
   
   def create
      begin
      @privilege = Privilege.new()
-     user = User.find(params[:privilege][:user_id])
-     role = Role.find(params[:privilege][:role_id])
+     user = User.where(params[:privilege][:user_id])
+     role = Role.where(params[:privilege][:role_id])
      @privilege.user = user
      @privilege.role = role
      @privilege.save!
@@ -17,14 +17,14 @@ class PrivilegesController < ApplicationController
      params[:id] = @privilege.id
      render :action => :show
    rescue ActiveRecord::RecordInvalid
-     @users = User.find(:all, :order => "login")
-    @roles = Role.find(:all, :order => "name")
+     @users = User.order("login")
+    @roles = Role.order("name")
         render :action => "new"
     end
   end
   
   def destroy
-    @privilege = Privilege.find_by_hashed_id(params[:id])
+    @privilege = Privilege.obfuscated(params[:id])
     @privilege.destroy
     flash[:notice] = "Privilege #" + @privilege.id.to_s + " (" + @privilege.user.login + " as " + @privilege.role.name  +  ") was successfully deleted"
     redirect_to :action => "list"
@@ -32,11 +32,11 @@ class PrivilegesController < ApplicationController
   
   def index
     page_title("Privileges")
-    @privileges = Privilege.find(:all, :include => [:user, :role], :order => "roles.name")
+    @privileges = Privilege.all.includes(:user, :role).order("roles.name")
   end
   
   def show
-    @privilege = Privilege.find_by_id(params[:id])
+    @privilege = Privilege.where(params[:id])
     page_title("Privilege \##{@privilege.id}")
   end
   
@@ -45,7 +45,7 @@ class PrivilegesController < ApplicationController
     if @privilege.nil?
       @privilege = Privilege.new()
     end
-    @users = User.find(:all, :order => "login")
-    @roles = Role.find(:all, :order => "name")
+    @users = User.order("login")
+    @roles = Role.order("name")
   end
 end

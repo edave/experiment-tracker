@@ -1,7 +1,4 @@
-class Group < ActiveRecord::Base
-  acts_as_deactivated
-  has_hashed_id
-  
+class Group < ObfuscatedRecord
   has_many :users
   has_many :experiments, :through => :users
   

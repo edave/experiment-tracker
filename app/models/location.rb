@@ -1,5 +1,4 @@
-class Location < ActiveRecord::Base
-  has_hashed_id
+class Location < ObfuscatedRecord
   has_many :experiments
   validates_presence_of :building
   validates_presence_of :room

@@ -1,7 +1,7 @@
 class ExperimentsController < ApplicationController
-  before_filter :login_required, {:except => [:filled, :participate]}
-  authorize_role [:admin, :experimenter], {:except => [:filled, :participate]}
-  authorize_role :admin, {:only => [:admin]}
+  #before_filter :login_required, {:except => [:filled, :participate]}
+  #authorize_role [:admin, :experimenter], {:except => [:filled, :participate]}
+  #authorize_role :admin, {:only => [:admin]}
   
   cache_sweeper :experiment_sweeper, :only => [ :index, :show, :participate ]
 
@@ -9,7 +9,7 @@ class ExperimentsController < ApplicationController
   # GET /experiments
   # GET /experiments.xml
   def index
-    @experiments = Experiment.find_all_by_user_id(current_user.id)
+    @experiments = Experiment.where(:user_id => current_user.id)
     page_group(current_user.group)
     page_title("Experiments")
     respond_to do |format|
@@ -19,7 +19,7 @@ class ExperimentsController < ApplicationController
   end
   
   def admin
-    @experiments = Experiment.find(:all, {:order=>'id'})
+    @experiments = Experiment.order('id DESC')
     page_title(["Admin", "Experiments"])
     respond_to do |format|
       format.html
@@ -29,7 +29,7 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1
   # GET /experiments/1.xml
   def show
-    @experiment = Experiment.find_by_hashed_id(params[:id], :include => :slots)
+    @experiment = Experiment.obfuscated_query(params[:id]).includes(:slots).first
     page_group(@experiment.user.group)
     
     if @experiment.nil? or !@experiment.can_modify?(current_user)
@@ -45,7 +45,7 @@ class ExperimentsController < ApplicationController
   end
   
   def filled
-    @experiment = Experiment.find_by_hashed_id(params[:id])
+    @experiment = Experiment.obfuscated(params[:id])
     page_group(@experiment.user.group)
     
     page_title(@experiment.name + " is full")
@@ -54,7 +54,7 @@ class ExperimentsController < ApplicationController
   end
   
   def participate
-    @experiment = Experiment.find_by_hashed_id(params[:id])
+    @experiment = Experiment.obfuscated(params[:id])
     page_group(@experiment.user.group)
     
     unless @experiment.open? or @experiment.can_modify?(current_user)
@@ -86,7 +86,7 @@ class ExperimentsController < ApplicationController
 
   # GET /experiments/1/edit
   def edit
-    @experiment = Experiment.find_by_hashed_id(params[:id])
+    @experiment = Experiment.obfuscated(params[:id])
     page_group(@experiment.user.group)
     
     page_title(["Editing",@experiment.name])
@@ -109,9 +109,9 @@ class ExperimentsController < ApplicationController
     @experiment.user = current_user
     page_group(@experiment.user.group)
     
-    location = Location.find_by_hashed_id(params[:location_id])
+    location = Location.obfuscated(params[:location_id])
     @experiment.location = location
-    calendar = GoogleCalendar.find_by_hashed_id(params[:calendar_id])
+    calendar = GoogleCalendar.obfuscated(params[:calendar_id])
     @experiment.google_calendar = calendar
     respond_to do |format|
       if @experiment.save
@@ -132,16 +132,16 @@ class ExperimentsController < ApplicationController
   # PUT /experiments/1
   # PUT /experiments/1.xml
   def update
-    @experiment = Experiment.find_by_hashed_id(params[:id])
+    @experiment = Experiment.obfuscated(params[:id])
     page_group(@experiment.user.group)
     
     if @experiment.nil? or !@experiment.can_modify?(current_user)
       access_denied
       return
     end
-    location = Location.find_by_hashed_id(params[:location_id])
+    location = Location.obfuscated(params[:location_id])
     @experiment.location = location
-    calendar = GoogleCalendar.find_by_hashed_id(params[:calendar_id])
+    calendar = GoogleCalendar.obfuscated(params[:calendar_id])
     @experiment.google_calendar = calendar
     respond_to do |format|
       if @experiment.update_attributes(params[:experiment])
@@ -161,7 +161,7 @@ class ExperimentsController < ApplicationController
   # DELETE /experiments/1
   # DELETE /experiments/1.xml
   def destroy
-    @experiment = Experiment.find_by_hashed_id(params[:id])
+    @experiment = Experiment.obfuscated(params[:id])
     page_group(@experiment.user.group)
     
     if @experiment.nil? or !@experiment.can_modify?(current_user)
@@ -178,10 +178,10 @@ class ExperimentsController < ApplicationController
   
    
   def calendars_select_array
-   return GoogleCalendar.find(:all, :order => "name")
+   return GoogleCalendar.order("name")
   end
  
   def locations_select_array
-   return Location.find(:all, :order => "building")
+   return Location.order("building")
   end
 end

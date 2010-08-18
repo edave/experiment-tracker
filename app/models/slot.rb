@@ -1,5 +1,4 @@
-class Slot < ActiveRecord::Base
-    has_hashed_id
+class Slot < ObfuscatedRecord
   
   belongs_to :experiment
   has_many :appointments, :dependent => :destroy
@@ -10,11 +9,11 @@ class Slot < ActiveRecord::Base
   attr_readonly :experiment
   
   
-  named_scope :find_by_day, lambda { |d| {:conditions  => { :time  => d.beginning_of_day_in_zone..(d+1.day).beginning_of_day_in_zone }, :order=>"time" } }
-  named_scope :find_by_occupied, lambda { |e| {:conditions => {:appointments_count => 1..e.num_subjects_per_slot, :cancelled => false, :experiment_id => e.id}, :order => 'time'} }
-  named_scope :find_by_available, lambda { |e| {:conditions => {:appointments_count => 0...e.num_subjects_per_slot,:cancelled => false, :experiment_id => e.id, :time => (Time.zone.now+e.slot_close_time.minutes)..(Time.zone.now + 1.years)}, :order => 'time'} }
-  named_scope :find_by_full, lambda { |e| {:conditions => {:appointments_count => e.num_subjects_per_slot, :cancelled => false, :experiment_id => e.id}, :order => 'time'} }
-  named_scope :find_by_experiment, lambda { |e| { :conditions => {:experiment_id => e}, :include => :experiment}}
+  scope :find_by_day, lambda { |d| where(:time  => d.beginning_of_day_in_zone..(d+1.day).beginning_of_day_in_zone).order("time") }
+  scope :find_by_occupied, lambda { |e| where(:appointments_count => 1..e.num_subjects_per_slot, :cancelled => false, :experiment_id => e.id).order('time') }
+  scope :find_by_available, lambda { |e| where(:appointments_count => 0...e.num_subjects_per_slot,:cancelled => false, :experiment_id => e.id, :time => (Time.zone.now+e.slot_close_time.minutes)..(Time.zone.now + 1.years)).order('time') }
+  scope :find_by_full, lambda { |e| where(:appointments_count => e.num_subjects_per_slot, :cancelled => false, :experiment_id => e.id).order('time') }
+  scope :find_by_experiment, lambda { |e| where(:experiment_id => e).includes(:experiment)}
   
   validate :limit_appointments
   

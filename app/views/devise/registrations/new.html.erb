@@ -1,0 +1,66 @@
+<h2 style="margin-left:100px;">Tell us about yourself</h2>
+		<h4>Experiment subjects will be given this information to contact you!</h4>
+		
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+<label for="user_name">Name </label>
+		<input id="user_name" name="<%=resource_name %>[name]" value="<%= @user.name %>" autocomplete="off" /><br style="clear:both" />
+
+		<label for="user_phone">Phone Number </label>
+		<input id="user_phone" name="<%=resource_name %>[phone]" autocomplete="off"  value="<%= @user.phone %>" /><br style="clear:both" />
+
+
+  <p><%= f.label :email %><br />
+  <%= f.text_field :email %></p>
+
+<br style="clear:both;" />
+<h2>Group</h2>
+<div class="column-left">
+ <select name="group_id">
+ 	<option value=""> --- </option>
+ 		
+ 	<% for group in Group.all do %>
+		<option value="<%= group.hashed_id %>" <% if resource.group_id == group.id %>selected="selected"<% end %>><%= group.name %></option>
+	<% end %>
+</select>	
+	
+</div>
+
+<br style="clear:both;" />
+<h2 style="margin-left:100px; margin-bottom:0">Setup your account</h2>
+<h4>Only you will know the following information</h4>
+<div class="column-left">
+	<p><label for="login" class="user">Login </label>
+		<%= f.text_field :user_name, :autocomplete => "off" %></p>
+		<p><label for="password" class="user">Password </label>
+		<%= f.password_field :password, :autocomplete => "off" %></p>
+		<p><label for="password_confirmation" class="user" style="margin-top:0">Re-enter Password </label>
+		<%= f.password_field :password_confirmation, :autocomplete => "off" %></p>
+		
+		<br />
+		<div style="margin-top:20px; margin-left:90px;">
+		   <%= f.submit 'Sign up!' %>
+		</div>
+		</div>
+		
+<div class="column-right" style="margin-right:70px">
+			<%= render :partial=>'/users/password_helper' %>
+		</div>
+		<br style="clear:both" />
+		
+	</div>
+
+<% end %>
+		<script type="text/javascript">
+	jQuery(document).ready(function () {
+			// Phone number filter
+			var phone_field = jQuery("input#user_phone");
+			var mask = "999-999-9999";
+			phone_field.mask(mask, {placeholder:" "});
+			
+			// Password helper
+			passwordHelper(jQuery("input#user_password"), jQuery("input#user_password_confirmation"), jQuery("input#user_user_name"));
+			});
+	</script>
+<%= render :partial => "devise/shared/links" %>

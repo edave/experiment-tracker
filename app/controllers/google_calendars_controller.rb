@@ -1,6 +1,6 @@
 class GoogleCalendarsController < ApplicationController
-  before_filter :login_required
-  authorize_role [:admin, :experimenter]
+  #before_filter :login_required
+  #authorize_role [:admin, :experimenter]
   
   # GET /google_calendars
   # GET /google_calendars.xml

@@ -1,4 +1,4 @@
-class Role < ActiveRecord::Base
+class Role < ObfuscatedRecord
   # A Role represents a group of Users who may perform certain actions
   # within the Authorization system
   
@@ -7,7 +7,6 @@ class Role < ActiveRecord::Base
   # After a role is created, its slug cannot be changed, so we assume
   # the slug is a safe identified of the Role object in the database
   
-  has_hashed_id
   
   has_many :privileges
   

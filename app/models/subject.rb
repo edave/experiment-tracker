@@ -1,5 +1,4 @@
-class Subject < ActiveRecord::Base
-  has_hashed_id
+class Subject < ObfuscatedRecord
   
   attr_encrypted :name, :key => ENCRYPTED_ATTR_PASSKEY
   attr_encrypted :email, :key => ENCRYPTED_ATTR_PASSKEY

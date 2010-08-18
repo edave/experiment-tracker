@@ -48,7 +48,7 @@ module HashedId
       # skip validations since we just want to save this hashed id
       # Relies on our extension to ActiveRecord to just update the 
       # hashed_id attribute
-      self.update_single_attribute(:hashed_id, self.id.to_hashed_id)
+      self.update_attribute(:hashed_id, self.id.to_hashed_id)
     end
 
     def to_param

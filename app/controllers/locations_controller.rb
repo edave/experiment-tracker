@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
-  before_filter :login_required
-  authorize_role [:admin, :experimenter]
+  #before_filter :login_required
+  #authorize_role [:admin, :experimenter]
   
   # GET /locations
   # GET /locations.xml

@@ -1,46 +1,46 @@
 class AppointmentNotifier < ActionMailer::Base
+  default :from => "noreply@halab-experiments.mit.edu"
   layout 'mailers/default'
+  
   def reminder(appointment)
-    setup_email(appointment)
     css 'email'
     
-    @subject    += 'Reminder'
+    @subject = 'Reminder'
+    setup_email(appointment)
   end
   
   def notice(appointment)
-    setup_email(appointment)
     css 'email'
-    @recipients = "#{appointment.slot.experiment.user.email}"
-    @subject    += 'Signup Notice'
+    @recipient = "#{appointment.slot.experiment.user.email}"
+    @subject = 'Signup Notice'
+    setup_email(appointment)
   end
   
   def cancelled(appointment)
-    setup_email(appointment)
     css 'email'
     
-    @subject    += 'Experiment Cancelled'
+    @subject = 'Experiment Cancelled'
+    setup_email(appointment)
   end
   
   def confirmation(appointment)
-    setup_email(appointment)
     css 'email'
   
-    @subject    += ' Confirmation'
+    @subject = ' Confirmation'
+    setup_email(appointment)
   end
  
   protected
-    def setup_email(appointment)
+    def setup_email(appointment, recipient)
       subject = appointment.subject
       slot = appointment.slot
-      @recipients  = "#{subject.email}"
-      @from        = "noreply@halab-experiments.mit.edu"
-      @subject     = slot.experiment.name + " :: "
-      @sent_on     = Time.now
-      @body[:participant] = subject
-      @body[:slot] = slot
-      @body[:experiment] = slot.experiment
-      @body[:logo_path] = slot.experiment.user.group.logo_file_name
-      content_type "text/html"
+      @recipient ||=  "#{subject.email}"
+      @participant = subject
+      @slot = slot
+      @experiment = slot.experiment
+      @logo_path = slot.experiment.user.group.logo_file_name
+      mail(:to => @recipient,
+           :subject => slot.experiment.name + " :: " + @subject)
 
       css 'email'
     end

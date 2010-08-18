@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  before_filter :login_required
-  authorize_role [:admin]
+  #before_filter :login_required
+  #authorize_role [:admin]
   
   
   # GET /groups
@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.xml
   def show
-    @group = Group.find_by_hashed_id(params[:id])
+    @group = Group.obfuscated(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find_by_hashed_id(params[:id])
+    @group = Group.obfuscated(params[:id])
   end
 
   # POST /groups
@@ -61,7 +61,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.xml
   def update
-    @group = Group.find_by_hashed_id(params[:id])
+    @group = Group.obfuscated(params[:id])
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
@@ -78,7 +78,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.xml
   def destroy
-    @group = Group.find_by_hashed_id(params[:id])
+    @group = Group.obfuscated(params[:id])
     #@group.destroy
 
     respond_to do |format|
