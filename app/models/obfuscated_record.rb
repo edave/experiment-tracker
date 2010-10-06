@@ -3,7 +3,7 @@ class ObfuscatedRecord < ActiveRecord::Base
   has_hashed_id
   
   def self.obfuscated(hashed_id)
-    obfuscated_query.first
+    obfuscated_query(hashed_id).first
   end
   
   def self.obfuscated_query(hashed_id)

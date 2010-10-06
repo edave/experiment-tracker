@@ -1,5 +1,5 @@
 if Rails::VERSION::MAJOR == 2
-require 'rooster'
+  require 'rooster'
 elsif Rails::VERSION::MAJOR == 3
   require "rails"
   require "eventmachine"

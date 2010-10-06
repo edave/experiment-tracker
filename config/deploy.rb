@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 default_run_options[:pty] = true
 set :application, "experiment-signup"
 set :repository,  "git@github.com:edave/experiment-tracker.git"

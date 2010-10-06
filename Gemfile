@@ -1,26 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc'
+gem 'rails', '3.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql', '2.8.1'
+gem 'mysql'
 
 # Deploy with Capistrano
 gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri', '1.4.1'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
 # Add gems for authentication/authorization
-gem "devise", '1.1.1'
+gem "devise", '1.1.3'
+gem "acl9", '0.12.0'
 
 # Date selecter UI
 gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
@@ -34,7 +26,7 @@ gem 'mail_style', '>= 0.1.6'
 gem 'gcal4ruby'
 
 # For Rooster
-gem 'daemons', '=1.0.10'
+gem 'daemons', '1.1.0'
 gem 'eventmachine', '>=0.12.10'
 gem 'chronic', '>=0.2.3', :require=> 'chronic'
 
@@ -46,7 +38,7 @@ gem 'attr_encrypted', '>=1.1.2', :require=> 'attr_encrypted'
 gem 'rufus-scheduler', :require=> "rufus/scheduler"
   
 # For Markdown text processing
-gem 'bluecloth' #use rdiscount gem later
+gem 'rdiscount'
 gem 'formatize'
   
 # For Hoptoadapp error monitoring
