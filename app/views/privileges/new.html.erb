@@ -3,10 +3,10 @@
 <a href="/privileges" ><h3>&laquo; Privelege List</h3></a>
 <br />
 <%= flash[:notice] %>
-<%= error_messages_for :user, :privilege, :role %><br />
+  <%= render "helpers/error_messages", :target => @privilege %> <br />
 <% form_for :privilege, @privilege, :url => { :action => "create" } do |f| %>
 <p>
-<b>User:</b> <%= f.collection_select(:user_id, @users, :id, :login) %><br /> <br />
+<b>User:</b> <%= f.collection_select(:user_id, @users, :id, :user_name) %><br /> <br />
 <b>Role:</b> <%= f.collection_select(:role_id, @roles, :id, :name) %>
 
 <br /> <br /><br />

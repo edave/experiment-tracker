@@ -10,8 +10,8 @@
 		  <%= yield %>
 		</div>
 		<div id="footer">
-			<a href="http://halab.mit.edu/" style="color:#bb2222;font-size:1.1em;">Experiment Tracker, by the Humans & Automation Lab</a> | <a href="/">&copy; 2010 </a>
-            | <a href="javascript:none;"></a> | <a href="/signin">signin</a>
+			<a href="http://halab.mit.edu/" style="color:#bb2222;font-size:1.1em;">Experiment Tracker</a> | <a href="/">&copy; 2010 </a>
+            | <a href="javascript:none;"></a> | <%= link_to('Sign in', new_user_session_path)  %> 
         </div>
 		</div>
 	</body>

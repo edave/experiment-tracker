@@ -1,0 +1,203 @@
+  [1m[36mSQL (1.4ms)[0m  [1mdescribe `roles_users`[0m
+  [1m[35mSQL (1.3ms)[0m  describe `roles_users`
+Unable to load privilege, underlying cause No such file to load -- privilege 
+
+ /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0/lib/active_support/dependencies.rb:304:in `depend_on'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0/lib/active_support/dependencies.rb:216:in `require_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:864:in `try_to_load_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:879:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:876:in `each'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:876:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:859:in `fixtures'
+./test/test_helper.rb:10
+./test/unit/appointment_notifier_test.rb:1:in `require'
+./test/unit/appointment_notifier_test.rb:1
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [1m[36mSQL (2.9ms)[0m  [1mdescribe `roles_users`[0m
+  [1m[35mSQL (1.3ms)[0m  describe `roles_users`
+Unable to load privilege, underlying cause No such file to load -- privilege 
+
+ /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0/lib/active_support/dependencies.rb:304:in `depend_on'
+/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0/lib/active_support/dependencies.rb:216:in `require_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:864:in `try_to_load_dependency'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:879:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:876:in `each'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:876:in `require_fixture_classes'
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0/lib/active_record/fixtures.rb:859:in `fixtures'
+./test/test_helper.rb:10
+./test/functional/experiments_controller_test.rb:1:in `require'
+./test/functional/experiments_controller_test.rb:1
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `load'
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5:in `each'
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake/rake_test_loader.rb:5
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `roles_users`[0m
+  [1m[35mSQL (2.0ms)[0m  describe `roles_users`
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `roles_users`[0m
+  [1m[35mSQL (1.4ms)[0m  describe `roles_users`
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM `experiments`[0m
+  Processing by ExperimentsController#create as HTML
+  Parameters: {"experiment"=>{}}
+Completed   in 0ms
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM `experiments`
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by ExperimentsController#index as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by ExperimentsController#new as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM `google_calendars`[0m
+  Processing by GoogleCalendarsController#create as HTML
+  Parameters: {"google_calendar"=>{}}
+Completed   in 0ms
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM `google_calendars`
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by GoogleCalendarsController#index as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by GoogleCalendarsController#new as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM `groups`[0m
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{}}
+Completed   in 0ms
+  [1m[35mSQL (0.4ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM `groups`
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by GroupsController#index as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by GroupsController#new as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM `locations`[0m
+  Processing by LocationsController#create as HTML
+  Parameters: {"location"=>{}}
+Completed   in 0ms
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM `locations`
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by LocationsController#index as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by LocationsController#new as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM `slots`[0m
+  Processing by SlotsController#create as HTML
+  Parameters: {"slot"=>{}}
+Completed   in 0ms
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM `slots`
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by SlotsController#index as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by SlotsController#new as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM `subjects`[0m
+  Processing by SubjectsController#create as HTML
+  Parameters: {"subject"=>{}}
+Completed   in 0ms
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM `subjects`
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by SubjectsController#index as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  Processing by SubjectsController#new as HTML
+Completed   in 0ms
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m

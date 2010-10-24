@@ -1,6 +1,10 @@
 class Group < ObfuscatedRecord
   has_many :users
   has_many :experiments, :through => :users
+     
+  # ACL9 authorization support
+  #acts_as_authorization_object
+  
   
   # Validations
   validates_presence_of     :name

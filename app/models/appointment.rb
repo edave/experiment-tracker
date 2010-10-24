@@ -4,4 +4,7 @@ class Appointment < ActiveRecord::Base
   has_one :experiment, :through => :slot
   validates_uniqueness_of :subject_id, :scope => [:slot_id]
 
+  # ACL9 authorization support
+  acts_as_authorization_object
+
 end

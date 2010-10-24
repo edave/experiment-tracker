@@ -1,5 +1,5 @@
 <%= form_for(experiment) do |f| %>
-  <%= f.error_messages %>
+  <%= render "helpers/error_messages", :target => experiment %>  
   <h3>Name</h3>
 	<%= f.text_field :name, :size => 40 %>
  <h3>Compensation</h3>
@@ -14,7 +14,7 @@
  <select name="calendar_id">
  	<option value=""></option>
  	<% for calendar in @calendars do %>
- 		<option value="<%= calendar.hashed_id %>" <% if @experiment.google_calendar_id == calendar.id %>selected="selected"<% end %>><%= calendar.name %></option>
+ 		<option value="<%= calendar.hashed_id %>" <% if experiment.google_calendar_id == calendar.id %>selected="selected"<% end %>><%= calendar.name %></option>
 	<% end %>
 </select>
 <h3>Location</h3>

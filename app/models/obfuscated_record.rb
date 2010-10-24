@@ -9,4 +9,8 @@ class ObfuscatedRecord < ActiveRecord::Base
   def self.obfuscated_query(hashed_id)
     where(:hashed_id => hashed_id)
   end
+  
+  def self.find_by_obfuscated_query!(hashed_id)
+    where(:hashed_id => hashed_id)
+  end
 end

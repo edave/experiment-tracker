@@ -41,8 +41,12 @@ module ExperimentTracker
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password, :username, :phone_number, :email]
-    
+    # Only occurs in production
+    if Rails.env.production?
+      config.filter_parameters += [:password, :user_name, :name, :phone, :email,
+                                   :encrypted_password, :password_salt, :password_confirmation]
+    end
+  
   # ActiveRecord config
   config.colorize_logging = true
   #config.active_record.default_timezone = :local

@@ -1,9 +1,8 @@
 class ExperimentsController < ApplicationController
-  #before_filter :login_required, {:except => [:filled, :participate]}
-  #authorize_role [:admin, :experimenter], {:except => [:filled, :participate]}
-  #authorize_role :admin, {:only => [:admin]}
-  
+  #before_filter :authenticate_user!
+  #load_and_authorize_resource :find_by => :obfuscated_query
   cache_sweeper :experiment_sweeper, :only => [ :index, :show, :participate ]
+
 
   
   # GET /experiments

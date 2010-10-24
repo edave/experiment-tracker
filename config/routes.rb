@@ -1,14 +1,23 @@
 ExperimentTracker::Application.routes.draw do
-  devise_for :users
-
+  
   root :to => "home#index"
-
+  
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
+  
+  devise_scope :user do
+    get "/login" => "devise/sessions#new"
+  end
+  
+  devise_scope :user do
+    get "/logout" => "devise/sessions#destroy"
+  end
+  
   resources :groups
   resources :subjects
   resources :slots do
   
     member do
-  get :cancel
+      get :cancel
   end
   
   end

@@ -24,7 +24,7 @@ class SlotsController < ApplicationController
   # GET /slots/1
   # GET /slots/1.xml
   def show    
-    @slot = Slot.obfuscated(params[:id]).includes(:experiment)
+    @slot = Slot.obfuscated_query(params[:id]).includes(:experiment).first
     if @slot == nil
       render_404
       return
@@ -52,7 +52,7 @@ class SlotsController < ApplicationController
   def new
     page_title("New Time Slot")
     @slot = Slot.new
-    @experiment = Experiment.obfuscated(params[:id]).includes(:slots)
+    @experiment = Experiment.obfuscated_query(params[:id]).includes(:slots).first
     page_group(@experiment.user.group)
     
     respond_to do |format|

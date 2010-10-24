@@ -5,38 +5,30 @@ class User < ObfuscatedRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :timeoutable
 
+  # Add ACL9's support for roles/authorization
+  acts_as_authorization_subject  :association_name => :roles
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :user_name, :name, :phone
   attr_readonly :user_name
   
-  #Required length of password
-  @@password_length = 5
-  #Required login length
-  @@login_length = 4
   #Location of common passwords YAML array
   @@common_passwds = YAML.load_file(Rails.root.join("lib", "common_pwds.yaml"))
   #Error string for a password which fails a quality test
   @@quality_failure_text = "is not strong enough. Try including a few numbers and capital letters."
 
-  before_save :clear_fields # After everything is validated, we can clear out the 
-                            # the intermediate fields used for the password
   before_save :clean_phone
-    
+  
+  #has_many :privileges, :dependent => :destroy
+  #has_many :roles, :through => :privileges  
+  
   # Custom habtms
   has_many :experiments
   belongs_to :group
 
   validates_presence_of     :user_name
   validates_presence_of     :name
-  #validates_email           :email, :unique => true
-  #validates_presence_of     :supplied_password,          :if => :further_password_required?
-  #validates_presence_of     :password,                   :if => :password_required?
-  #validates_presence_of     :password_confirmation,      :if => :password_changed?
-  #validates_length_of       :password, :within => @@password_length..40, :if => :password_required?
-  #validates_confirmation_of :password,                   :if => :password_changed?
-  validates_length_of        :user_name,    :within => @@login_length..40
-  #validate                  :validate_email_can_be_changed
-  #validate                  :validate_password
+  #validates_length_of        :user_name,    :within => @@login_length..40
   validates_uniqueness_of    :user_name, :case_sensitive => false
   #validates_length_of :phone, :minimum => 10, :allow_blank => true, :allow_nil => true
   
@@ -47,10 +39,10 @@ class User < ObfuscatedRecord
   end
   
   # has_role? simply needs to return true or false whether a user has a role or not.  
-  def has_role?(role_in_question)
-    @roles_list ||= self.roles.collect(&:slug).collect(&:downcase)
-    (@roles_list.include?(role_in_question.to_s.downcase))
-  end
+  #def has_role?(role_sym)
+  #  @roles_list ||= self.roles.collect(&:slug).collect(&:underscore).collect(&:to_sym)
+  #  @roles_list.any? { |r| r == role_sym }
+  #end
    
   def validate_password
     if password_required?
@@ -69,57 +61,11 @@ class User < ObfuscatedRecord
    return true
   end
   
-   def password_robustness_level
-    return @@password_robustness_level
-  end
-  
-  def reload
-    super #Call the ActiveRecord.reload
-    # Now clear out all of our extra stuff
-    clear_fields
-  end
-  
-  # def logout
-  #   forget_me if logged_in?
-  #   cookies.delete :auth_token
-  #   reset_session
-  # end
-
   private
-    #Length of time allowed after a reset has been requested to reset password
-    @@reset_time_allowed = 1.day
-    #Length of time that "remember me"/cookie login is valid
-    @@remember_me_length = 2.weeks
-    
-    #Level of password quality and robustness
-    # Each level uses rules from the previous level(s)
-    # 0 - absolutely no checks on password length or quality, Don't Use!
-    # 1 - At least 1 number/symbol
-    # 2 - Case senstivity
-    @@password_robustness_level = 2
-    
-    # Checks password against common list of passwords and custom list of passwords
+   # Checks password against common list of passwords and custom list of passwords
     @@filter_common_passwords = true
     
-    @supplied_password = nil
-    @password = nil
-    @true_password = nil
-    @silently_update = nil
-    @failures = nil
-    @activated = nil
-    @password_changed = nil
-    @recover_in_process_code_generated = nil
-    
-     def clear_fields
-      @supplied_password = nil
-      @password = nil
-      @true_password = nil
-      @failures = nil
-      @password_changed = nil
-      @recover_in_process_code_generated = nil
-      self.password_confirmation = nil
-    end
-      # Performs quality checks upon password
+       # Performs quality checks upon password
     def password_quality_passes?(password)
      password_regexp = ""
      passes_regexp_test = true

@@ -15,12 +15,12 @@
     </thead>
 <% @privileges.each do |privilege| %>
     <tr >
-        <td><a href="/privilege/show/<%= privilege.id %>" ><%= privilege.id%></a></td>
-        <td><%= privilege.user.login %></td>
+        <td><a href="/privileges/<%= privilege.hashed_id %>" ><%= privilege.id%></a></td>
+        <td><%= privilege.user.user_name %></td>
         <td><%= privilege.role.name %></td>
         <td><%= privilege.created_at %></td>
         <td><%= privilege.updated_at %></td>
-        <td><%= privilege.modified_by_user.login %></td>
+        <td><%= privilege.modified_by_user.user_name %></td>
    </tr>
 <%end%>
 </table>

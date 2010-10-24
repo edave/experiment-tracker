@@ -12,7 +12,7 @@ gem 'capistrano'
 
 # Add gems for authentication/authorization
 gem "devise", '1.1.3'
-gem "acl9", '0.12.0'
+gem "acl9"
 
 # Date selecter UI
 gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
@@ -40,6 +40,7 @@ gem 'rufus-scheduler', :require=> "rufus/scheduler"
 # For Markdown text processing
 gem 'rdiscount'
 gem 'formatize'
+gem 'acts_as_markdown'
   
 # For Hoptoadapp error monitoring
 gem 'hoptoad_notifier', '>=2.2.0'

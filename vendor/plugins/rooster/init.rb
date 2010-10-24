@@ -11,8 +11,7 @@ elsif Rails::VERSION::MAJOR == 3
 
   module Rooster    
     class Railtie < Rails::Railtie
-      railtie_name :rooster
-
+      
       initializer "rooster.init" do |app|
          ROOSTER_DIR = File.join(Rails.root, "lib", "rooster")
          TASKS_DIR = File.join(ROOSTER_DIR, "tasks")

@@ -1,5 +1,5 @@
 <% if @experiment != nil %>
-<h1>Signup Confirmation <%= add_to_google_calendar(@experiment, @slot) %></h1>
+<h1>Signup Confirmation <%= raw add_to_google_calendar(@experiment, @slot) %></h1>
 <br style="clear:both" \>
 <h2><%= @subject.name %>, you are confirmed for <%= @slot.human_datetime %></h2>
 

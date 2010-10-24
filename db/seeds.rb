@@ -5,3 +5,12 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+# Setup site-wide roles
+admin = Role.new(:name => "Admin", :description => "Overall site admin")
+admin.slug = "admin"
+admin.save!
+
+experimenter = Role.new(:name => "Experimenter", :description => "Base experimenter")
+experimenter.slug = "experiment"
+experimenter.save!

@@ -31,7 +31,7 @@ class AppointmentNotifier < ActionMailer::Base
   end
  
   protected
-    def setup_email(appointment, recipient)
+    def setup_email(appointment)
       subject = appointment.subject
       slot = appointment.slot
       @recipient ||=  "#{subject.email}"

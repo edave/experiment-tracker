@@ -8,17 +8,18 @@ class PrivilegesController < ApplicationController
   def create
      begin
      @privilege = Privilege.new()
-     user = User.where(params[:privilege][:user_id])
-     role = Role.where(params[:privilege][:role_id])
+     user = User.find(params[:privilege][:user_id])
+     role = Role.find(params[:privilege][:role_id])
      @privilege.user = user
      @privilege.role = role
      @privilege.save!
      flash[:notice] = "Privilege successfully created!"
-     params[:id] = @privilege.id
-     render :action => :show
+     params[:id] = @privilege.hashed_id
+     render :action => :show, :id => @privilege.hashed_id
    rescue ActiveRecord::RecordInvalid
-     @users = User.order("login")
-    @roles = Role.order("name")
+     flash[:notice] = "Privilege creation failed"
+     @users = User.order("email")
+     @roles = Role.order("name")
         render :action => "new"
     end
   end
@@ -26,17 +27,17 @@ class PrivilegesController < ApplicationController
   def destroy
     @privilege = Privilege.obfuscated(params[:id])
     @privilege.destroy
-    flash[:notice] = "Privilege #" + @privilege.id.to_s + " (" + @privilege.user.login + " as " + @privilege.role.name  +  ") was successfully deleted"
-    redirect_to :action => "list"
+    flash[:notice] = "Privilege #" + @privilege.id.to_s + " (" + @privilege.user.user_name + " as " + @privilege.role.name  +  ") was successfully deleted"
+    redirect_to :action => "index"
   end
   
   def index
     page_title("Privileges")
-    @privileges = Privilege.all.includes(:user, :role).order("roles.name")
+    @privileges = Privilege.includes(:user, :role).order("roles.name")
   end
   
   def show
-    @privilege = Privilege.where(params[:id])
+    @privilege = Privilege.obfuscated(params[:id])
     page_title("Privilege \##{@privilege.id}")
   end
   
@@ -45,7 +46,7 @@ class PrivilegesController < ApplicationController
     if @privilege.nil?
       @privilege = Privilege.new()
     end
-    @users = User.order("login")
+    @users = User.order("email")
     @roles = Role.order("name")
   end
 end

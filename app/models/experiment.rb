@@ -3,6 +3,12 @@ class Experiment < ObfuscatedRecord
     belongs_to :google_calendar
     belongs_to :location
     has_many :slots, :order => :time, :dependent => :destroy
+    
+    # ACL9 authorization support
+    acts_as_authorization_object
+    
+    acts_as_markdown :desc
+    
     validates_presence_of     :name
     validates_presence_of     :desc
     validates_presence_of     :user

@@ -3,13 +3,10 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  # Scrub sensitive parameters from your log
-  filter_parameter_logging :password, :email, :name
+  #protect_from_forgery # See ActionController::RequestForgeryProtection for details
   
+  rescue_from 'Acl9::AccessDenied', :with => :access_denied
   
-  # If you want "remember me" functionality, add this before_filter to Application Controller
-  #before_filter :login_from_cookie
   before_filter :set_current_user
   
   layout 'application'
@@ -81,5 +78,13 @@ private
     true  # so we can do "render_404 and return"
   end
 
+  def access_denied
+    if current_user
+      render :template => 'home/access_denied'
+    else
+      flash[:notice] = 'Access denied. Try to log in first.'
+      redirect_to login_path
+    end
+  end    
 
 end
