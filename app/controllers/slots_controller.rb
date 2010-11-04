@@ -1,7 +1,4 @@
 class SlotsController < ApplicationController
-  #before_filter :login_required
-  #authorize_role [:admin, :experimenter]
-  #authorize_role :admin, {:only => [:cancel]}
   
   # GET /slots
   # GET /slots.xml

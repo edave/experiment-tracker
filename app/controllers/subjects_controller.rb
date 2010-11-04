@@ -1,8 +1,4 @@
 class SubjectsController < ApplicationController
-  #before_filter :login_required, {:except => [:new, :update, :create, :confirmation]}
-  #authorize_role [:admin, :experimenter], {:except => [:new, :update, :create, :confirmation]}
-  #authorize_role :admin, {:only => [:index, :destroy]}
-  
   layout 'external'
   
   #caches_action :new

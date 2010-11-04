@@ -1,7 +1,4 @@
 class GroupsController < ApplicationController
-  #before_filter :login_required
-  #authorize_role [:admin]
-  
   
   # GET /groups
   # GET /groups.xml

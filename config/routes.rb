@@ -30,7 +30,6 @@ ExperimentTracker::Application.routes.draw do
   
   end
 
-  resources :privileges
   resources :locations
   resources :google_calendars
   resources :preview do

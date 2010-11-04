@@ -19,9 +19,6 @@ class User < ObfuscatedRecord
 
   before_save :clean_phone
   
-  #has_many :privileges, :dependent => :destroy
-  #has_many :roles, :through => :privileges  
-  
   # Custom habtms
   has_many :experiments
   belongs_to :group

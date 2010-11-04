@@ -10,8 +10,6 @@ require "#{Rails.root}/lib/hashed_id"
 require "#{Rails.root}/lib/custom_validations"
 
 class ActiveRecord::Base
-  # Give all models access to the current manager & user, both 
-  # for doing constrained lookups and for storing whodunit.
   cattr_accessor :current_user_id
 end
 

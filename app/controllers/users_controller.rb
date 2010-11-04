@@ -82,44 +82,4 @@ class UsersController < ApplicationController
     end
   end
 
-# Disabled for now (along with its tests) - we'll revisit this later
-=begin
-  def destroy
-    user_id = params[:id]
-    if logged_in? && (self.current_user.id.to_i == user_id.to_i || user_admin? )
-      @user = User.find_by_id(user_id)
-      @user.deactivate!
-      if @user.id == current_user_id
-        flash[:notice] = "Your account has been deactivated"
-        render :controller => 'session', :action => 'destroy'
-        return
-      end
-    end
-    access_denied
-  end
-=end
-  
-  def unfreeze
-    @user = User.find_by_hashed_id(params[:id])
-    begin
-    if logged_in? && self.user_admin?
-      flash.sweep
-      @user.failure = 0
-      @user.last_failed_at = nil
-      
-      @user.save
-        flash[:notice] = "#{@user.login} was unfrozen and can now sign in"
-        @user.reload
-      redirect_to :action => :show, :params => {:id => params[:id]}
-    else
-      flash[:notice] = "You cannot unfreeze that user"
-      @user = nil
-      return access_denied
-    end
-    
-    rescue ActiveRecord::RecordInvalid
-        render :action => "show", :id => params[:id]
-    end
-  end
-  
 end
