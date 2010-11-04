@@ -44,9 +44,6 @@
 		</div>
 		</div>
 		
-<div class="column-right" style="margin-right:70px">
-			<%= render :partial=>'/users/password_helper' %>
-		</div>
 		<br style="clear:both" />
 		
 	</div>
@@ -58,9 +55,6 @@
 			var phone_field = jQuery("input#user_phone");
 			var mask = "999-999-9999";
 			phone_field.mask(mask, {placeholder:" "});
-			
-			// Password helper
-			passwordHelper(jQuery("input#user_password"), jQuery("input#user_password_confirmation"), jQuery("input#user_user_name"));
 			});
 	</script>
 <%= render :partial => "devise/shared/links" %>
