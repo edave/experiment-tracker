@@ -1,7 +1,6 @@
 class Users < ActiveRecord::Migration
   def self.up
     create_table(:users) do |t|
-      t.column :hashed_id,                 :integer, :default => 0
       t.column :name,                      :string, :limit => 100
       t.column :phone,                     :string, :limit => 20
       t.string :user_name,                 :limit => 40
@@ -17,7 +16,6 @@ class Users < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :users, :hashed_id,            :unique => true
     add_index :users, :user_name,            :unique => true
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true

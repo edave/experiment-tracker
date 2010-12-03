@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
   
   rescue_from 'Acl9::AccessDenied', :with => :access_denied
   
-  before_filter :set_current_user
-  
   layout 'application'
   
   def signed_in_as_admin?
@@ -61,13 +59,6 @@ class ApplicationController < ActionController::Base
  helper_method  :signed_in_as_admin?, :controller_page_title, :development_env?, :production_env?, :use_markdown_editor=, :use_markdown_editor?
 
 private
- # This method is run a priori so models can know which user is
- # is interacting with them.
- def set_current_user
-   unless current_user == nil
-  ActiveRecord::Base.current_user_id = current_user.id
-  end
- end
 
   def render_404
   page_title("404 Error")

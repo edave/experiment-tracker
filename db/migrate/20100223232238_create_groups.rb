@@ -8,12 +8,10 @@ class CreateGroups < ActiveRecord::Migration
       t.column :logo_file_type, :string
       t.column :logo_file_size, :integer
       t.column :logo_updated_at, :datetime
-      t.column :hashed_id,    :integer,     :default => 0
       t.column :lock_version, :integer, :default=>0
       t.timestamps
     end
     add_column :users, :group_id, :integer, :default => 0
-    add_index :groups, :hashed_id
     add_index :groups, :owner_id
     
   end

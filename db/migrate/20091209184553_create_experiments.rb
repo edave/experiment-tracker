@@ -3,7 +3,6 @@ class CreateExperiments < ActiveRecord::Migration
     create_table :experiments do |t|
       t.column :name, :string, :limit => 256
       t.column :desc, :blob
-      t.column :hashed_id,   :integer,     :default => 0
       t.column :time_length, :int
       t.column :user_id,   :integer, :default => 0
       t.column :location_id, :integer, :default => 0
@@ -17,7 +16,6 @@ class CreateExperiments < ActiveRecord::Migration
     
     add_index :experiments, :user_id
     add_index :experiments, :open
-    add_index :experiments, :hashed_id
   end
 
   def self.down

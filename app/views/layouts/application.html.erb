@@ -3,7 +3,7 @@
 		<div class="header application">
 		<div id="banner" style="background: url('/<%= site_group_logo_path %>') left top no-repeat;">Experiment Tracker</div>
 		<div class="tabs">
-			<%= link_to('Sign out', destroy_user_session_path)  %> (<%= current_user.user_name if current_user %>)
+			<%= link_to('Sign out', destroy_user_session_path)  %>
 			<a href="/locations" ><div class="tab">Locations</div></a>
 			<a href="/google_calendars" ><div class="tab">Calendars</div></a>
 			<a href="/experiments" ><div class="tab">Experiments</div></a>

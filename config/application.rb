@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 DO_NOT_REPLY = "donotreply@halab-experiments.mit.edu"
 
-ENCRYPTED_ATTR_PASSKEY = "BWzMfbB3VSwbUxuO"
+ENCRYPTED_ATTR_PASSKEY = "asdfasdfasdfasdf" # Replace
 
 module ExperimentTracker
   class Application < Rails::Application
@@ -52,15 +52,5 @@ module ExperimentTracker
   #config.active_record.default_timezone = :local
   
   #config.action_controller.page_cache_directory = RAILS_ROOT+"/public/cache/"
-
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address  => "mail.hci4.me",
-    :port  => 587, 
-    :domain  => "hci4.me",
-    :user_name  => "noreply@hci4.me",
-    :password  => "5VQ891zTUI6C",
-    :authentication  => :login
-      } 
   end
 end

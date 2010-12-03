@@ -5,15 +5,6 @@
 
 require 'attr_encrypted'
 
-require "#{Rails.root}/lib/hashed_id"
-
-require "#{Rails.root}/lib/custom_validations"
-
-class ActiveRecord::Base
-  cattr_accessor :current_user_id
-end
-
-
 class ::Date
   def beginning_of_day_in_zone
     Time.zone.parse(self.to_s)
