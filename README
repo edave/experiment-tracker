@@ -19,6 +19,7 @@ Known Issues:
 * Issues with CSRF
 * Layout issues once a user is signed in
 
+
 Running:
 
 Setup as a standard Rails application with your webserver.
